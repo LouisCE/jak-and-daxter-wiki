@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
 
     # Local apps
+    'home',
     'weapons',
 ]
 
