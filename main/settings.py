@@ -61,6 +61,9 @@ INSTALLED_APPS = [
     # Cloudinary
     'cloudinary',
     'cloudinary_storage',
+
+    # Local apps
+    'weapons',
 ]
 
 SITE_ID = 1
