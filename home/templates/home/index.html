@@ -1,1 +1,27 @@
-<h1>Jak and Daxter Wiki - Coming Soon!</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jak and Daxter Wiki</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'weapon_list' %}">Morph Gun</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Characters</a></li>
+                <li><a href="#">Collectibles</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Welcome to the Jak and Daxter Wiki</h1>
+        <p>Explore Morph Guns, Community posts, Characters, and Collectibles!</p>
+    </main>
+</body>
+</html>
