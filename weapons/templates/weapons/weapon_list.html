@@ -1,11 +1,15 @@
 <h1>Weapons</h1>
 
+{% if user.is_staff %}
+    <p><a href="{% url 'create_weapon' %}">Add New Weapon</a></p>
+{% endif %}
+
 {% for weapon in weapons %}
     <p>
-    <a href="{% url 'weapon_detail' weapon.pk %}">
-        {{ weapon.name }}
-    </a>
-</p>
+        <a href="{% url 'weapon_detail' weapon.pk %}">
+            {{ weapon.name }}
+        </a>
+    </p>
 {% empty %}
     <p>No weapons yet.</p>
 {% endfor %}
