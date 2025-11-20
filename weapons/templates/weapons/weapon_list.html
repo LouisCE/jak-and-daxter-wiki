@@ -1,0 +1,7 @@
+<h1>Weapons</h1>
+
+{% for weapon in weapons %}
+    <p>{{ weapon.name }}</p>
+{% empty %}
+    <p>No weapons yet.</p>
+{% endfor %}

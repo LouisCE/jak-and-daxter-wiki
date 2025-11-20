@@ -11,6 +11,7 @@ class Colour(models.Model):
     def __str__(self):
         return self.name
 
+
 class Weapon(models.Model):
     """Weapon model with FK relationship to colour."""
     name = models.CharField(max_length=100, blank=False)

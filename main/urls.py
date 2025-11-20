@@ -22,14 +22,12 @@ from home import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     path('', views.index, name='home'),
-
     # Allauth
     path('accounts/', include('allauth.urls')),
-
     # Summernote
     path('summernote/', include('django_summernote.urls')),
+    path('weapons/', include('weapons.urls')),
 ]
 
 if settings.DEBUG:
