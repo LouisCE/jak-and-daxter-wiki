@@ -64,7 +64,6 @@ INSTALLED_APPS = [
 
     # Local apps
     'home',
-    'weapons.apps.MorphGunConfig',
     'morphgun',
 ]
 

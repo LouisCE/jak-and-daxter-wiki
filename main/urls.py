@@ -27,7 +27,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     # Summernote
     path('summernote/', include('django_summernote.urls')),
-    # path('weapons/', include('weapons.urls')),
+    # Morphgun
     path('morphgun/', include('morphgun.urls')),
 ]
 
