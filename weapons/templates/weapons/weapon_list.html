@@ -1,7 +1,11 @@
 <h1>Weapons</h1>
 
 {% for weapon in weapons %}
-    <p>{{ weapon.name }}</p>
+    <p>
+    <a href="{% url 'weapon_detail' weapon.pk %}">
+        {{ weapon.name }}
+    </a>
+</p>
 {% empty %}
     <p>No weapons yet.</p>
 {% endfor %}
