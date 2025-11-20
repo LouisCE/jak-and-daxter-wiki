@@ -1,4 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
 .venv/
 env.py
+
+# Django
 db.sqlite3
-__pycache__/
+/staticfiles/
+/media/
+
+# Cloudinary
+*.log
+
+# IDEs
+.vscode/
