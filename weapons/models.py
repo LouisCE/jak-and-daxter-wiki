@@ -8,6 +8,10 @@ class Colour(models.Model):
     """Colour / Category model."""
     name = models.CharField(max_length=25, blank=False)
 
+    class Meta:
+        verbose_name = "Eco Mod"
+        verbose_name_plural = "Eco Mods"
+
     def __str__(self):
         return self.name
 
@@ -21,6 +25,10 @@ class Weapon(models.Model):
     )
     description = models.TextField(blank=False)
     image = CloudinaryField("image", default="placeholder", blank=False)
+
+    class Meta:
+        verbose_name = "Morph Gun Variant"
+        verbose_name_plural = "Morph Gun Variants"
 
     def __str__(self):
         return self.name

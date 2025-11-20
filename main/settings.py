@@ -64,7 +64,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'home',
-    'weapons',
+    'weapons.apps.MorphGunConfig',
 ]
 
 SITE_ID = 1
