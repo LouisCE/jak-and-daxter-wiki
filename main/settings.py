@@ -29,16 +29,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-if "DYNO" in os.environ:
-    DEBUG = False
+DEBUG = os.environ.get("DEBUG")
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    ".herokuapp.com",
-    "jak-and-daxter-wiki-420eda56706b.herokuapp.com",
-]
+ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = []
+host = os.environ.get("HOST")
+if host:
+    ALLOWED_HOSTS.append(host)
+    CSRF_TRUSTED_ORIGINS.append(f"https://{host}")
 
 
 # Application definition
