@@ -54,6 +54,32 @@ main p {
     line-height: 1.6;
 }
 
+/* Footer */
+footer {
+    background-color: #0d0d0d;
+    color: #ff9f1c;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+    border-top: 2px solid #ff9f1c;
+}
+
+footer a {
+    color: #ffd166;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer .small-text {
+    font-size: 0.9rem;
+    color: #ffcc80;
+    margin-top: -0.5rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     nav ul {
