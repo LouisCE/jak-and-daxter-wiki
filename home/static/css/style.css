@@ -54,6 +54,24 @@ main p {
     line-height: 1.6;
 }
 
+.hero-banner {
+    width: 100%;
+    height: 600px;
+    background-image: url("https://res.cloudinary.com/dkdvark17/image/upload/v1763854572/Jak_II_promo_mv1hs6.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.hero-banner {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* center the image */
+    margin: 20px 0;
+}
+
 /* Footer */
 footer {
     background-color: #0d0d0d;
