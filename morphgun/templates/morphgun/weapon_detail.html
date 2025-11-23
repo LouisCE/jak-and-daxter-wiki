@@ -9,4 +9,12 @@
 <p>{{ weapon.description }}</p>
 
 <img src="{{ weapon.image.url }}" alt="{{ weapon.name }}" width="300">
+
+{% if user.is_staff %}
+    <p>
+        <a href="{% url 'update_weapon' weapon.pk %}">Edit</a> |
+        <a href="{% url 'delete_weapon' weapon.pk %}">Delete</a>
+    </p>
+{% endif %}
+
 {% endblock %}
