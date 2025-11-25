@@ -8,6 +8,7 @@ body {
     color: #ff9f1c;            /* Main orange text */
     margin: 0;
     padding: 0;
+    padding-top: 70px;
     font-family: Arial, sans-serif; /* Bootstrap-friendly default */
 }
 
