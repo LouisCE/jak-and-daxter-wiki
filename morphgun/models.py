@@ -22,10 +22,12 @@ class Weapon(models.Model):
     )
     description = models.TextField(blank=False)
     image = CloudinaryField("image", default="placeholder", blank=False)
+    order = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name = 'Weapon'
         verbose_name_plural = 'Weapons'
+        ordering = ['order']
 
     def __str__(self):
         return self.name
