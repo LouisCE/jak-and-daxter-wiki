@@ -1,21 +1,16 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block title %}Morph Gun | Jak and Daxter Wiki{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block title %}Morph Gun | Jak and
+Daxter Wiki{% endblock %} {% block content %}
 
 <div class="container my-4">
     <h1>Morph Gun</h1>
     <p>
-        The Morph Gun is Jak’s modular weapon system, channeling 
-        different eco types into powerful weapon mods.
+        The Morph Gun is Jak’s modular weapon system, channeling different eco types
+        into powerful weapon mods.
     </p>
 
     <!-- Morph Gun overview image -->
     <img src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
-         alt="Morph Gun"
-         class="img-fluid my-3">
+        alt="Morph Gun" class="img-fluid my-3" />
 </div>
 
 {% if user.is_staff %}
@@ -29,31 +24,23 @@
 <div class="container">
     <h2>Weapon Mods</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-
         {% for weapon in weapons %}
         <div class="col">
-            <div class="card h-100 
-                {% if weapon.colour.name == 'Red' %} border-danger
-                {% elif weapon.colour.name == 'Yellow' %} border-warning
-                {% elif weapon.colour.name == 'Blue' %} border-primary
-                {% elif weapon.colour.name == 'Purple' %} border-purple-custom
+            <div
+                class="card h-100 {% if weapon.colour.name == 'Red' %} border-danger {% elif weapon.colour.name == 'Yellow' %} border-warning {% elif weapon.colour.name == 'Blue' %} border-primary {% elif weapon.colour.name == 'Purple' %} border-purple-custom {% endif %}">
+                {% if weapon.image %}
+                <img src="{{ weapon.image.url }}" class="card-img-top" alt="{{ weapon.name }}" />
+                {% else %}
+                <img src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
+                    class="card-img-top" alt="Placeholder image" />
                 {% endif %}
-            ">
-                <img src="{{ weapon.image.url }}" 
-                     class="card-img-top" 
-                     alt="{{ weapon.name }}">
 
                 <div class="card-body">
                     <h5 class="card-title">{{ weapon.name }}</h5>
 
                     <!-- Colour badge -->
-                    <span class="badge 
-                        {% if weapon.colour.name == 'Red' %} bg-danger
-                        {% elif weapon.colour.name == 'Yellow' %} bg-warning text-dark
-                        {% elif weapon.colour.name == 'Blue' %} bg-primary
-                        {% elif weapon.colour.name == 'Purple' %} bg-purple-custom
-                        {% endif %}
-                    ">
+                    <span
+                        class="badge {% if weapon.colour.name == 'Red' %} bg-danger {% elif weapon.colour.name == 'Yellow' %} bg-warning text-dark {% elif weapon.colour.name == 'Blue' %} bg-primary {% elif weapon.colour.name == 'Purple' %} bg-purple-custom {% endif %}">
                         {{ weapon.colour.name }}
                     </span>
 
@@ -63,8 +50,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <a href="{% url 'weapon_detail' weapon.pk %}" 
-                       class="btn btn-primary w-100">
+                    <a href="{% url 'weapon_detail' weapon.pk %}" class="btn btn-primary w-100">
                         View
                     </a>
                 </div>
@@ -72,9 +58,8 @@
         </div>
 
         {% empty %}
-            <p>No weapons yet.</p>
+        <p>No weapons yet.</p>
         {% endfor %}
-
     </div>
 </div>
 

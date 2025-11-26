@@ -21,7 +21,10 @@ class Weapon(models.Model):
         blank=False
     )
     description = models.TextField(blank=False)
-    image = CloudinaryField("image", default="placeholder", blank=False)
+    image = CloudinaryField(
+        "image",
+        default="v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
+    )
     order = models.PositiveIntegerField(default=0)
 
     class Meta:

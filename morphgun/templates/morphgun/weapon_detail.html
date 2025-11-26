@@ -8,7 +8,12 @@
 <p><strong>Colour:</strong> {{ weapon.colour.name }}</p>
 <p>{{ weapon.description }}</p>
 
-<img src="{{ weapon.image.url }}" alt="{{ weapon.name }}" width="300">
+{% if weapon.image %}
+    <img src="{{ weapon.image.url }}" alt="{{ weapon.name }}" width="300">
+{% else %}
+    <img src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
+         alt="Placeholder image" width="300">
+{% endif %}
 
 {% if user.is_staff %}
     <p>
