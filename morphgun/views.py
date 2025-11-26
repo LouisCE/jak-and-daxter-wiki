@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib import messages
 
 from .models import Weapon
 from .forms import WeaponForm
@@ -29,6 +30,7 @@ def create_weapon(request):
         form = WeaponForm(request.POST)
         if form.is_valid():
             weapon = form.save()
+            messages.success(request, f"Weapon '{weapon.name}' created successfully!")
             return redirect('weapon_detail', pk=weapon.pk)
     else:
         form = WeaponForm()
@@ -42,7 +44,8 @@ def update_weapon(request, pk):
     if request.method == 'POST':
         form = WeaponForm(request.POST, request.FILES, instance=weapon)
         if form.is_valid():
-            form.save()
+            weapon = form.save()
+            messages.success(request, f"Weapon '{weapon.name}' updated successfully!")
             return redirect('weapon_detail', pk=weapon.pk)
     else:
         form = WeaponForm(instance=weapon)
@@ -54,6 +57,8 @@ def update_weapon(request, pk):
 def delete_weapon(request, pk):
     weapon = get_object_or_404(Weapon, pk=pk)
     if request.method == 'POST':
+        name = weapon.name
         weapon.delete()
+        messages.success(request, f"Weapon '{name}' deleted successfully!")
         return redirect('weapon_list')
     return render(request, 'morphgun/delete_weapon.html', {'weapon': weapon})

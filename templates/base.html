@@ -45,6 +45,17 @@
 </nav>
     </header>
 
+    <!-- Messages -->
+    {% if messages %}
+    <div class="container mt-5">
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <!-- Page content -->
     <main>
         {% block content %}{% endblock %}
