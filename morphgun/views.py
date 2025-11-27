@@ -79,3 +79,53 @@ def delete_weapon(request, pk):
         messages.success(request, f"Weapon '{name}' deleted successfully!")
         return redirect('weapon_list')
     return render(request, 'morphgun/delete_weapon.html', {'weapon': weapon})
+
+
+# Colour CRUD
+
+def colour_list(request):
+    colours = Colour.objects.all()
+    return render(request, "morphgun/colour_list.html", {"colours": colours})
+
+
+def colour_detail(request, pk):
+    colour = get_object_or_404(Colour, pk=pk)
+    return render(request, "morphgun/colour_detail.html", {"colour": colour})
+
+
+@user_passes_test(staff_check)
+def colour_create(request):
+    if request.method == "POST":
+        form = ColourForm(request.POST, request.FILES)
+        if form.is_valid():
+            colour = form.save()
+            messages.success(request, f"Colour '{colour.name}' created successfully!")
+            return redirect("colour_detail", pk=colour.pk)
+    else:
+        form = ColourForm()
+    return render(request, "morphgun/colour_form.html", {"form": form})
+
+
+@user_passes_test(staff_check)
+def colour_update(request, pk):
+    colour = get_object_or_404(Colour, pk=pk)
+    if request.method == "POST":
+        form = ColourForm(request.POST, request.FILES, instance=colour)
+        if form.is_valid():
+            colour = form.save()
+            messages.success(request, f"Colour '{colour.name}' updated successfully!")
+            return redirect("colour_detail", pk=pk)
+    else:
+        form = ColourForm(instance=colour)
+    return render(request, "morphgun/colour_form.html", {"form": form, "colour": colour})
+
+
+@user_passes_test(staff_check)
+def colour_delete(request, pk):
+    colour = get_object_or_404(Colour, pk=pk)
+    if request.method == "POST":
+        name = colour.name
+        colour.delete()
+        messages.success(request, f"Colour '{name}' deleted successfully!")
+        return redirect("colour_list")
+    return render(request, "morphgun/colour_delete.html", {"colour": colour})
