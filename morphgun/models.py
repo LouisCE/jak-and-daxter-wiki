@@ -1,9 +1,15 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 
+
 class Colour(models.Model):
     """Colours under Morph Gun"""
     name = models.CharField(max_length=25, blank=False)
+    description = models.TextField(blank=False)
+    image = CloudinaryField(
+        "image",
+        default="v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
+    )
 
     class Meta:
         verbose_name = 'Colour'
