@@ -2,6 +2,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # Eco colours CRUD
+    path("colours/", views.colour_list, name="colour_list"),
+    path("colours/<int:pk>/", views.colour_detail, name="colour_detail"),
+    path("colours/create/", views.colour_create, name="colour_create"),
+    path("colours/<int:pk>/update/", views.colour_update, name="colour_update"),
+    path("colours/<int:pk>/delete/", views.colour_delete, name="colour_delete"),
+    # Weapon mod CRUD
     path('', views.weapon_list, name='weapon_list'),
     path('create/', views.create_weapon, name='create_weapon'),
     path('weapon/<int:pk>/', views.weapon_detail, name='weapon_detail'),
