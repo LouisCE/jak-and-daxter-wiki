@@ -2,14 +2,31 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib import messages
 
-from .models import Weapon
-from .forms import WeaponForm
+from .models import Weapon, Colour
+from .forms import WeaponForm, ColourForm
+
+
+# Staff-only check
+def staff_check(user):
+    return user.is_staff
+
+# Weapon CRUD
 
 
 # List view
 def weapon_list(request):
-    weapons = Weapon.objects.all()
-    return render(request, 'morphgun/weapon_list.html', {'weapons': weapons})
+    weapons = (
+        Weapon.objects
+        .select_related('colour')
+        .order_by('order', 'colour__name', 'pk')
+    )
+    colours = Colour.objects.all().order_by('name')
+    template = 'morphgun/weapon_list.html'
+    context = {
+        'weapons': weapons,
+        'colours': colours,
+    }
+    return render(request, template, context)
 
 
 # Detail view
