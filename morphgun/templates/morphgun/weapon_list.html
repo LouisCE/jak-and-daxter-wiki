@@ -15,9 +15,9 @@ Daxter Wiki{% endblock %} {% block content %}
 
 {% if user.is_staff %}
 <div class="container mb-3">
-    <a href="{% url 'create_weapon' %}" class="btn btn-success">
-        Add New Weapon
-    </a>
+    <a href="{% url 'create_weapon' %}" class="btn btn-primary">
+    Add New Weapon
+</a>
 </div>
 {% endif %}
 

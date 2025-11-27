@@ -8,7 +8,16 @@
 
 <form method="POST">
     {% csrf_token %}
-    <button type="submit">Confirm Delete</button>
-    <a href="{% url 'weapon_detail' weapon.pk %}">Cancel</a>
+    <form method="POST" class="d-flex gap-2 mt-3">
+    {% csrf_token %}
+
+    <button type="submit" class="btn btn-danger">
+        Confirm Delete
+    </button>
+
+    <a href="{% url 'weapon_detail' weapon.pk %}" class="btn btn-secondary">
+        Cancel
+    </a>
+</form>
 </form>
 {% endblock %}

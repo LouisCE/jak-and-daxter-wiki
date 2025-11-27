@@ -16,10 +16,15 @@
 {% endif %}
 
 {% if user.is_staff %}
-    <p>
-        <a href="{% url 'update_weapon' weapon.pk %}">Edit</a> |
-        <a href="{% url 'delete_weapon' weapon.pk %}">Delete</a>
-    </p>
+<div class="mt-4 d-flex gap-2 justify-content-center">
+    <a href="{% url 'update_weapon' weapon.pk %}" class="btn btn-warning">
+        Edit
+    </a>
+
+    <a href="{% url 'delete_weapon' weapon.pk %}" class="btn btn-danger">
+        Delete
+    </a>
+</div>
 {% endif %}
 
 {% endblock %}
