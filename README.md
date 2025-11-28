@@ -57,3 +57,75 @@ Developer: Louis Cowell-English ([LouisCE](https://www.github.com/LouisCE))
 
 The live deployed application can be found here:  
 [Heroku Deployment – Jak and Daxter Wiki](https://jak-and-daxter-wiki-420eda56706b.herokuapp.com)
+
+## Heroku Deployment
+
+This project is deployed using **Heroku**, a cloud-based Platform as a Service (PaaS) used to run Django applications in production.
+
+Below are the exact steps I followed to deploy the Jak and Daxter Wiki.
+
+### Create a New Heroku App
+
+1. Log into the Heroku Dashboard.
+2. Click **New** → **Create new app**.
+3. Choose a unique app name (in my case, `jak-and-daxter-wiki`).
+4. Select the region closest to me (in my case, the EU as a UK user).
+5. Click **Create App**.
+
+### Config Vars
+
+Inside my app, I went to the **Settings** tab and clicked **Reveal Config Vars** to enter the required environment variables used in my `env.py` file.
+
+> [!IMPORTANT]  
+> These values below are placeholders for demonstration only.  
+> It is important to remember **not** use real keys here and **not** to commit actual keys into the repository.
+
+| Key | Value |
+| --- | --- |
+| `CLOUDINARY_URL` | user-inserts-own-cloudinary-url |
+| `DATABASE_URL` | user-inserts-own-postgres-database-url |
+| `DISABLE_COLLECTSTATIC` | 1 (*this is temporary, and can be removed for the final deployment*) |
+| `SECRET_KEY` | any-random-secret-key |
+
+### Required Heroku Files
+
+Heroku requires these supporting files in the project root to correctly build and run a Django application:
+
+- `requirements.txt`
+- `Procfile`
+- `.python-version`
+
+#### requirements.txt
+
+I installed this project's **[requirements.txt](requirements.txt)** by using:
+
+- `pip3 install -r requirements.txt`
+
+When new packages were installed during development, the requirements file had to be updated using:
+
+- `pip3 freeze --local > requirements.txt`
+
+#### Procfile
+
+I created the **[Procfile](Procfile)** with the following command:
+
+- `echo web: gunicorn main.wsgi > Procfile`
+
+### Python Version File
+
+The **[.python-version](.python-version)** file tells Heroku the specific version of Python to use when running your application.
+
+- In my case, the version is `3.12`
+
+### Connecting GitHub to Heroku
+
+For Heroku deployment, I followed these steps to connect my GitHub repository to the newly created app:
+
+1. In the Heroku app dashboard, I went to the **Deploy** tab.
+2. I chose **GitHub** as the deployment method.
+3. I searched for my repository: `LouisCE/jak-and-daxter-wiki`.
+4. I clicked **Enable Automatic Deploys**.
+
+### Deployment Complete
+
+Once the build was finished, my Jak and Daxter Django project was fully deployed, live and accessible at my Heroku domain.
