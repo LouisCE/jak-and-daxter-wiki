@@ -35,11 +35,6 @@ def weapon_detail(request, pk):
     return render(request, 'morphgun/weapon_detail.html', {'weapon': weapon})
 
 
-# Staff-only check
-def staff_check(user):
-    return user.is_staff
-
-
 # Create view
 @user_passes_test(staff_check)
 def create_weapon(request):
