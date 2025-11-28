@@ -203,3 +203,72 @@ MIDDLEWARE = [
 ```
 
 WhiteNoise works together with Heroku to efficiently serve static assets for the Jak and Daxter Wiki in production.
+
+### Local Development
+
+This project can be cloned or forked in order to create a local development copy of the **Jak and Daxter Wiki**.
+
+After cloning or forking, you will need to install all required packages listed inside the [requirements.txt](requirements.txt) file:
+
+- `pip3 install -r requirements.txt`
+
+You will also need to create a new file named `env.py` in the project root directory.  
+This file must contain the same environment variables used in your Heroku deployment setup.
+
+> [!IMPORTANT]  
+> The example values below are **demo placeholders only**.  
+> **Do NOT** paste your real keys publicly.  
+> When cloning or forking, replace these placeholders with your own secure environment variable values.
+
+Sample `env.py` file:
+
+```python
+import os
+
+os.environ.setdefault("SECRET_KEY", "any-random-secret-key")
+os.environ.setdefault("DATABASE_URL", "user-inserts-own-postgres-database-url")
+os.environ.setdefault("CLOUDINARY_URL", "user-inserts-own-cloudinary-url")  # only if using Cloudinary
+
+# local environment only (do not include these in production!)
+os.environ.setdefault("DEBUG", "True")
+```
+
+Once the project is cloned or forked, follow these steps to run it locally:
+
+> [!NOTE]  
+> Depending on your operating system, you may need to use either `python` or `python3` when running Django commands.  
+> For example, `python manage.py runserver` (Windows) vs `python3 manage.py runserver` (macOS/Linux).  
+> Use whichever command works on your system.
+
+- Start the Django server:  
+  `python3 manage.py runserver`
+
+- Stop the server after confirming it loads:  
+  `CTRL+C` (Windows/Linux) or `⌘+C` (Mac)
+
+- Make migrations:  
+  `python3 manage.py makemigrations --dry-run`  
+  then  
+  `python3 manage.py makemigrations`
+
+- Apply migrations:  
+  `python3 manage.py migrate --plan`  
+  then  
+  `python3 manage.py migrate`
+
+- Create a superuser:  
+  `python3 manage.py createsuperuser`
+
+- Load fixtures (if using any):  
+  `python3 manage.py loaddata file-name.json`  
+  *(repeat for each fixture file)*
+
+- Run the Django server again:  
+  `python3 manage.py runserver`
+
+If you'd like to back up data from specific models, you can create fixture files with:
+
+- `python3 manage.py dumpdata your-model > your-model.json`
+- *(repeat this for each model you want to back up)*
+
+**NOTE:** Never include backups of default Django **admin** or **auth/user** tables, as they contain sensitive information.
