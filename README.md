@@ -52,3 +52,8 @@ Developer: Louis Cowell-English ([LouisCE](https://www.github.com/LouisCE))
 
 > [!NOTE]  
 > For all testing, please refer to the [TESTING.md](TESTING.md) file.
+
+## Deployment
+
+The live deployed application can be found here:  
+[Heroku Deployment – Jak and Daxter Wiki](https://jak-and-daxter-wiki-420eda56706b.herokuapp.com)
