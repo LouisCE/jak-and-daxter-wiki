@@ -177,3 +177,29 @@ To obtain my PostgreSQL Database from Code Institute, I followed these steps:
   - and the Heroku **Config Vars** dashboard under the same key.
 
 Once set, Django automatically used this PostgreSQL database for all models, migrations, and relational data within the project.
+
+### WhiteNoise
+
+This project uses **[WhiteNoise](https://whitenoise.readthedocs.io/en/latest/)** to handle static files on the live Heroku deployment for the Jak and Daxter Wiki. WhiteNoise allows Django to serve static files efficiently without requiring an external storage service for CSS, JavaScript, or other static assets.
+
+To include WhiteNoise in this project, I followed these steps:
+
+- Installed the WhiteNoise package:
+  - `pip install whitenoise`
+
+- Updated the `requirements.txt` file:
+  - `pip freeze --local > requirements.txt`
+
+- Added WhiteNoise to the `MIDDLEWARE` list inside `settings.py`, placed directly **under** Django’s `SecurityMiddleware`:
+
+```python
+# settings.py
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # other middleware listed below
+]
+```
+
+WhiteNoise works together with Heroku to efficiently serve static assets for the Jak and Daxter Wiki in production.
