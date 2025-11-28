@@ -129,3 +129,29 @@ For Heroku deployment, I followed these steps to connect my GitHub repository to
 ### Deployment Complete
 
 Once the build was finished, my Jak and Daxter Django project was fully deployed, live and accessible at my Heroku domain.
+
+### Cloudinary API
+
+The Jak and Daxter Wiki uses the [Cloudinary API](https://cloudinary.com) to store media assets online, due to the fact that Heroku doesn't persist this type of data.
+
+> [!IMPORTANT]  
+> Again, the value shown below is only an example placeholder.  
+> I never commit real API keys, secrets, or environment variables to my repository.  
+> My actual Cloudinary key is stored securely in my local env.py (excluded via .gitignore) and in Heroku Config Vars.
+
+To obtain my Cloudinary API key, I had to create an account and log in.
+
+- For "Primary Interest", I chose **Programmable Media for image and video API**.
+- On my Cloudinary Dashboard, I copied my **API Environment Variable**.
+- The variable looks like this:
+
+`CLOUDINARY_URL=cloudinary://123456789012345:AbCdEfGhIjKlMnOpQrStuVwXyZa@1a2b3c4d5`
+
+When adding to my local env.py and to Heroku Config Vars:
+
+- I made sure to remove the leading `CLOUDINARY_URL=` as part of the API **value** as this is the **key**.
+- The key and value went into my `env.py` file, and Heroku Config Vars, using the **key** of `CLOUDINARY_URL` and the **value** which looks like `cloudinary://123456789012345:AbCdEfGhIjKlMnOpQrStuVwXyZa@1a2b3c4d5`
+
+| Key | Value (example) |
+| --- | --- |
+| CLOUDINARY_URL | cloudinary://123456789012345:AbCdEfGhIjKlMnOpQrStuVwXyZa@1a2b3c4d5 |
