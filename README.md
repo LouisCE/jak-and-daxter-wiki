@@ -155,3 +155,25 @@ When adding to my local env.py and to Heroku Config Vars:
 | Key | Value (example) |
 | --- | --- |
 | CLOUDINARY_URL | cloudinary://123456789012345:AbCdEfGhIjKlMnOpQrStuVwXyZa@1a2b3c4d5 |
+
+### PostgreSQL
+
+This project uses a **Code Institute PostgreSQL Database** as the relational database for the Jak and Daxter Wiki, which is connected to Django via the `DATABASE_URL` environment variable.
+
+> [!CAUTION]
+> - PostgreSQL databases provided by Code Institute are only available to CI students.
+> - Anyone cloning or forking this repository must obtain their own PostgreSQL database from another provider.
+> - Code Institute students have a limit of 8 active databases.
+> - Databases may be deleted automatically after 18 months.
+
+To obtain my PostgreSQL Database from Code Institute, I followed these steps:
+
+- Submitted my email address to the CI PostgreSQL Database link: <https://dbs.ci-dbs.net>
+- I received an email containing my unique PostgreSQL database credentials.
+- The database URL provided follows this format:
+  - `postgres://<db_username>:<db_password>@<db_host_url>/<db_name>`
+- This URL was added to both:
+  - my local `env.py` file as `DATABASE_URL`
+  - and the Heroku **Config Vars** dashboard under the same key.
+
+Once set, Django automatically used this PostgreSQL database for all models, migrations, and relational data within the project.
