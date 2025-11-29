@@ -272,3 +272,29 @@ If you'd like to back up data from specific models, you can create fixture files
 - *(repeat this for each model you want to back up)*
 
 **NOTE:** Never include backups of default Django **admin** or **auth/user** tables, as they contain sensitive information.
+
+#### Cloning
+
+You can clone this repository by following these steps:
+
+1. Go to the **Jak and Daxter Wiki** GitHub repository:  
+   https://www.github.com/LouisCE/jak-and-daxter-wiki
+2. Click the green **Code** button at the top of the page.
+3. Choose whether you want to clone using **HTTPS**, **SSH**, or **GitHub CLI**, then click the **copy** icon to copy the URL.
+4. Open **Git Bash**, **Terminal**, or your preferred command-line tool.
+5. Navigate to the directory where you want the project to be saved.
+6. Run the following command to clone the repository:
+
+    ```bash
+    git clone https://www.github.com/LouisCE/jak-and-daxter-wiki.git
+    ```
+
+7. Press **Enter** and the repository will be cloned into a new folder on your machine.
+
+Alternatively, if you're using **Ona (formerly Gitpod)**, you can launch a cloud development workspace directly from your browser using the button below:
+
+[![Open in Ona-Gitpod](https://ona.com/run-in-ona.svg)](https://gitpod.io/#https://www.github.com/LouisCE/jak-and-daxter-wiki)
+
+> [!NOTE]  
+> To use Ona/Gitpod with one click, you must have the browser extension installed.  
+> Instructions can be found here: https://www.gitpod.io/docs/configure/user-settings/browser-extension
