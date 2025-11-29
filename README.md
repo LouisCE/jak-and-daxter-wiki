@@ -307,3 +307,7 @@ By forking the GitHub repository, you create a copy of the original project on y
    https://www.github.com/LouisCE/jak-and-daxter-wiki
 2. At the top-right of the repository page, just below the “Settings” tab, click the **Fork** button.
 3. After clicking Fork, GitHub will create a copy of the repository under your own account. You can now work on your fork independently!
+
+### Local vs. Deployment
+
+There are no remaining major differences between the local version of the Jak and Daxter Wiki and the deployed version online. Both environments function the same, with identical features, structure, and behaviour.
