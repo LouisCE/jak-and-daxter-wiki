@@ -298,3 +298,12 @@ Alternatively, if you're using **Ona (formerly Gitpod)**, you can launch a cloud
 > [!NOTE]  
 > To use Ona/Gitpod with one click, you must have the browser extension installed.  
 > Instructions can be found here: https://www.gitpod.io/docs/configure/user-settings/browser-extension
+
+#### Forking
+
+By forking the GitHub repository, you create a copy of the original project on your own GitHub account. This allows you to view and edit the project freely without affecting the original repository. You can fork this repository by following these steps:
+
+1. Log in to GitHub and navigate to the **Jak and Daxter Wiki** repository:  
+   https://www.github.com/LouisCE/jak-and-daxter-wiki
+2. At the top-right of the repository page, just below the “Settings” tab, click the **Fork** button.
+3. After clicking Fork, GitHub will create a copy of the repository under your own account. You can now work on your fork independently!
