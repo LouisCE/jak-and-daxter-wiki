@@ -17,43 +17,53 @@ Daxter Wiki{% endblock %} {% block content %}
     <a href="{% url 'create_weapon' %}" class="btn btn-success">
         Add New Weapon
     </a>
+
+    {% if user.is_staff %}
+    <a href="{% url 'colour_create' %}" class="btn btn-info ms-2">Add Eco Colour</a>
+    {% endif %}
 </div>
 {% endif %}
 
 
 {% if weapons %}
-    {% regroup weapons by colour as weapons_by_colour %}
+{% regroup weapons by colour as weapons_by_colour %}
 
-    {% for group in weapons_by_colour %}
-        <section class="container my-5 py-5">
-            <!-- Colour header -->
-            <div class="row align-items-center mb-4 {% if group.grouper.name == 'Red' %}border-danger{% elif group.grouper.name == 'Yellow' %}border-warning{% elif group.grouper.name == 'Blue' %}border-primary{% elif group.grouper.name == 'Dark' %}border-purple-custom{% endif %}">
-                <div class="col-md-4">
-                    {% if group.grouper.image %}
-                        <img src="{{ group.grouper.image.url }}"
-                             alt="{{ group.grouper.name }}"
-                             class="img-fluid rounded">
-                    {% endif %}
-                </div>
-                <div class="col-md-8">
-                    <h2 class="
+{% for group in weapons_by_colour %}
+<section class="container my-5 py-5">
+    <!-- Colour header -->
+    <div
+        class="row align-items-center mb-4 {% if group.grouper.name == 'Red' %}border-danger{% elif group.grouper.name == 'Yellow' %}border-warning{% elif group.grouper.name == 'Blue' %}border-primary{% elif group.grouper.name == 'Dark' %}border-purple-custom{% endif %}">
+        <div class="col-md-4">
+            {% if group.grouper.image %}
+            <img src="{{ group.grouper.image.url }}" alt="{{ group.grouper.name }}" class="img-fluid rounded">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <h2 class="
                         {% if group.grouper.name == 'Red' %} text-danger
                         {% elif group.grouper.name == 'Yellow' %} text-warning
                         {% elif group.grouper.name == 'Blue' %} text-primary
                         {% elif group.grouper.name == 'Dark' %} text-purple-custom
                         {% endif %}
                     ">{{ group.grouper.name }}</h2>
-                    {% if group.grouper.description %}
-                        <p class="text-light">{{ group.grouper.description }}</p>
-                    {% endif %}
-                </div>
-            </div>
+            {% if group.grouper.description %}
+            <p class="text-light">{{ group.grouper.description }}</p>
+            {% endif %}
 
-            <!-- Weapons for this colour -->
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                {% for weapon in group.list %}
-                    <div class="col">
-                        <div class="card h-100
+            {% if user.is_staff %}
+            <div class="mt-2">
+                <a href="{% url 'colour_update' group.grouper.pk %}" class="btn btn-warning btn-sm">Edit Colour</a>
+                <a href="{% url 'colour_delete' group.grouper.pk %}" class="btn btn-danger btn-sm">Delete Colour</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Weapons for this colour -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for weapon in group.list %}
+        <div class="col">
+            <div class="card h-100
                             {% if weapon.colour.name == 'Red' %} border-danger
                             {% elif weapon.colour.name == 'Yellow' %} border-warning
                             {% elif weapon.colour.name == 'Blue' %} border-primary
@@ -61,51 +71,51 @@ Daxter Wiki{% endblock %} {% block content %}
                             {% endif %}
                         ">
 
-                            {% if weapon.image %}
-                                <img src="{{ weapon.image.url }}" class="card-img-top" alt="{{ weapon.name }}">
-                            {% else %}
-                                <img src="{% static 'images/morph-gun.jpg' %}" class="card-img-top" alt="Placeholder image">
-                            {% endif %}
+                {% if weapon.image %}
+                <img src="{{ weapon.image.url }}" class="card-img-top" alt="{{ weapon.name }}">
+                {% else %}
+                <img src="{% static 'images/morph-gun.jpg' %}" class="card-img-top" alt="Placeholder image">
+                {% endif %}
 
-                            <div class="card-body">
-                                <h5 class="card-title">{{ weapon.name }}</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{ weapon.name }}</h5>
 
-                                <span class="badge
+                    <span class="badge
                                     {% if weapon.colour.name == 'Red' %} bg-danger
                                     {% elif weapon.colour.name == 'Yellow' %} bg-warning text-dark
                                     {% elif weapon.colour.name == 'Blue' %} bg-primary
                                     {% elif weapon.colour.name == 'Dark' %} bg-purple-custom
                                     {% endif %}
                                 ">
-                                    {{ weapon.colour.name }}
-                                </span>
+                        {{ weapon.colour.name }}
+                    </span>
 
-                                <p class="card-text mt-2 text-muted">
-                                    {{ weapon.description|truncatechars:120 }}
-                                </p>
-                            </div>
+                    <p class="card-text mt-2 text-muted">
+                        {{ weapon.description|truncatechars:120 }}
+                    </p>
+                </div>
 
-                            <div class="card-footer">
-                                <a href="{% url 'weapon_detail' weapon.pk %}" class="btn w-100
+                <div class="card-footer">
+                    <a href="{% url 'weapon_detail' weapon.pk %}" class="btn w-100
                                     {% if weapon.colour.name == 'Red' %} bg-danger
                                     {% elif weapon.colour.name == 'Yellow' %} bg-warning text-dark
                                     {% elif weapon.colour.name == 'Blue' %} bg-primary
                                     {% elif weapon.colour.name == 'Dark' %} bg-purple-custom
                                     {% endif %}
                                 ">
-                                    View
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+                        View
+                    </a>
+                </div>
             </div>
-        </section>
-    {% endfor %}
-{% else %}
-    <div class="container">
-        <p>No weapons yet.</p>
+        </div>
+        {% endfor %}
     </div>
+</section>
+{% endfor %}
+{% else %}
+<div class="container">
+    <p>No weapons yet.</p>
+</div>
 {% endif %}
 
 
