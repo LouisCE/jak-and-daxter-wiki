@@ -76,18 +76,7 @@ def delete_weapon(request, pk):
     return render(request, 'morphgun/delete_weapon.html', {'weapon': weapon})
 
 
-# Colour CRUD
-
-def colour_list(request):
-    colours = Colour.objects.all()
-    return render(request, "morphgun/colour_list.html", {"colours": colours})
-
-
-def colour_detail(request, pk):
-    colour = get_object_or_404(Colour, pk=pk)
-    return render(request, "morphgun/colour_detail.html", {"colour": colour})
-
-
+# COLOUR CRUD
 @user_passes_test(staff_check)
 def colour_create(request):
     if request.method == "POST":
@@ -95,11 +84,10 @@ def colour_create(request):
         if form.is_valid():
             colour = form.save()
             messages.success(request, f"Colour '{colour.name}' created successfully!")
-            return redirect("colour_detail", pk=colour.pk)
+            return redirect("weapon_list")  # Redirect to morphgun page
     else:
         form = ColourForm()
-    return render(request, "morphgun/colour_form.html", {"form": form})
-
+    return render(request, "morphgun/create_colour.html", {"form": form})
 
 @user_passes_test(staff_check)
 def colour_update(request, pk):
@@ -107,20 +95,25 @@ def colour_update(request, pk):
     if request.method == "POST":
         form = ColourForm(request.POST, request.FILES, instance=colour)
         if form.is_valid():
-            colour = form.save()
+            form.save()
             messages.success(request, f"Colour '{colour.name}' updated successfully!")
-            return redirect("colour_detail", pk=pk)
+            return redirect("weapon_list")
     else:
         form = ColourForm(instance=colour)
-    return render(request, "morphgun/colour_form.html", {"form": form, "colour": colour})
 
+    return render(request, "morphgun/update_colour.html", {
+        "form": form,
+        "colour": colour
+    })
 
 @user_passes_test(staff_check)
 def colour_delete(request, pk):
     colour = get_object_or_404(Colour, pk=pk)
+
     if request.method == "POST":
         name = colour.name
         colour.delete()
-        messages.success(request, f"Colour '{name}' deleted successfully!")
-        return redirect("colour_list")
-    return render(request, "morphgun/colour_delete.html", {"colour": colour})
+        messages.success(request, f"Colour '{name}' deleted.")
+        return redirect("weapon_list")
+
+    return render(request, "morphgun/delete_colour.html", {"colour": colour})
