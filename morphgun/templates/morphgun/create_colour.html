@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Add Eco Colour | Jak and Daxter Wiki{% endblock %}
+
+{% block content %}
+<h1>Add Eco Colour</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-success">Create Colour</button>
+</form>
+
+<a href="{% url 'weapon_list' %}" class="btn btn-secondary mt-3">Back</a>
+{% endblock %}

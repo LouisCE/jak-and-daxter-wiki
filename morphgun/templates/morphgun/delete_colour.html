@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Delete {{ colour.name }} | Jak and Daxter Wiki{% endblock %}
+
+{% block content %}
+<h1>Delete {{ colour.name }}</h1>
+
+<p>Are you sure you want to delete this eco colour?  
+This will also delete all weapons linked to it.</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+    <a href="{% url 'weapon_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
