@@ -31,8 +31,13 @@ Daxter Wiki{% endblock %} {% block content %}
 {% for group in weapons_by_colour %}
 <section class="container my-5 py-5">
     <!-- Colour header -->
-    <div
-        class="row align-items-center mb-4 {% if group.grouper.name == 'Red' %}border-danger{% elif group.grouper.name == 'Yellow' %}border-warning{% elif group.grouper.name == 'Blue' %}border-primary{% elif group.grouper.name == 'Dark' %}border-purple-custom{% endif %}">
+    <div class="row align-items-center mb-4
+    {% if group.grouper.name == 'Red' %} border-red-custom
+    {% elif group.grouper.name == 'Yellow' %} border-yellow-custom
+    {% elif group.grouper.name == 'Blue' %} border-blue-custom
+    {% elif group.grouper.name == 'Dark' %} border-purple-custom
+    {% endif %}
+">
         <div class="col-md-4">
             {% if group.grouper.image %}
             <img src="{{ group.grouper.image.url }}" alt="{{ group.grouper.name }}" class="img-fluid rounded">
@@ -64,12 +69,12 @@ Daxter Wiki{% endblock %} {% block content %}
         {% for weapon in group.list %}
         <div class="col">
             <div class="card h-100 border
-                            {% if weapon.colour.name == 'Red' %} border-danger
-                            {% elif weapon.colour.name == 'Yellow' %} border-warning
-                            {% elif weapon.colour.name == 'Blue' %} border-primary
-                            {% elif weapon.colour.name == 'Dark' %} border-purple-custom
-                            {% endif %}
-                        ">
+    {% if weapon.colour.name == 'Red' %} border-red-custom
+    {% elif weapon.colour.name == 'Yellow' %} border-yellow-custom
+    {% elif weapon.colour.name == 'Blue' %} border-blue-custom
+    {% elif weapon.colour.name == 'Dark' %} border-purple-custom
+    {% endif %}
+">
 
                 {% if weapon.image %}
                 <img src="{{ weapon.image.url }}" class="card-img-top" alt="{{ weapon.name }}">

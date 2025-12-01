@@ -93,9 +93,21 @@ footer .small-text {
     color: #ffcc80;
 }
 
-/* Custom purple for eco colour styles */
+/* Full borders for eco colours */
+.border-red-custom {
+    border: 2px solid #dc3545 !important; /* Bootstrap red */
+}
+
+.border-yellow-custom {
+    border: 2px solid #ffc107 !important; /* Bootstrap yellow */
+}
+
+.border-blue-custom {
+    border: 2px solid #0d6efd !important; /* Bootstrap blue */
+}
+
 .bg-purple-custom {
-    background-color: #6f42c1 !important; /* Bootstrap standard purple */
+    background-color: #6f42c1 !important; /* Bootstrap purple */
     color: #fff !important;
 }
 
