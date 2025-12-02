@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     # Local apps
     'home',
     'morphgun',
+    'characters',
 ]
 
 SITE_ID = 1
