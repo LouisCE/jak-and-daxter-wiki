@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ character.name }} | Characters{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+    <h1>{{ character.name }}</h1>
+
+    {% if character.quote %}
+    <blockquote class="blockquote text-muted">“{{ character.quote }}”</blockquote>
+    {% endif %}
+
+    <div class="row my-4">
+        <div class="col-md-4">
+            {% if character.image %}
+            <img src="{{ character.image.url }}" class="img-fluid rounded" alt="{{ character.name }}">
+            {% endif %}
+        </div>
+
+        <div class="col-md-8">
+            <h4>Stats</h4>
+            <ul>
+                <li><strong>Sex:</strong> {{ character.sex }}</li>
+                <li><strong>Age:</strong> {{ character.age }}</li>
+                <li><strong>Skin:</strong> {{ character.skin }}</li>
+                <li><strong>Hair:</strong> {{ character.hair }}</li>
+                <li><strong>Eyes:</strong> {{ character.eyes }}</li>
+                <li><strong>Height:</strong> {{ character.height }}</li>
+                <li><strong>Weight:</strong> {{ character.weight }}</li>
+                <li><strong>Occupation:</strong> {{ character.occupation }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Appearance</h4>
+    <p>{{ character.appearance }}</p>
+
+    <h4>Personality</h4>
+    <p>{{ character.personality }}</p>
+
+    {% if user.is_staff %}
+    <div class="mt-4">
+        <a href="{% url 'character_update' character.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'character_delete' character.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
