@@ -29,6 +29,8 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     # Morphgun
     path('morphgun/', include('morphgun.urls')),
+    # Characters
+    path('characters/', include('characters.urls')),
 ]
 
 if settings.DEBUG:
