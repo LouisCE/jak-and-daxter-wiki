@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{% if object %}Edit Character{% else %}Add Character{% endif %} | Jak and Daxter Wiki
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1>
+        {% if object %}Edit Character{% else %}Add Character{% endif %}
+    </h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">
+            {% if object %}Update{% else %}Create{% endif %}
+        </button>
+        <a href="{% url 'character_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
