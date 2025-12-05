@@ -1,9 +1,49 @@
 {% extends "base.html" %}
+{% load static %}
+
 
 {% block title %}Home | Jak and Daxter Wiki{% endblock %}
 
 {% block content %}
-    <h1>Welcome to the Jak and Daxter Wiki</h1>
-    <p>Explore Morph Gun mods, Community posts, Characters, and Collectibles!</p>
-    <section class="hero-banner"></section>
+<h1>Welcome to the Jak and Daxter Wiki</h1>
+<p>Explore Morph Gun mods, Community posts, Characters, and Collectibles!</p>
+
+<img src="{% static 'images/jak-and-daxter-wiki.webp' %}" class="img-fluid rounded mb-4" alt="Jak and Daxter Wiki banner">
+
+<div class="mt-4">
+    <p>
+        This Wiki serves as an encyclopaedia for the three core Jak and Daxter games:
+    </p>
+
+    <ul>
+        <li>Jak and Daxter: The Precursor Legacy (2001)</li>
+        <li>Jak II (2003)</li>
+        <li>Jak 3 (2004)</li>
+    </ul>
+
+    <p>
+        The series evolves from colourful platforming to gritty, story-driven action:
+    </p>
+
+    <h3>Jak and Daxter: The Precursor Legacy</h3>
+    <p>
+        A seamless-world 3D platformer where Jak and his ottsel-transformed friend Daxter
+        collect Power Cells to restore Daxter and stop Gol and Maia from unleashing Dark Eco.
+    </p>
+    <img src="{% static 'images/jak-and-daxter-art.webp' %}" class="img-fluid rounded mb-4" alt="Jak and Daxter artwork">
+
+    <h3>Jak II</h3>
+    <p>
+        Introduces the Morph Gun, a dystopian Haven City, and Jak’s Dark Eco powers. Inspired by GTA-style
+        world design, Jak and Daxter fight tyrants, Metal Heads, and their own fate through time.
+    </p>
+    <img src="{% static 'images/jak-ii-art.webp' %}" class="img-fluid rounded mb-4" alt="Jak II artwork">
+
+    <h3>Jak 3</h3>
+    <p>
+        Adds eight new Morph Gun mods, Light Jak abilities, and a vast desert Wasteland. This game concludes
+        the trilogy with answers about the Precursors, the Metal Heads, and Jak’s destiny.
+    </p>
+    <img src="{% static 'images/jak-3-art.webp' %}" class="img-fluid rounded mb-4" alt="Jak 3 artwork">
+</div>
 {% endblock %}
