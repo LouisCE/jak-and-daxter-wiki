@@ -20,5 +20,11 @@ class Character(models.Model):
     appearance = models.TextField(blank=True)
     personality = models.TextField(blank=True)
 
+    # Custom ordering
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order']
+
     def __str__(self):
         return self.name
