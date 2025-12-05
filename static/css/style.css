@@ -36,6 +36,11 @@ h1, h2, h3, h4, h5, h6,
     color: #ffd166 !important;
 }
 
+/* Jak Wiki brand hover matches the other links */
+.navbar-brand:hover {
+    color: #ffd166 !important; /* same lighter orange */
+}
+
 /* Main content */
 
 main {
