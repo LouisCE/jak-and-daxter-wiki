@@ -20,17 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from home import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='home'),
-    # Allauth
-    path('accounts/', include('allauth.urls')),
-    # Summernote
-    path('summernote/', include('django_summernote.urls')),
-    # Morphgun
-    path('morphgun/', include('morphgun.urls')),
-    # Characters
-    path('characters/', include('characters.urls')),
+    path('accounts/', include('allauth.urls')),        # Allauth
+    path('summernote/', include('django_summernote.urls')),  # Summernote
+    path('morphgun/', include('morphgun.urls')),       # Morphgun
+    path('characters/', include('characters.urls')),  # Characters
+    path('', include('home.urls')),                    # Home app URLs
 ]
 
 if settings.DEBUG:
