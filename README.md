@@ -7,6 +7,25 @@ Developer: Louis Cowell-English ([LouisCE](https://www.github.com/LouisCE))
 [![GitHub repo size](https://img.shields.io/github/repo-size/LouisCE/jak-and-daxter-wiki)](https://www.github.com/LouisCE/jak-and-daxter-wiki)
 [![badge](https://img.shields.io/badge/deployment-Heroku-purple)](https://jak-and-daxter-wiki-420eda56706b.herokuapp.com)
 
+## Project Overview
+
+The **Jak and Daxter Wiki** is a fan-driven knowledge base dedicated to celebrating and documenting one of the most iconic action-adventure franchises in PlayStation history. The goal of this project is to provide a clean, structured, and interactive platform where users can explore detailed information about characters, eco colours, weapon mods, collectibles, and other lore-rich elements from the Jak and Daxter universe. Because the series spans multiple games with a wide range of features, this wiki aims to consolidate this information in a way that is accessible, visually thematic, and easy to navigate for both new fans and long-time enthusiasts.
+
+This project is designed for **gamers, franchise fans, lore hunters, and nostalgic players** who want a central space to visit the world of Jak and Daxter. The platform includes authenticated features that allow authorised users to participate in improving and growing the content by creating, updating and deleting characters, eco types, weapon mods, collectibles and other in-universe elements. By blending fan passion with structured database functionality, the wiki demonstrates how Django can be used to build community-focused, data-rich web platforms.
+
+**Why this project?**  
+I chose this theme because Jak and Daxter has been my favourite video game series of all time since childhood. Its captivating world, memorable characters, unique weapon systems, satisfying collectible hunting, and rich lore made a lasting impression on me. Building a project around a universe that I already know intimately meant that I could focus my time on the technical aspects of web development rather than researching the subject matter. My familiarity with the games helped me decide which apps to create, how to structure the data, and how to present the content in a polished and accessible format that fans would appreciate.
+
+Developing this wiki allowed me to combine personal enthusiasm with the technical challenge of creating a fully functional Django application, complete with authentication, CRUD (create, read, update, delete) functionality, responsive design, and visually thematic styling. Creating a project that I am passionate about helped maintain motivation throughout development and ensured that the final result feels meaningful, cohesive, and engaging. This concept also aligns perfectly with the Full Stack Toolkit (PP4) learning outcomes, allowing me to showcase my growing full-stack development skills.
+
+The Jak and Daxter Wiki not only serves as a tribute to the franchise but also fulfills the core learning outcomes of the module by demonstrating robust backend logic, user interaction, form handling, data modelling, and front-end presentation. It is a project driven equally by technical ambition and long-standing personal passion.
+
+At the time of writing, there are six games in the Jak and Daxter franchise. However, to prevent overengineering, I have decided that this project will be focusing primarily on the core trilogy:
+
+- Jak and Daxter: The Precursor Legacy (2001)
+- Jak II (2003)
+- Jak 3 (2004)
+
 ## User Stories
 
 | Target | Expectation | Outcome |
