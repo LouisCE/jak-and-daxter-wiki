@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from home import views
+from .views import handler400, handler403, handler404, handler429, handler500
 
 
 urlpatterns = [
@@ -32,3 +33,10 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler400 = "main.views.handler400"
+handler403 = "main.views.handler403"
+handler404 = "main.views.handler404"
+handler429 = "main.views.handler429"
+handler500 = "main.views.handler500"
