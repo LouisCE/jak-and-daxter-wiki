@@ -122,48 +122,4 @@ Daxter Wiki{% endblock %} {% block content %}
     <p>No weapons yet.</p>
 </div>
 {% endif %}
-
-
-<!-- 
-<div class="container">
-    <h2>Weapon Mods</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for weapon in weapons %}
-        <div class="col">
-            <div
-                class="card h-100 {% if weapon.colour.name == 'Red' %} border-danger {% elif weapon.colour.name == 'Yellow' %} border-warning {% elif weapon.colour.name == 'Blue' %} border-primary {% elif weapon.colour.name == 'Dark' %} border-purple-custom {% endif %}">
-                {% if weapon.image %}
-                <img src="{{ weapon.image.url }}" class="card-img-top" alt="{{ weapon.name }}" />
-                {% else %}
-                <img src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
-                    class="card-img-top" alt="Placeholder image" />
-                {% endif %}
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ weapon.name }}</h5>
-
-                    <span
-                        class="badge {% if weapon.colour.name == 'Red' %} bg-danger {% elif weapon.colour.name == 'Yellow' %} bg-warning text-dark {% elif weapon.colour.name == 'Blue' %} bg-primary {% elif weapon.colour.name == 'Dark' %} bg-purple-custom {% endif %}">
-                        {{ weapon.colour.name }}
-                    </span>
-
-                    <p class="card-text mt-2 text-muted">
-                        {{ weapon.description|truncatechars:120 }}
-                    </p>
-                </div>
-
-                <div class="card-footer">
-                    <a href="{% url 'weapon_detail' weapon.pk %}" class="btn btn-primary w-100">
-                        View
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        {% empty %}
-        <p>No weapons yet.</p>
-        {% endfor %}
-    </div>
-</div> -->
-
 {% endblock %}
