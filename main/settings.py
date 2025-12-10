@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'home',
     'morphgun',
     'characters',
+    'collectables',
 ]
 
 SITE_ID = 1
