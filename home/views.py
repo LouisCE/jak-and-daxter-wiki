@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 
+
 def index(request):
     return render(request, 'home/index.html')
 
