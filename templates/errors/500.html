@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 pt-5 h-100">
+    <div class="row h-100 mt-5">
+        <div class="col-12 col-md-10 mx-auto text-center">
+            <h2 class="text-danger">500 – Internal Server Error</h2>
+            <div class="my-3 fs-4">
+                Keira’s dashboard is flashing every warning light imaginable.
+                <br>
+                Better head back to the home page while she repairs things.
+            </div>
+            <div class="my-5">
+                <a href="{% url 'home' %}" class="btn btn-success btn-lg py-3">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

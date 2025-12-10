@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 pt-5 h-100">
+    <div class="row h-100 mt-5">
+        <div class="col-12 col-md-10 mx-auto text-center">
+            <h2 class="text-danger">400 – Bad Request</h2>
+            <div class="my-3 fs-4">
+                Samos says, "That request was nonsense! Try again, but properly this time."
+                <br>
+                Return to the home page before he gets grumpier.
+            </div>
+            <div class="my-5">
+                <a href="{% url 'home' %}" class="btn btn-success btn-lg py-3">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
