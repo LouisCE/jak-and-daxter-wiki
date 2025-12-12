@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Delete Collectable | Jak and Daxter Wiki{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1>Delete Collectable</h1>
+
+    <p>Are you sure you want to delete <strong>{{ item.name }}</strong>?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, delete</button>
+        <a href="{% url 'collectable_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
