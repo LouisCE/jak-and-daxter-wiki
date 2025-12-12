@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Collectables | Jak and Daxter Wiki{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <h1>Collectables</h1>
+  <p>All collectables from the Jak & Daxter series, displayed on one page.</p>
+
+  {% if user.is_staff %}
+    <a href="{% url 'collectable_create' %}" class="btn btn-success mb-3">Add New Collectable</a>
+  {% endif %}
+
+  {% if items %}
+    <table class="table table-striped align-middle">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          {% if user.is_staff %}
+            <th>Actions</th>
+          {% endif %}
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td style="width: 120px;">
+            {% if item.image %}
+              <img src="{{ item.image.url }}" class="img-fluid rounded" alt="{{ item.name }}">
+            {% else %}
+              <img src="{% static 'images/placeholder.jpg' %}" class="img-fluid rounded" alt="placeholder">
+            {% endif %}
+          </td>
+
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+
+          {% if user.is_staff %}
+          <td>
+            <a href="{% url 'collectable_update' item.pk %}" class="btn btn-primary btn-sm">Edit</a>
+            <a href="{% url 'collectable_delete' item.pk %}" class="btn btn-danger btn-sm">Delete</a>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  {% else %}
+    <p>No collectables added yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
