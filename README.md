@@ -26,6 +26,13 @@ At the time of writing, there are six games in the Jak and Daxter franchise. How
 - Jak II (2003)
 - Jak 3 (2004)
 
+![screenshot](documentation/mockup.png)
+
+[jak-and-daxter-wiki amiresponsive](https://ui.dev/amiresponsive?url=https://jak-and-daxter-wiki-420eda56706b.herokuapp.com)
+
+---
+
+
 ## User Stories
 
 | Target | Expectation | Outcome |
