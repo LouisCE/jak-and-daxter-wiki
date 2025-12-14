@@ -32,6 +32,147 @@ At the time of writing, there are six games in the Jak and Daxter franchise. How
 
 ---
 
+## UX
+
+### The 5 Planes of UX
+
+#### 1. Strategy
+
+**Purpose**
+
+- Provide fans of the **Jak and Daxter series** with a clear, visually themed, and community-focused wiki.
+- Allow authenticated users to contribute and manage structured content such as **characters, eco colours, weapon mods, and collectables**.
+- Present information in a way that is easy to browse for newcomers while still being detailed enough for long-time fans.
+
+**Primary User Needs**
+
+- **Guests**  
+  - Browse character pages, eco colours, weapon wods and collectables.  
+  - Understand game features through images and structured descriptions.
+  - Navigate the site easily without needing to register.
+
+- **Registered users**  
+  - Create, edit, or delete their own contributions where permitted.
+  - Interact with authenticated-only features.
+
+- **Admins / Superusers**  
+  - Maintain accuracy and consistency across all wiki entries.
+  - Perform full CRUD operations across all models.
+  - Moderate user-generated content to ensure quality and relevance.
+
+**Project Goals**
+
+- Build a fan-friendly, visually thematic wiki styled after the Jak universe.
+- Encourage community contributions while maintaining structured, reliable information.
+- Maintain a respectful, well-moderated knowledge base for the franchise.
+- Deliver a responsive and accessible experience across mobile devices, tablet and desktop.
+
+---
+
+#### 2. Scope
+
+**Planned Features**  
+(see [Features](#features) section)
+
+- A responsive home page with overview, hero banner and an image for each of the core three Jak and Daxter games.
+- Character pages with stats and descriptions.
+- Morph Gun pages with eco colour classifications with custom borders and visual themes and weapon mod information.
+- A Collectables page displaying items such as Power Cells and Precursor Orbs.
+- User registration, login, and logout.
+- Role-based authorisation for full CRUD management.
+- Navigation to all major areas of the site.
+- Footer with link to GitHub.
+- Custom error handling (400, 403, 404, 429 and 500 pages).
+
+**Content Requirements**
+
+- Images for characters, eco colours, weapon mods and collectables.
+- Structured descriptions including origins, lore, gameplay purpose, and appearances.
+- Authenticated forms for adding and editing and deleting content.
+- Error feedback for user actions (e.g., login errors, validation errors).  
+- Custom 400, 403, 404, 429 and 500 pages.
+
+---
+
+#### 3. Structure
+
+**Information Architecture**
+
+- **Navigation Bar**
+  - Home
+  - Characters
+  - Morph Gun
+  - Collectables
+  - Login / Register
+  - Logout (visible only to authenticated users)
+
+- **Front Page Structure**
+  - Hero banner featuring the Jak II promo art.
+  - Intro describing the Jak and Daxter Wiki.
+  - Cards linking to Characters, Weapons, and Eco Colours.
+
+  - **Home Page Structure**
+  - Hero section introducing the Jak and Daxter Wiki and its purpose.
+  - Brief overview of the three core Jak and Daxter games with corresponding art.
+
+- **Data Structure**
+  - Character model
+  - Colour model
+  - Weapon model
+  - Collectable model
+  - User authentication handled via Django’s built-in auth system
+
+**User Flow**
+
+1. **Guest browsing**  
+   - User lands on Home page and sees the wiki overview.
+   - User clicks to browse the Characters page with sixteen character options (will be expanded on in the future).
+   - User can click on specific characters to see their information (e.g. Jak, Daxter, Samos, Keira).
+   - User clicks to Morph Gun page with eco type overview (e.g. Red, Yellow, Blue, Dark).
+   - User clicks to view the individual weapon mod pages (e.g. Scatter Gun, Blaster Mod, Vulcan Fury, Peace Maker).
+   - User clicks to the Collectables page to see specific in-game items (Power Cells, Precursor Orbs, Scout Flies, Skull Gems).
+
+2. **Registration Path**  
+   - Guest selects Register → completes registration → logs in.
+
+3. **Authenticated User Actions**
+   - Edits or deletes their own entries where permitted (if desired and allowed).
+   - Gains access to authenticated-only navigation options.
+   - Option to logout.
+
+4. **Admin User Actions**  
+   - Full CRUD access across all models.  
+   - Moderation and management of community-submitted content.
+
+---
+
+#### 4. Skeleton
+
+**[Wireframes](#wireframes)**
+
+Wireframes were created during the planning stage to define layout, navigation, and content hierarchy for all key pages.
+
+(See the [Wireframes](#wireframes) section for mobile, tablet, and desktop designs.)
+
+---
+
+#### 5. Surface
+
+**Visual Design Elements**
+
+The visual theme of the site is inspired by the **dark gunmetal / eco-charged look** of the Jak and Daxter games.
+
+The design focuses on:
+
+- High-contrast orange text against a near-black world for user accessibility.
+- Heavy, bold titles styled in the *Black Ops One* font for a shooter game vibe.
+- Borders and badges in eco-inspired colours (red, yellow, blue, purple).
+
+You can see these implemented throughout the CSS file.
+
+(See the **[Colour Scheme](#colour-scheme)** and **[Typography](#typography)** sections below for more information.)
+
+---
 
 ## User Stories
 
