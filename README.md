@@ -174,6 +174,28 @@ You can see these implemented throughout the CSS file.
 
 ---
 
+### Colour Scheme
+
+I generated the following custom colour palette specifically to reflect a **Jak II inspired atmosphere**, with dark dystopian sci-fi tones while using eco colours as visual highlights.
+
+- `#1a1a1a` - Primary dark background
+- `#ff9f1c` - Main Jak-orange text (titles, headers)
+- `#ffd166` - Hover highlights
+- `dc3545` - Red eco theme
+- `ffc107` - Yellow eco theme
+- `0d6efd` - Blue eco theme
+- `#6f42c1` - Purple eco theme
+- `#0d0d0d` - Secondary dark (navbar + footer)
+
+I used [coolors.co](https://coolors.co/1a1a1a-ff9f1c-ffd166-dc3545-ffc107-0d6efd-6f42c1-0d0d0d) to generate my color palette.
+
+![screenshot](documentation/coolors.png)
+
+---
+
+
+---
+
 ## User Stories
 
 | Target | Expectation | Outcome |
