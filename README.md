@@ -193,6 +193,26 @@ I used [coolors.co](https://coolors.co/1a1a1a-ff9f1c-ffd166-dc3545-ffc107-0d6efd
 
 ---
 
+### Typography
+
+The site uses Google Fonts for one strong, thematic header font and a clean default body font. Typography choices were kept minimal to maintain readability while reinforcing the game’s tone.
+
+- **[Black Ops One](https://fonts.google.com/specimen/Black+Ops+One)**
+  Used for all headings (`h1`-`h6`), navigation branding, and major emphasis text.
+  This font was chosen because it resembles stencil/military sci-fi lettering, matching Jak II’s dystopian industrial cyberpunk aesthetic.
+
+- **Arial / Sans-Serif (Bootstrap default)**
+  Used for general body text to ensure clarity across devices.
+
+- **Icons**  
+  No external icon libraries are used within the project.
+
+Font import used in the project:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+```
+
 
 ---
 
