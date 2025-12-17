@@ -34,9 +34,30 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'character_list' %}">Characters</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'weapon_list' %}">Morph Gun</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'collectable_list' %}">Collectables</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{% url 'weapon_list' %}" id="morphGunDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Morph Gun
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="morphGunDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'weapon_list' %}">
+                                        Weapon Overview
+                                    </a>
+                                </li>
+
+                                {% if user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'rate_weapons' %}">
+                                        Rate Weapons
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'collectable_list' %}">Collectables</a>
+                        </li>
 
                         <!-- Authentication links -->
                         {% if user.is_authenticated %}
