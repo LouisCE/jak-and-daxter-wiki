@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required 
 from django.contrib import messages
 
-from .models import Weapon, Colour
+from .models import Colour, Weapon, WeaponRating
 from .forms import WeaponForm, ColourForm
 
 
@@ -117,3 +117,43 @@ def colour_delete(request, pk):
         return redirect("weapon_list")
 
     return render(request, "morphgun/delete_colour.html", {"colour": colour})
+
+
+@login_required
+def rate_weapons(request):
+    user = request.user
+
+    user_rating_subquery = WeaponRating.objects.filter(
+        user=user,
+        weapon=OuterRef('pk')
+    ).values('score')[:1]
+
+    weapons = (
+        Weapon.objects
+        .annotate(user_score=Subquery(user_rating_subquery))
+        .select_related('colour')
+        .order_by('order')
+    )
+
+    if request.method == "POST":
+        for weapon in weapons:
+            score = request.POST.get(f"weapon_{weapon.id}")
+
+            if not score:
+                messages.error(request, "You must rate all weapons before submitting.")
+                return redirect("rate_weapons")
+
+            WeaponRating.objects.update_or_create(
+                user=user,
+                weapon=weapon,
+                defaults={"score": score}
+            )
+
+        messages.success(request, "Your weapon ratings have been saved!")
+        return redirect("weapon_rankings")
+
+    return render(request, "morphgun/rate_weapons.html", {
+        "weapons": weapons,
+        "range": range(1, 11),
+    })
+
