@@ -5,6 +5,8 @@ from django.contrib import messages
 from .models import Colour, Weapon, WeaponRating
 from .forms import WeaponForm, ColourForm
 
+from django.db.models import Avg, Count, OuterRef, Subquery
+
 
 # Staff-only check
 def staff_check(user):
@@ -157,3 +159,27 @@ def rate_weapons(request):
         "range": range(1, 11),
     })
 
+
+@login_required
+def weapon_rankings(request):
+    user_ratings = (
+        WeaponRating.objects
+        .filter(user=request.user)
+        .select_related('weapon')
+        .order_by('-score')
+    )
+
+    community_rankings = (
+        Weapon.objects
+        .annotate(
+            avg_rating=Avg('ratings__score'),
+            rating_count=Count('ratings')
+        )
+        .filter(rating_count__gt=0)
+        .order_by('-avg_rating', '-rating_count')
+    )
+
+    return render(request, 'morphgun/weapon_rankings.html', {
+        'user_ratings': user_ratings,
+        'community_rankings': community_rankings
+    })
