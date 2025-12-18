@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import sys
 import os
 import dj_database_url
 
@@ -107,16 +108,26 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True
-    ) if "DATABASE_URL" in os.environ else {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'test' in sys.argv:
+    # Use SQLite (in-memory) for automated tests
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': ':memory:',
+        }
     }
-}
+else:
+    # Use PostgreSQL when DATABASE_URL is present, otherwise fallback to SQLite
+    DATABASES = {
+        'default': dj_database_url.parse(
+            os.environ.get("DATABASE_URL"),
+            conn_max_age=600,
+            ssl_require=True
+        ) if "DATABASE_URL" in os.environ else {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
