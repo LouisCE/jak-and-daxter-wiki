@@ -2,9 +2,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import user_passes_test
 from .models import Collectable
 from .forms import CollectableForm
+from django.core.exceptions import PermissionDenied
 
 def staff_check(user):
-    return user.is_staff
+    if not user.is_staff:
+        raise PermissionDenied
+    return True
 
 def collectable_list(request):
     items = Collectable.objects.order_by('order', 'name')
