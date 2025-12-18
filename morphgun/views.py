@@ -78,7 +78,7 @@ def delete_weapon(request, pk):
     return render(request, 'morphgun/delete_weapon.html', {'weapon': weapon})
 
 
-# COLOUR CRUD
+# Colour CRUD
 @user_passes_test(staff_check)
 def colour_create(request):
     if request.method == "POST":
@@ -125,6 +125,7 @@ def colour_delete(request, pk):
 def rate_weapons(request):
     user = request.user
 
+    # Get user's existing rating per weapon
     user_rating_subquery = WeaponRating.objects.filter(
         user=user,
         weapon=OuterRef('pk')
@@ -133,7 +134,6 @@ def rate_weapons(request):
     weapons = (
         Weapon.objects
         .annotate(user_score=Subquery(user_rating_subquery))
-        .select_related('colour')
         .order_by('order')
     )
 
@@ -151,24 +151,17 @@ def rate_weapons(request):
                 defaults={"score": score}
             )
 
-        messages.success(request, "Your weapon ratings have been saved!")
-        return redirect("weapon_rankings")
+        messages.success(request, "Your weapon ratings have been saved.")
 
-    return render(request, "morphgun/rate_weapons.html", {
-        "weapons": weapons,
-        "range": range(1, 11),
-    })
-
-
-@login_required
-def weapon_rankings(request):
+    # User rankings
     user_ratings = (
         WeaponRating.objects
-        .filter(user=request.user)
+        .filter(user=user)
         .select_related('weapon')
         .order_by('-score')
     )
 
+    # Community rankings
     community_rankings = (
         Weapon.objects
         .annotate(
@@ -179,7 +172,9 @@ def weapon_rankings(request):
         .order_by('-avg_rating', '-rating_count')
     )
 
-    return render(request, 'morphgun/weapon_rankings.html', {
-        'user_ratings': user_ratings,
-        'community_rankings': community_rankings
+    return render(request, "morphgun/rate_weapons.html", {
+        "weapons": weapons,
+        "range": range(1, 11),
+        "user_ratings": user_ratings,
+        "community_rankings": community_rankings,
     })
