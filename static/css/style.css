@@ -12,7 +12,7 @@ body {
     font-family: Arial, sans-serif; /* Bootstrap-friendly default */
 }
 
-/* Headings use your special font */
+/* Headings use Black Ops One font */
 h1, h2, h3, h4, h5, h6,
 .navbar-brand {
     font-family: 'Black Ops One', sans-serif;
@@ -21,9 +21,57 @@ h1, h2, h3, h4, h5, h6,
 
 /* Navbar - Bootstrap handles layout */
 
+/* Navbar base */
 .navbar {
     background-color: #0d0d0d !important; /* Dark Jak theme */
     border-bottom: 2px solid #ff9f1c;
+    background: linear-gradient(
+        to right,
+        #0d0d0d,
+        #1a1a1a
+    );
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Brand */
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #ff8c00 !important;
+}
+
+/* Nav links */
+.navbar-dark .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    transition: color 0.2s ease;
+}
+
+.navbar-dark .nav-link:hover {
+    color: #ff8c00;
+}
+
+.navbar-dark .nav-link.active {
+    color: #ff8c00;
+    font-weight: 600;
+}
+
+/* Animated underline */
+.navbar-dark .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ff8c00;
+    transition: all 0.25s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-dark .nav-link:hover::after {
+    width: 60%;
 }
 
 .navbar-nav .nav-link {
