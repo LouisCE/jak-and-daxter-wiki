@@ -14,5 +14,4 @@ urlpatterns = [
     path('weapon/<int:pk>/edit/', views.update_weapon, name='update_weapon'),
     path('weapon/<int:pk>/delete/', views.delete_weapon, name='delete_weapon'),
     path('rate-weapons/', views.rate_weapons, name='rate_weapons'),
-    path('weapon-rankings/', views.weapon_rankings, name='weapon_rankings'),
 ]
