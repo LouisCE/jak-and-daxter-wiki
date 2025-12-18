@@ -13,22 +13,27 @@
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
         {% for character in characters %}
-        <div class="col">
-            <div class="card h-100">
-                <a href="{% url 'character_detail' character.pk %}">
-                    {% if character.image %}
-                    <img src="{{ character.image.url }}" class="card-img-top" alt="{{ character.name }}">
-                    {% else %}
-                    <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="placeholder">
-                    {% endif %}
-                </a>
+<div class="col">
+    <a href="{% url 'character_detail' character.pk %}">
+        <div class="card bg-dark h-100 card-hover">
+            {% if character.image %}
+                <img src="{{ character.image.url }}"
+                     class="card-img-top"
+                     alt="{{ character.name }}">
+            {% else %}
+                <img src="{% static 'images/placeholder.jpg' %}"
+                     class="card-img-top"
+                     alt="placeholder">
+            {% endif %}
 
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{ character.name }}</h5>
-                </div>
+            <div class="card-body text-center">
+                <h5 class="card-title mb-0">{{ character.name }}</h5>
             </div>
         </div>
-        {% endfor %}
+    </a>
+</div>
+{% endfor %}
+
     </div>
 </div>
 {% endblock %}

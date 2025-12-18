@@ -13,7 +13,10 @@
   {% endif %}
 
   {% if items %}
-    <table class="table table-striped align-middle">
+<div class="card bg-dark text-light shadow-sm">
+  <div class="card-body">
+
+    <table class="table table-dark table-striped align-middle mb-0">
       <thead>
         <tr>
           <th>Image</th>
@@ -36,8 +39,13 @@
             {% endif %}
           </td>
 
-          <td>{{ item.name }}</td>
-          <td>{{ item.description }}</td>
+          <td class="collectable-name">
+            {{ item.name }}
+          </td>
+
+          <td>
+            {{ item.description|linebreaks }}
+          </td>
 
           {% if user.is_staff %}
           <td>
@@ -50,8 +58,11 @@
       </tbody>
     </table>
 
-  {% else %}
-    <p>No collectables added yet.</p>
-  {% endif %}
+  </div>
+</div>
+{% else %}
+<p>No collectables added yet.</p>
+{% endif %}
+
 </div>
 {% endblock %}

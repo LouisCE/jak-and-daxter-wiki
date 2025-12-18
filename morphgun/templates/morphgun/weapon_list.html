@@ -65,56 +65,37 @@ Daxter Wiki{% endblock %} {% block content %}
     </div>
 
     <!-- Weapons for this colour -->
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for weapon in group.list %}
-        <div class="col">
-            <div class="card h-100 border
-    {% if weapon.colour.name == 'Red' %} border-red-custom
-    {% elif weapon.colour.name == 'Yellow' %} border-yellow-custom
-    {% elif weapon.colour.name == 'Blue' %} border-blue-custom
-    {% elif weapon.colour.name == 'Dark' %} border-purple-custom
-    {% endif %}
-">
-
-                {% if weapon.image %}
-                <img src="{{ weapon.image.url }}" class="card-img-top" alt="{{ weapon.name }}">
-                {% else %}
-                <img src="{% static 'images/morph-gun.jpg' %}" class="card-img-top" alt="Placeholder image">
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for weapon in group.list %}
+    <div class="col">
+        <a href="{% url 'weapon_detail' weapon.pk %}">
+            <div class="card bg-dark text-light h-100 card-hover
+                {% if weapon.colour.name == 'Red' %} border-danger
+                {% elif weapon.colour.name == 'Yellow' %} border-warning
+                {% elif weapon.colour.name == 'Blue' %} border-primary
+                {% elif weapon.colour.name == 'Dark' %} border-purple-custom
                 {% endif %}
+            ">
+                {% if weapon.image %}
+    <img src="{{ weapon.image.url }}"
+         class="card-img-top weapon-card-img"
+         alt="{{ weapon.name }}">
+{% else %}
+    <img src="{% static 'images/morph-gun.jpg' %}"
+         class="card-img-top weapon-card-img"
+         alt="Placeholder image">
+{% endif %}
 
-                <div class="card-body">
-                    <h5 class="card-title">{{ weapon.name }}</h5>
 
-                    <span class="badge
-                                    {% if weapon.colour.name == 'Red' %} bg-danger
-                                    {% elif weapon.colour.name == 'Yellow' %} bg-warning text-dark
-                                    {% elif weapon.colour.name == 'Blue' %} bg-primary
-                                    {% elif weapon.colour.name == 'Dark' %} bg-purple-custom
-                                    {% endif %}
-                                ">
-                        {{ weapon.colour.name }}
-                    </span>
-
-                    <p class="card-text mt-2 text-muted">
-                        {{ weapon.description|truncatechars:120 }}
-                    </p>
-                </div>
-
-                <div class="card-footer">
-                    <a href="{% url 'weapon_detail' weapon.pk %}" class="btn w-100
-                                    {% if weapon.colour.name == 'Red' %} bg-danger
-                                    {% elif weapon.colour.name == 'Yellow' %} bg-warning text-dark
-                                    {% elif weapon.colour.name == 'Blue' %} bg-primary
-                                    {% elif weapon.colour.name == 'Dark' %} bg-purple-custom
-                                    {% endif %}
-                                ">
-                        View
-                    </a>
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-0">{{ weapon.name }}</h5>
                 </div>
             </div>
-        </div>
-        {% endfor %}
+        </a>
     </div>
+    {% endfor %}
+</div>
+
 </section>
 {% endfor %}
 {% else %}

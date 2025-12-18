@@ -170,6 +170,49 @@ footer .small-text {
     color: #ffcc80;
 }
 
+/* Characters */
+
+/* Dark card consistency */
+.card.bg-dark {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ff9f1c;
+}
+
+/* Image handling inside cards */
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background-color: #000;
+}
+
+/* Clickable card hover */
+.card-hover {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.4);
+}
+
+/* Card links */
+.card a {
+    color: inherit; /* Orange text */
+}
+
+/* Keyboard accessibility */
+.card a:focus-visible {
+    outline: 2px solid #ff9f1c;
+    outline-offset: 4px;
+}
+
+/* Card titles */
+.card .card-title,
+.card .card-title a {
+    color: #ff9f1c; /* Force orange */
+}
+
 /* Full borders for eco colours */
 .border-red-custom {
     border: 2px solid #dc3545 !important; /* Bootstrap red */
@@ -198,6 +241,32 @@ footer .small-text {
 
 .text-purple-custom {
     color: #6f42c1 !important;
+}
+
+.weapon-card-img {
+    height: 220px;
+    width: 100%;
+    object-fit: contain;
+    background-color: #111;
+    padding: 12px;
+}
+
+/* Collectables */
+
+/* Collectables table name styling */
+.collectable-name {
+    font-family: 'Black Ops One', Arial;
+    color: #ff8c00;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Collectables table name styling */
+.table-dark td.collectable-name {
+    font-family: 'Black Ops One', Arial, sans-serif;
+    color: #ff8c00;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
 }
 
 /* Responsiveness adjustments */
