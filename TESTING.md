@@ -3,6 +3,53 @@
 > [!NOTE]  
 > Return back to the [README.md](README.md) file.
 
+---
+
+## Defensive Programming
+
+Defensive programming principles were applied throughout the **Jak and Daxter Wiki** to protect against invalid input, unauthorised access, and unexpected user behaviour.
+
+All forms, views, and routes were manually tested using different user roles (guest user, authenticated user, and admin user) to ensure the application behaves securely and predictably.
+
+The focus of testing was to confirm that:
+
+- Users cannot submit invalid or empty form data
+- Non-authenticated users cannot access restricted functionality
+- Non-admin users cannot access admin-only features
+- Users cannot manipulate data they do not own (User A should not be able to manipulate data belonging to User B, or vice versa)
+- Invalid or malicious requests are handled gracefully using custom error pages
+
+---
+
+Defensive programming was manually tested with the below user acceptance testing:
+
+| Area | Expectation | Test Performed | Result | Screenshot |
+| --- | --- | --- | --- | --- |
+| User Registration | Users should not be able to submit empty registration forms | Attempted to submit the register form with missing fields | Form validation prevented submission and displayed errors | ![screenshot](documentation/defensive/register-validation.png) |
+| User Authentication | Only registered users should be able to log in | Attempted login with valid and invalid credentials | Valid credentials allowed access; invalid credentials were rejected | ![screenshot](documentation/defensive/login-validation.png) |
+| CSRF Protection | Forms should reject unauthorised POST requests | Removed the CSRF token from `rate_weapons.html` and submitted the request | Django blocked the request with a 403 CSRF verification error | ![screenshot](documentation/defensive/csrf-failure.png) |
+| Authenticated Navigation | Navigation options should change based on login status | Viewed navbar as guest and as logged-in user | Login/Register links shown to guests; Logout shown to authenticated users | ![screenshot](documentation/defensive/navbar-auth.png) ![screenshot](documentation/defensive/navbar-auth-2.png)|
+| Restricted Pages | Guest users should not access protected pages | Attempted to access `/morphgun/rate-weapons/` while logged out | User was redirected to the login page with the intended URL preserved via the `next` parameter | ![screenshot](documentation/defensive/login-redirect.png) |
+| Admin Protection | Non-admin users should not access the Django admin panel | Attempted to access `/admin` as a non-admin user | User was redirected to the Django admin login page, preventing unauthorised access | ![screenshot](documentation/defensive/admin-login.png) |
+| Data Integrity (Ratings) | Users should only be able to submit or update their own weapon ratings | Logged in as `louis` and submitted ratings, then logged in as `test` and submitted separate ratings for the same weapons | Each user’s ratings were stored separately and could not overwrite or modify another user’s ratings | N/A |
+| 400 Error Handling | Bad requests should be handled gracefully | Triggered an invalid request | Custom 400 error page was displayed | ![screenshot](documentation/defensive/400.png) |
+| 403 Error Handling | Forbidden access should be clearly communicated | Attempted to access restricted content | Custom 403 error page was displayed | ![screenshot](documentation/defensive/403.png) |
+| 404 Error Handling | Non-existent pages should not crash the app | Navigated to an invalid URL | Custom 404 error page was displayed | ![screenshot](documentation/defensive/404.png) |
+| Rate Limiting | Excessive requests should be limited | Triggered rate-limited behaviour during testing | Custom 429 error page was displayed | ![screenshot](documentation/defensive/429.png) |
+| Server Errors | Server-side issues should fail safely | Simulated a server error during development | Custom 500 error page was displayed | ![screenshot](documentation/defensive/500.png) |
+
+---
+
+- Django’s built-in **authentication and authorisation** systems are used to control access
+- **CSRF protection** is enabled on all forms
+- Role-based access ensures **guests, users, and admins** see only permitted features
+- Custom **400, 403, 404, 429, and 500** error pages prevent exposure of sensitive information
+- All invalid or unexpected behaviour is handled gracefully without breaking the application
+
+These measures ensure the site remains secure, user-friendly, and resilient against incorrect or malicious usage.
+
+---
+
 ## Bugs
 
 For convenience, I have used manual logs to track bugs during development.
