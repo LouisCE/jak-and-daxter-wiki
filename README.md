@@ -336,6 +336,58 @@ These features directly map to several defined user stories, particularly those 
 | [![badge](https://img.shields.io/badge/Balsamiq-grey?logo=barmenia&logoColor=CE0908)](https://balsamiq.com/wireframes) | Creating wireframes. |
 | [![badge](https://img.shields.io/badge/ChatGPT-grey?logo=openai&logoColor=75A99C)](https://chat.openai.com) | Used as a learning aid for debugging, explanations and planning. |
 
+---
+
+## Agile Development Process
+
+### GitHub Projects
+
+[GitHub Projects](https://www.github.com/LouisCE/jak-and-daxter-wiki/projects) was used as the primary Agile planning and tracking tool for the **Jak and Daxter Wiki** project.
+
+The project board followed a Kanban-style workflow and was used to:
+
+* Plan and track EPICs and User Stories
+* Break down features into manageable development tasks
+* Track progress from *To Do* through *In Progress* to *Done*
+* Record bugs and technical issues discovered during development
+
+The board was updated regularly throughout the build process to reflect the current state of development and priorities.
+
+![screenshot](documentation/gh-projects.png)
+
+---
+
+### GitHub Issues
+
+[GitHub Issues](https://www.github.com/LouisCE/jak-and-daxter-wiki/issues) were available as a supporting tool but were not used as the primary method of tracking work during development.
+
+Instead, User Stories and tasks were managed directly within the GitHub Projects board, where items were created, prioritised, and moved through the Kanban workflow from *To Do* to *In Progress* to *Done*. Bugs were logged manually within **TESTING.md**, allowing all planning, progress tracking, and issue documentation to remain centralised during development.
+
+GitHub Issues may be used in future iterations to separately log bugs and enhancements once the project moves beyond the current assessment scope.
+
+
+| Link                                                                                                                                                                                                                                                                                      | Screenshot                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| [![GitHub open issues](https://img.shields.io/github/issues-search/LouisCE/jak-and-daxter-wiki?query=is%3Aissue%20is%3Aopen%20-label%3Abug\&label=Open%20Issues\&color=yellow)](https://www.github.com/LouisCE/jak-and-daxter-wiki/issues?q=is%3Aissue%20is%3Aopen%20-label%3Abug)        | ![screenshot](documentation/gh-issues-open.png)   |
+| [![GitHub closed issues](https://img.shields.io/github/issues-search/LouisCE/jak-and-daxter-wiki?query=is%3Aissue%20is%3Aclosed%20-label%3Abug\&label=Closed%20Issues\&color=green)](https://www.github.com/LouisCE/jak-and-daxter-wiki/issues?q=is%3Aissue%20is%3Aclosed%20-label%3Abug) | ![screenshot](documentation/gh-issues-closed.png) |
+
+---
+
+### MoSCoW Prioritisation
+
+User Stories were prioritised using the **MoSCoW** method to ensure that core functionality was delivered first, while still allowing room for enhancements if time permitted.
+
+Each User Story was labelled accordingly within GitHub Issues:
+
+* **Must Have** – Core features required for the site to function correctly and meet the project’s assessment criteria
+* **Should Have** – Important features that significantly improve user experience but are not strictly essential
+* **Could Have** – Nice-to-have features that add extra polish if time allows
+* **Won’t Have** – Features intentionally deferred to future development beyond the scope of this submission
+
+This prioritisation helped guide development decisions and ensured the project remained achievable within the available timeframe.
+
+---
+
 ## Testing
 
 > [!NOTE]  
