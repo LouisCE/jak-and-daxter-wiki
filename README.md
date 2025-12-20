@@ -220,22 +220,21 @@ Font import used in the project:
 
 | Target | Expectation | Outcome |
 | --- | --- | --- |
-| As a guest user | I want to see the weapons organised by eco colour | so I can easily find what I’m looking for. |
-| As a guest user | I want an overview of each weapon with stats and description | so I can understand its use in-game. |
-| As a guest user | I want to see images for weapons and characters | so I can associate information visually. |
-| As a registered user | I want to sign up, log in, and log out | so that my account is secure and personalised. |
-| As an admin user | I want CRUD functionality for weapons | so I can manage weapon-related content efficiently. |
-| As an admin user | I want CRUD functionality for colours | so I can manage colour classifications efficiently. |
-| As a registered user | I want to edit or delete my posts and comments | so I can manage my shared content. |
-| As a registered user | I want my account and comments to be secure | so that no one else can impersonate me. |
-| As a registered user | I want to leave posts or reviews | so I can share my experience and opinions about the games. |
-| As a guest user | I want to view information about characters | so I can learn about the Jak and Daxter universe. |
-| As a registered user | I want to comment under posts | so I can engage with other users. |
-| As a guest user | I want a homepage that shows featured weapons and characters | so I can see important content at a glance. |
-| As a guest user | I want to search for weapons, characters, or posts | so I can find content quickly. |
+| As a guest user | I want a homepage that gives an overview of the three core Jak and Daxter games. | so I can see important content at a glance. |
+| As a guest user | I want to view information about characters | so I can learn about the inhabitants of the Jak and Daxter universe. |
+| As a guest user | I want to see the morph gun weapon mods organised by eco colour | so I can easily find the ones I’m looking for. |
+| As a guest user | I want an overview of each weapon mod with descriptions and upgrading availability. | so I can understand its use in-game. |
 | As a guest user | I want to view collectibles like Precursor Orbs and Power Cells | so I can track optional in-game items. |
-| As a guest user | I want to view information about enemies in the Jak and Daxter games | so I can learn about their behaviour, strengths, and weaknesses. |
-| As a guest user | I want to view information about Jak’s Dark and Light forms | so I can understand how his abilities evolve in the story. |
+| As a guest user | I want to see images across all website apps. | so I can associate information visually. |
+| As a registered user | I want to sign up, log in, and log out | so that my account is secure and personalised. |
+| As a registered user | I want to rate the twelve morph gun mods out of ten. | so I can share my opinion on which weapons are most effective and contribute to the community ratings. |
+| As a registered user | I want my account and weapon ratings to be secure | so that no one else can impersonate me and alter the ratings that I have given. |
+| As an admin user | I want CRUD functionality across all website apps. | so I can manage content efficiently. |
+
+User stories were refined during development to accurately reflect the final scope and implemented functionality of the project.
+
+---
+
 
 ## Tools & Technologies
 
