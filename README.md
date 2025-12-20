@@ -266,6 +266,53 @@ Features were implemented iteratively and refined during development to align wi
 
 ---
 
+### Future Features
+
+The following features were identified during planning but were outside the scope of the current project iteration. These features would further enhance user engagement, depth of content, and long-term scalability of the **Jak and Daxter Wiki**.
+
+- **Search Functionality**  
+  Implement a global search feature allowing users to search for weapons, characters, collectables, and future content such as enemies or lore pages.
+
+- **Enemy Database**  
+  Add a dedicated section for enemies, including behaviour descriptions, strengths, weaknesses, and images to expand the encyclopaedic nature of the site.
+
+- **Dark and Light Jak Pages**  
+  Introduce detailed pages covering Jak’s Dark and Light forms, explaining how abilities evolve across the series.
+
+- **User Comments and Discussions**  
+  Allow registered users to comment on characters, weapons, and collectables to encourage community interaction and discussion.
+
+- **User Profiles**  
+  Provide registered users with profile pages showing their activity, such as comments made or content interacted with.
+
+- **Featured Content System**  
+  Enable admins to mark weapons, characters, or collectables as “featured” for display on the homepage.
+
+- **Advanced Filtering and Sorting**  
+  Add filters for weapons (eco colour, type), characters (role, faction), and collectables to improve content discoverability.
+
+- **Lore and Story Pages**  
+  Expand the wiki to include story summaries, locations, factions, and timeline-based lore content.
+
+- **Favourites System**  
+  Allow users to save favourite weapons, characters, or collectables for quick access later.
+
+- **Admin Analytics Dashboard**  
+  Provide site administrators with insights into popular pages, most viewed weapons, and user engagement metrics.
+
+- **Improved SEO Optimisation**  
+  Add meta descriptions, structured data, and SEO-friendly URLs to improve search engine visibility.
+
+- **Multilingual Support**  
+  Support multiple languages to make the wiki accessible to a wider international audience.
+
+- **Game Rating and Reviews System**
+  Allow registered users to rate the three core Jak and Daxter games out of ten and optionally provide written reasons for their ratings. This would encourage community discussion, surface differing player perspectives, and add comparative insight across the trilogy.
+
+- **Expanded Franchise Coverage**
+  Extend the wiki to cover the remaining Jak and Daxter titles released after the original trilogy, including Jak X: Combat Racing (2005), Daxter (2006), and Jak and Daxter: The Lost Frontier (2009). Each game could include dedicated pages for gameplay mechanics, characters, and unique features.
+
+These features directly map to several defined user stories, particularly those focused on searchability, deeper lore exploration, user engagement, and expanded content coverage. They represent logical next steps should development continue beyond the current assessment scope.
 
 ---
 
