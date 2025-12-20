@@ -50,6 +50,29 @@ These measures ensure the site remains secure, user-friendly, and resilient agai
 
 ---
 
+## User Story Testing
+
+User Story Testing was carried out by manually verifying that each implemented feature met the expectations defined in the refined User Stories for the project. User stories were updated during development to better reflect the final scope and implemented functionality, following an Agile and iterative workflow.
+
+Each User Story below was tested against the live deployed application to confirm that the expected behaviour and outcome were achieved.
+
+Where applicable, screenshots have been reused from the **Features** section to avoid duplication and to clearly demonstrate working functionality.
+
+| Target | Expectation | Outcome | Screenshot |
+| --- | --- | --- | --- |
+| As a guest user | I want a homepage that gives an overview of the three core Jak and Daxter games. | The homepage presents an overview of the Jak and Daxter trilogy, introducing users to the games and directing them to key sections of the site. | ![screenshot](documentation/features/homepage.png) |
+| As a guest user | I want to view information about characters | Dedicated character pages display information about major characters within the Jak and Daxter universe. | ![screenshot](documentation/features/character-detail.png) |
+| As a guest user | I want to see the morph gun weapon mods organised by eco colour | Morph Gun weapon mods are grouped by eco colour, allowing users to easily browse and compare related weapons. | ![screenshot](documentation/features/weapons-by-eco.png) |
+| As a guest user | I want an overview of each weapon mod with descriptions and upgrading availability. | Each weapon mod page includes descriptive text and information about upgrade availability across the games. | ![screenshot](documentation/features/weapon-detail.png) |
+| As a guest user | I want to view collectibles like Precursor Orbs and Power Cells | A dedicated Collectables section displays information about optional in-game items such as Precursor Orbs and Power Cells. | ![screenshot](documentation/features/collectables-list.png) |
+| As a guest user | I want to see images across all website apps. | Images are consistently displayed across morphgun, characters, collectibles, and other content to support visual recognition. | (See above.) |
+| As a registered user | I want to sign up, log in, and log out | Users can register an account, log in securely, and log out using Django’s built-in authentication system. | ![screenshot](documentation/features/register.png) ![screenshot](documentation/features/login.png) |
+| As a registered user | I want to rate the twelve morph gun mods out of ten. | Authenticated users can submit ratings for each Morph Gun weapon mod, contributing to overall community ratings. | ![screenshot](documentation/features/weapon-rating.png) |
+| As a registered user | I want my account and weapon ratings to be secure | Authentication and permission controls ensure that only logged-in users can submit ratings and that ratings cannot be altered by other users. | ![screenshot](documentation/features/security.png) |
+| As an admin user | I want CRUD functionality across all website apps. | Admin users can create, read, update, and delete content across all site apps using the Django admin interface. | ![screenshot](documentation/features/admin-crud.png) |
+
+---
+
 ## Bugs
 
 For convenience, I have used manual logs to track bugs during development.
