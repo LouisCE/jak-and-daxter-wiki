@@ -235,6 +235,39 @@ User stories were refined during development to accurately reflect the final sco
 
 ---
 
+## Features
+
+### Existing Features
+
+The **Jak and Daxter Wiki** is designed to provide fans of the franchise with a structured, visual, and easy-to-navigate reference site.  
+Features were implemented iteratively and refined during development to align with the final project scope and user needs.
+
+| Feature | Notes | Screenshot |
+| --- | --- | --- |
+| Hero Section | A themed hero image, title, and introductory text establish the tone and purpose of the site on first visit. | ![screenshot](documentation/features/home-hero.png) |
+| Homepage Overview | The homepage provides an overview of the three core Jak and Daxter games, introducing users to the series and guiding them toward key content areas. | ![screenshot](documentation/features/homepage.png) |
+| Character Index | Users can browse a list of characters from the Jak and Daxter universe, presented in a clean and readable layout. | ![screenshot](documentation/features/character-list.png) |
+| Character Detail Pages | Each character has a dedicated page displaying descriptive information and imagery to support exploration of the game world. | ![screenshot](documentation/features/character-detail.png) |
+| Morph Gun Overview | Introduces the Morph Gun system and explains how weapon mods are organised by eco colour across the games. | ![screenshot](documentation/features/morphgun-overview.png) |
+| Eco Colour Grouping | Morph Gun weapon mods are grouped by eco colour, allowing users to easily locate and compare related weapons. | ![screenshot](documentation/features/eco-groups.png) |
+| Weapon Mod Cards | Individual weapon mod cards display images, names, and visual styling to support quick recognition. | ![screenshot](documentation/features/weapon-cards.png) |
+| Weapon Mod Detail Pages | Each Morph Gun weapon mod has a dedicated detail page containing descriptions and upgrade availability information. | ![screenshot](documentation/features/weapon-detail.png) |
+| Weapon Rating System | Registered users can rate each of the twelve Morph Gun weapon mods out of ten, contributing to overall community ratings. | ![screenshot](documentation/features/weapon-rating.png) |
+| Collectables Index | A dedicated Collectables section displays items such as Precursor Orbs and Power Cells in a clear, ordered layout. | ![screenshot](documentation/features/collectables-list.png) |
+| Image Integration | Images are displayed consistently across characters, weapons, and collectables to enhance visual recognition and usability. | (See above.) |
+| User Authentication | Django authentication allows users to register, log in, and log out securely. | ![screenshot](documentation/features/register.png) ![screenshot](documentation/features/login.png) |
+| Secure User Actions | Authentication and permissions ensure that only authorised users can submit weapon ratings and manage their own accounts. | ![screenshot](documentation/features/security.png) |
+| Admin Content Management | Site administrators can create, read, update, and delete content across all website apps using the Django admin interface. | ![screenshot](documentation/features/admin-crud.png) |
+| User Feedback Messages | Django messages provide clear feedback when user actions succeed or fail, improving usability and clarity. | ![screenshot](documentation/features/messages.png) |
+| Custom Error Pages | Custom 400, 403, 404, 429, and 500 error pages maintain site theming while improving error handling. | ![screenshot](documentation/defensive/400.png) ![screenshot](documentation/defensive/403.png) ![screenshot](documentation/defensive/404.png) ![screenshot](documentation/defensive/429.png) ![screenshot](documentation/defensive/500.png) |
+| Responsive Design | The site is fully responsive and accessible across desktop, tablet, and mobile devices. | ![screenshot](documentation/features/responsive-mobile.png) ![screenshot](documentation/features/responsive-tablet.png) ![screenshot](documentation/features/responsive-desktop.png) |
+| Cloudinary Media Hosting | All uploaded images are stored and served via Cloudinary to ensure performance and reliability. | ![screenshot](documentation/features/cloudinary.png) |
+| Production Deployment | The project is deployed to Heroku, a live production environment and accessible online. | ![screenshot](documentation/features/deployment.png) |
+
+---
+
+
+---
 
 ## Tools & Technologies
 
