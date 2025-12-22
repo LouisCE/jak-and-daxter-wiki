@@ -5,45 +5,125 @@
 {% block title %}Home | Jak and Daxter Wiki{% endblock %}
 
 {% block content %}
-<h1>Welcome to the Jak and Daxter Wiki</h1>
-<p>Explore Morph Gun mods, Community posts, Characters, and Collectibles!</p>
+<div class="container py-4">
 
-<img src="{% static 'images/jak-and-daxter-wiki.webp' %}" class="img-fluid rounded mb-4" alt="Jak and Daxter Wiki banner">
+    <!-- Page Intro -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="card bg-dark border-0 shadow-sm">
+                <div class="card-body p-4 text-center">
 
-<div class="mt-4">
-    <p>
-        This Wiki serves as an encyclopaedia for the three core Jak and Daxter games:
-    </p>
+                    <h1 class="mb-3">Jak and Daxter Wiki</h1>
 
-    <ul>
-        <li>Jak and Daxter: The Precursor Legacy (2001)</li>
-        <li>Jak II (2003)</li>
-        <li>Jak 3 (2004)</li>
-    </ul>
+                    <p class="lead mb-0">
+                        Explore Morph Gun mods, characters, collectables, and community
+                        rankings from the Jak and Daxter trilogy.
+                    </p>
 
-    <p>
-        The series evolves from colourful platforming to gritty, story-driven action:
-    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h3>Jak and Daxter: The Precursor Legacy</h3>
-    <p>
-        A seamless-world 3D platformer where Jak and his ottsel-transformed friend Daxter
-        collect Power Cells to restore Daxter and stop Gol and Maia from unleashing Dark Eco.
-    </p>
-    <img src="{% static 'images/jak-and-daxter-art.webp' %}" class="img-fluid rounded mb-4" alt="Jak and Daxter artwork">
 
-    <h3>Jak II</h3>
-    <p>
-        Introduces the Morph Gun, a dystopian Haven City, and Jak’s Dark Eco powers. Inspired by GTA-style
-        world design, Jak and Daxter fight tyrants, Metal Heads, and their own fate through time.
-    </p>
-    <img src="{% static 'images/jak-ii-art.webp' %}" class="img-fluid rounded mb-4" alt="Jak II artwork">
+    <!-- Overview -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="card bg-dark border-0 shadow-sm">
+                <div class="card-body p-4">
 
-    <h3>Jak 3</h3>
-    <p>
-        Adds eight new Morph Gun mods, Light Jak abilities, and a vast desert Wasteland. This game concludes
-        the trilogy with answers about the Precursors, the Metal Heads, and Jak’s destiny.
-    </p>
-    <img src="{% static 'images/jak-3-art.webp' %}" class="img-fluid rounded mb-4" alt="Jak 3 artwork">
+                    <p class="mb-3">
+                        This Wiki serves as an encyclopaedia for the three core
+                        <strong>Jak and Daxter</strong> games:
+                    </p>
+
+                    <ul class="mb-3">
+                        <li>Jak and Daxter: The Precursor Legacy (2001)</li>
+                        <li>Jak II (2003)</li>
+                        <li>Jak 3 (2004)</li>
+                    </ul>
+
+                    <p class="mb-0">
+                        The series evolves from colourful platforming to gritty,
+                        story-driven action across the trilogy.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jak 1 -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <h2>Jak and Daxter: The Precursor Legacy</h2>
+            <p>
+                A lighthearted collect-a-thon adventure where silent hero Jak and his mutated otter-weasel
+                sidekick Daxter journey across a vibrant world to find the Dark Eco Sage, Gol,
+                to reverse Daxter's transformation.
+            </p>
+            <p>
+                Focuses on 3D platforming, collecting Power Cells and Precursor Orbs,
+                solving environmental puzzles channelling different types of Eco
+                (like green for life, blue for energy, red for power and yellow for heat).
+            </p>
+            <p>
+                A classic, colorful, and charming adventure with seamless world exploration.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'images/jak-and-daxter-art.webp' %}" class="img-fluid rounded shadow-sm"
+                alt="Jak and Daxter artwork">
+        </div>
+    </div>
+
+    <!-- Jak II -->
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-6">
+            <h2>Jak II</h2>
+            <p>
+                A drastic tonal shift. Jak and Daxter are pulled into the future
+                and Haven City, where Jak is captured and experimented on, gaining
+                dark powers. They rebel against Baron Praxis and the corrupt Krimzon Guard,
+                uncovering deeper lore about the Precursors and Metal Heads.
+            </p>
+            <p>
+                Introduces third-person shooting with the Morph Gun, vehicle combat, and more structured
+                missions, moving away from pure collection.
+            </p>
+            <p>
+                Dark, gritty, cyberpunk city setting with mature themes and a focus on
+                revenge and survival.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'images/jak-ii-art.webp' %}" class="img-fluid rounded shadow-sm" alt="Jak II artwork">
+        </div>
+    </div>
+
+    <!-- Jak 3 -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <h2>Jak 3</h2>
+            <p>
+                After being exiled from Haven City, Jak, Daxter, and their allies fight
+                a massive war, exploring the Wasteland and uncovering the Precursors'
+                true nature and role in the planet's defense system, with Jak wielding
+                both Light and Dark Eco powers.
+            </p>
+            <p>
+                Expands on Jak II's mechanics, adding eight new Morph Gun mods, vehicles, and larger
+                environments, culminating in large-scale conflicts.
+            </p>
+            <p>
+                Continues the darker themes but balances them with epic scope, exploring the
+                planet's history and Jak's destiny as a hero.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'images/jak-3-art.webp' %}" class="img-fluid rounded shadow-sm" alt="Jak 3 artwork">
+        </div>
+    </div>
+
 </div>
 {% endblock %}
