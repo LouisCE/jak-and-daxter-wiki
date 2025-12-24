@@ -11,6 +11,70 @@ All custom-written code for the **Jak and Daxter Wiki** project was validated us
 
 Validation was carried out primarily against the **live deployed site** to ensure that the final production code was tested rather than local development files.
 
+---
+
+### HTML
+
+All HTML templates were validated using the **W3C HTML Validator**.
+
+- [W3C HTML Validator](https://validator.w3.org)
+
+Where possible, validation was performed using the **live deployed URLs**, as this ensures that Django’s Jinja templating syntax is fully rendered before validation.
+
+#### Django / Jinja Considerations
+
+Because this is a Django project using Jinja templating (e.g. `{% for %}`, `{% url %}`, `{{ variable }}`), some pages could not be validated via direct file input.
+
+Some pages requiring authentication (CRUD functionality) return a **403 Forbidden** response when accessed by the validator, as it is not logged in. Therefore, validation was carried out using the following process:
+
+- Navigating to the deployed page while logged in
+- Viewing the compiled HTML using **View Page Source**
+- Copying the rendered HTML output
+- Validating via **Validate by Input**
+
+This approach ensures accurate validation while respecting Django’s authentication and permission system.
+
+---
+
+#### HTML Validation Results
+
+| Directory | File | URL | Screenshot | Notes |
+| --- | --- | --- | --- | --- |
+| characters | character_confirm_delete.html | Deployed page | ![screenshot](documentation/validation/html-characters-character_confirm_delete.png) | No errors found |
+| characters | character_detail.html | Deployed page | ![screenshot](documentation/validation/html-characters-character_detail.png) | No errors found |
+| characters | character_form.html | Deployed page | ![screenshot](documentation/validation/html-characters-character_form.png) | No errors found |
+| characters | character_list.html | Deployed page | ![screenshot](documentation/validation/html-characters-character_list.png) | No errors found |
+| collectables | collectable_confirm_delete.html | Deployed page | ![screenshot](documentation/validation/html-collectables-collectable_confirm_delete.png) | No errors found |
+| collectables | collectable_form.html | Deployed page | ![screenshot](documentation/validation/html-collectables-collectable_form.png) | No errors found |
+| collectables | collectable_list.html | Deployed page | ![screenshot](documentation/validation/html-collectables-collectable_list.png) | No errors found |
+| home | index.html | Deployed page | ![screenshot](documentation/validation/html-home-index.png) | No errors found |
+| home | login.html | Deployed page | ![screenshot](documentation/validation/html-home-login.png) | No errors found |
+| home | register.html | Deployed page | ![screenshot](documentation/validation/html-home-register.png) | No errors found |
+| morphgun | create_colour.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-create_colour.png) | No errors found |
+| morphgun | create_weapon.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-create_weapon.png) | No errors found |
+| morphgun | delete_colour.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-delete_colour.png) | No errors found |
+| morphgun | delete_weapon.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-delete_weapon.png) | No errors found |
+| morphgun | rate_weapons.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-rate_weapons.png) | No errors found |
+| morphgun | update_colour.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-update_colour.png) | No errors found |
+| morphgun | update_weapon.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-update_weapon.png) | No errors found |
+| morphgun | weapon_detail.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-weapon_detail.png) | No errors found |
+| morphgun | weapon_list.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-weapon_list.png) | No errors found |
+| templates/errors | 400.html | Deployed page | ![screenshot](documentation/validation/html-templates-400.png) | No errors found |
+| templates/errors | 403.html | Deployed page | ![screenshot](documentation/validation/html-templates-403.png) | No errors found |
+| templates/errors | 404.html | Deployed page | ![screenshot](documentation/validation/html-templates-404.png) | No errors found |
+| templates/errors | 429.html | Deployed page | ![screenshot](documentation/validation/html-templates-429.png) | No errors found |
+| templates/errors | 500.html | Deployed page | ![screenshot](documentation/validation/html-templates-500.png) | No errors found |
+
+---
+
+#### Summary
+
+- All validated HTML pages passed W3C validation.
+- No critical errors were present in the rendered HTML output.
+- Any potential warnings were related to third-party libraries or Django templating and were handled according to best practice.
+- Validation confirms that the site structure is standards-compliant and production-ready.
+
+
 
 ---
 
