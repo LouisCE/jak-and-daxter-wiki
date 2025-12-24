@@ -5,6 +5,15 @@
 
 ---
 
+## Code Validation
+
+All custom-written code for the **Jak and Daxter Wiki** project was validated using appropriate industry-standard tools to ensure correctness, accessibility, and standards compliance.
+
+Validation was carried out primarily against the **live deployed site** to ensure that the final production code was tested rather than local development files.
+
+
+---
+
 ## Defensive Programming
 
 Defensive programming principles were applied throughout the **Jak and Daxter Wiki** to protect against invalid input, unauthorised access, and unexpected user behaviour.
