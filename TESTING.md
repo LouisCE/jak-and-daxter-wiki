@@ -107,6 +107,29 @@ The project uses a single custom stylesheet located at `static/css/style.css`. V
 - Any warnings encountered were related to **third-party Bootstrap CSS** and were therefore not applicable.
 - Validation confirms that the site’s styling is robust, standards-compliant, and suitable for production deployment.
 
+---
+
+### JavaScript
+
+As modern JavaScript (ES6) methods were used, the following line was included at the very top of the JavaScript file:
+
+```js
+/* jshint esversion: 11 */
+```
+
+This allows the JSHint validator to recognise modern JavaScript features such as `const`, arrow functions, and the `DOMContentLoaded` event listener.
+
+JavaScript within the **Jak and Daxter Wiki** project is intentionally kept minimal and is used only to enhance user experience rather than core functionality.
+
+The project includes a small JavaScript file to improve usability on the **Rate Weapons** page by disabling the submit button and displaying a loading indicator when the rating form is submitted. This prevents duplicate submissions and provides clear feedback to the user.
+
+The project’s custom JavaScript file was validated using the recommended [JSHint Validator](https://jshint.com).
+
+| Directory | File | URL | Screenshot | Notes |
+| --- | --- | --- | --- | --- |
+| static/js | rating.js | https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/static/js/rating.js | ![screenshot](documentation/validation/js-rating.png) | No errors reported |
+
+No errors or warnings were reported during validation, confirming that the JavaScript is clean, readable, and suitable for production use.
 
 
 ---
