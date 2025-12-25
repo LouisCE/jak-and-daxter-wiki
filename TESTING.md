@@ -74,6 +74,39 @@ This approach ensures accurate validation while respecting Django’s authentica
 - Any potential warnings were related to third-party libraries or Django templating and were handled according to best practice.
 - Validation confirms that the site structure is standards-compliant and production-ready.
 
+---
+
+### CSS
+
+All custom CSS used in the **Jak and Daxter Wiki** project was validated using the official **W3C CSS Jigsaw Validator** to ensure compliance with current CSS standards and to identify any syntax or structural issues.
+
+The project uses a single custom stylesheet located at `static/css/style.css`. Validation was carried out using **direct file input**, ensuring that all custom-written CSS was checked independently of third-party libraries.
+
+
+#### Validation Tool Used
+
+- [W3C CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator)
+
+> **Note on Third-Party Libraries:**  
+> The project uses **Bootstrap** as a front-end framework. Any warnings or errors related to Bootstrap’s internal CSS were intentionally ignored, as external libraries are not required to be validated under Code Institute assessment guidelines.
+
+---
+
+#### Validation Results
+
+| Directory | File | Validator URL | Screenshot | Notes |
+| --- | --- | --- | --- | --- |
+| static/css | [style.css](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/static/css/style.css) | https://jigsaw.w3.org/css-validator/validator?uri=https://jak-and-daxter-wiki-420eda56706b.herokuapp.com | ![CSS validation screenshot](documentation/validation/css-static-style.png) | No critical errors found in custom CSS. Bootstrap-related warnings ignored as expected. |
+
+---
+
+#### Summary
+
+- All **custom-written CSS** for the project passed W3C validation.
+- No syntax or structural errors were present in `style.css`.
+- Any warnings encountered were related to **third-party Bootstrap CSS** and were therefore not applicable.
+- Validation confirms that the site’s styling is robust, standards-compliant, and suitable for production deployment.
+
 
 
 ---
