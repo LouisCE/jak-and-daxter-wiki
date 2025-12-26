@@ -4,9 +4,26 @@
 
 {% block content %}
 <h2>Register</h2>
+
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+
+    {% for field in form %}
+        <p>
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+                {{ field.errors }}
+            {% endif %}
+        </p>
+
+        {% if field.help_text %}
+            <div class="helptext">
+                {{ field.help_text }}
+            </div>
+        {% endif %}
+    {% endfor %}
+
     <button type="submit" class="btn btn-primary">Register</button>
 </form>
 {% endblock %}
