@@ -28,7 +28,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),  # Summernote
     path('morphgun/', include('morphgun.urls')),       # Morphgun
     path('characters/', include('characters.urls')),  # Characters
-    path('collectables/', include('collectables.urls')), # Collectables
+    path('collectables/', include('collectables.urls')),  # Collectables
     path('', include('home.urls')),                    # Home app URLs
 ]
 

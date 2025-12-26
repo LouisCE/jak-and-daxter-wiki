@@ -2,6 +2,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 class HomeTests(TestCase):
 
     def setUp(self):
@@ -34,12 +35,12 @@ class HomeTests(TestCase):
     # Registration view POST with invalid data does not create user
     def test_register_view_post_invalid_data(self):
         form_data = {
-            'username': '', # Missing username
+            'username': '',  # Missing username
             'email': 'bademail',
             'password1': '123',
             'password2': '456'
         }
         response = self.client.post(reverse('register'), form_data)
-        self.assertEqual(response.status_code, 200) # Form is re-rendered
+        self.assertEqual(response.status_code, 200)  # Form is re-rendered
         self.assertFalse(User.objects.filter(email='bademail').exists())
         self.assertContains(response, "<form")

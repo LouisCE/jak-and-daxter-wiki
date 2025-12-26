@@ -14,6 +14,7 @@ class WeaponForm(forms.ModelForm):
         model = Weapon
         fields = ['name', 'colour', 'description', 'image']
 
+
 class WeaponRatingForm(forms.ModelForm):
     class Meta:
         model = WeaponRating

@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 from .models import Character
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -10,9 +16,11 @@ class CharacterList(ListView):
     template_name = "characters/character_list.html"
     context_object_name = "characters"
 
+
 class CharacterDetail(DetailView):
     model = Character
     template_name = "characters/character_detail.html"
+
 
 class CharacterCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Character

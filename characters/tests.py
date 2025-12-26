@@ -62,7 +62,8 @@ class CharacterTests(TestCase):
         self.client.login(username="staff", password="pass")
         response = self.client.post(reverse("character_create"), {
             "name": "Daxter",
-            "quote": "Hey! I'm the real hero here. You can call me... Orange Lightning. Zazaziing!",
+            "quote": "Hey! I'm the real hero here. You can call me..."
+            "Orange Lightning. Zazaziing!",
             "order": 2
         })
         self.assertTrue(Character.objects.filter(name="Daxter").exists())

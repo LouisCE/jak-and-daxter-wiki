@@ -1,6 +1,7 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 
+
 class Character(models.Model):
     """Character model."""
     name = models.CharField(max_length=100)

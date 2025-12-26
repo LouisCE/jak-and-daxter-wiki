@@ -43,6 +43,7 @@ class Weapon(models.Model):
     def __str__(self):
         return self.name
 
+
 class WeaponRating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     weapon = models.ForeignKey(

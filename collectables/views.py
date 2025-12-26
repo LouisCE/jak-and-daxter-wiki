@@ -4,14 +4,17 @@ from .models import Collectable
 from .forms import CollectableForm
 from django.core.exceptions import PermissionDenied
 
+
 def staff_check(user):
     if not user.is_staff:
         raise PermissionDenied
     return True
 
+
 def collectable_list(request):
     items = Collectable.objects.order_by('order', 'name')
     return render(request, 'collectables/collectable_list.html', {'items': items})
+
 
 @user_passes_test(staff_check)
 def collectable_create(request):
@@ -24,6 +27,7 @@ def collectable_create(request):
         form = CollectableForm()
     return render(request, 'collectables/collectable_form.html', {'form': form})
 
+
 @user_passes_test(staff_check)
 def collectable_update(request, pk):
     item = get_object_or_404(Collectable, pk=pk)
@@ -35,6 +39,7 @@ def collectable_update(request, pk):
     else:
         form = CollectableForm(instance=item)
     return render(request, 'collectables/collectable_form.html', {'form': form, 'item': item})
+
 
 @user_passes_test(staff_check)
 def collectable_delete(request, pk):

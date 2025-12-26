@@ -36,48 +36,84 @@ class CollectableTests(TestCase):
     # Permissions
     def test_non_staff_cannot_access_create_view(self):
         self.client.login(username="user", password="pass")
-        response = self.client.get(reverse("collectable_create"))
+        response = self.client.get(
+            reverse("collectable_create")
+        )
         self.assertEqual(response.status_code, 403)
 
     def test_staff_can_access_create_view(self):
         self.client.login(username="staff", password="pass")
-        response = self.client.get(reverse("collectable_create"))
+        response = self.client.get(
+            reverse("collectable_create")
+        )
         self.assertEqual(response.status_code, 200)
 
     def test_non_staff_cannot_access_update_view(self):
         self.client.login(username="user", password="pass")
-        response = self.client.get(reverse("collectable_update", args=[self.item.pk]))
+        response = self.client.get(
+            reverse(
+                "collectable_update",
+                args=[self.item.pk]
+            )
+        )
         self.assertEqual(response.status_code, 403)
 
     def test_non_staff_cannot_access_delete_view(self):
         self.client.login(username="user", password="pass")
-        response = self.client.get(reverse("collectable_delete", args=[self.item.pk]))
+        response = self.client.get(
+            reverse(
+                "collectable_delete",
+                args=[self.item.pk]
+            )
+        )
         self.assertEqual(response.status_code, 403)
 
     # CRUD
     def test_staff_can_create_collectable(self):
         self.client.login(username="staff", password="pass")
-        response = self.client.post(reverse("collectable_create"), {
-            "name": "Precursor Node",
-            "description": "Another collectible"
-        })
-        self.assertTrue(Collectable.objects.filter(name="Precursor Node").exists())
+        response = self.client.post(
+            reverse("collectable_create"),
+            {
+                "name": "Precursor Node",
+                "description": "Another collectible",
+            }
+        )
+        self.assertTrue(
+            Collectable.objects.filter(
+                name="Precursor Node"
+            ).exists()
+        )
         self.assertEqual(response.status_code, 302)
 
     def test_staff_can_update_collectable(self):
         self.client.login(username="staff", password="pass")
-        response = self.client.post(reverse("collectable_update", args=[self.item.pk]), {
-            "name": "Updated Orb",
-            "description": self.item.description
-        })
+        response = self.client.post(
+            reverse(
+                "collectable_update",
+                args=[self.item.pk]
+            ),
+            {
+                "name": "Updated Orb",
+                "description": self.item.description,
+            }
+        )
         self.item.refresh_from_db()
         self.assertEqual(self.item.name, "Updated Orb")
         self.assertEqual(response.status_code, 302)
 
     def test_staff_can_delete_collectable(self):
         self.client.login(username="staff", password="pass")
-        response = self.client.post(reverse("collectable_delete", args=[self.item.pk]))
-        self.assertFalse(Collectable.objects.filter(pk=self.item.pk).exists())
+        response = self.client.post(
+            reverse(
+                "collectable_delete",
+                args=[self.item.pk]
+            )
+        )
+        self.assertFalse(
+            Collectable.objects.filter(
+                pk=self.item.pk
+            ).exists()
+        )
         self.assertEqual(response.status_code, 302)
 
     # Model behaviour
@@ -85,6 +121,9 @@ class CollectableTests(TestCase):
         self.assertEqual(str(self.item), "Precursor Orb")
 
     def test_collectable_ordering(self):
-        c2 = Collectable.objects.create(name="Precursor Node", order=0)
+        c2 = Collectable.objects.create(
+            name="Precursor Node",
+            order=0
+        )
         items = list(Collectable.objects.all())
         self.assertEqual(items[0], c2)

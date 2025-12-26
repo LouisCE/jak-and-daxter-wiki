@@ -4,8 +4,10 @@ from . import views
 urlpatterns = [
     # Eco colours CRUD
     path("colours/create/", views.colour_create, name="colour_create"),
-    path("colours/<int:pk>/update/", views.colour_update, name="colour_update"),
-    path("colours/<int:pk>/delete/", views.colour_delete, name="colour_delete"),
+    path(
+        "colours/<int:pk>/update/", views.colour_update, name="colour_update"),
+    path(
+        "colours/<int:pk>/delete/", views.colour_delete, name="colour_delete"),
 
     # Weapon mod CRUD
     path('', views.weapon_list, name='weapon_list'),

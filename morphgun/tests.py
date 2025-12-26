@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Weapon, Colour, WeaponRating
 
+
 class MorphGunTests(TestCase):
 
     def setUp(self):
