@@ -236,6 +236,37 @@ Only files that were created or directly modified as part of the project were va
 - Auto-generated files were correctly excluded.
 - Validation confirms that the backend codebase is clean, readable, and production-ready.
 
+---
+
+## Responsiveness
+
+This section documents responsiveness testing carried out on the **deployed** version of the Jak and Daxter Wiki project. Testing was completed using built-in device presets within browser Developer Tools to ensure accurate rendering across common screen sizes.
+
+The minimum required device sizes were tested:
+
+- Mobile (iPhone SE)
+- Tablet (iPad Mini)
+- Desktop (Nest Hub Max)
+
+Screenshots are provided as evidence of testing.
+
+I tested the live deployed site to ensure layout, navigation, images, and interactive elements respond correctly across different screen sizes.
+
+| Page | Mobile | Tablet | Desktop | Notes |
+| --- | --- | --- | --- | --- |
+| Home | ![screenshot](documentation/responsiveness/mobile-home.png) | ![screenshot](documentation/responsiveness/tablet-home.png) | ![screenshot](documentation/responsiveness/desktop-home.png) | Hero image scales correctly; cards and sections stack vertically on smaller screens |
+| Login | ![screenshot](documentation/responsiveness/mobile-login.png) | ![screenshot](documentation/responsiveness/tablet-login.png) | ![screenshot](documentation/responsiveness/desktop-login.png) | Form remains readable and usable at all sizes |
+| Register | ![screenshot](documentation/responsiveness/mobile-register.png) | ![screenshot](documentation/responsiveness/tablet-register.png) | ![screenshot](documentation/responsiveness/desktop-register.png) | Inputs and buttons scale correctly |
+| Character List | ![screenshot](documentation/responsiveness/mobile-characters.png) | ![screenshot](documentation/responsiveness/tablet-characters.png) | ![screenshot](documentation/responsiveness/desktop-characters.png) | Card grid adapts from single column to multi-column layout |
+| Character Detail | ![screenshot](documentation/responsiveness/mobile-character-detail.png) | ![screenshot](documentation/responsiveness/tablet-character-detail.png) | ![screenshot](documentation/responsiveness/desktop-character-detail.png) | Image and stat sections stack cleanly on mobile |
+| Weapon List | ![screenshot](documentation/responsiveness/mobile-morph-gun.png) | ![screenshot](documentation/responsiveness/tablet-morph-gun.png) | ![screenshot](documentation/responsiveness/desktop-morph-gun.png) | Weapon cards wrap correctly; colour sections remain visually distinct |
+| Weapon Detail | ![screenshot](documentation/responsiveness/mobile-weapon-detail.png) | ![screenshot](documentation/responsiveness/tablet-weapon-detail.png) | ![screenshot](documentation/responsiveness/desktop-weapon-detail.png) | Images scale responsively; action buttons remain accessible |
+| Rate Weapons | ![screenshot](documentation/responsiveness/mobile-rate-weapons.png) | ![screenshot](documentation/responsiveness/tablet-rate-weapons.png) | ![screenshot](documentation/responsiveness/desktop-rate-weapons.png) | Tables remain readable; horizontal spacing adjusts correctly |
+| Collectables | ![screenshot](documentation/responsiveness/mobile-collectables.png) | ![screenshot](documentation/responsiveness/tablet-collectables.png) | ![screenshot](documentation/responsiveness/desktop-collectables.png) | Table layout scales; images resize without distortion |
+| Admin CRUD Pages | ![screenshot](documentation/responsiveness/mobile-admin-crud.png) | ![screenshot](documentation/responsiveness/tablet-admin-crud.png) | ![screenshot](documentation/responsiveness/desktop-admin-crud.png) | Forms remain usable and readable across all devices |
+
+Overall, the site maintains usability and visual consistency across mobile, tablet, and desktop screen sizes. Bootstrap’s grid system combined with custom CSS ensures responsive behaviour without layout breakage.
+
 
 ---
 
