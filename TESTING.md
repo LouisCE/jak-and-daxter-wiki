@@ -131,6 +131,111 @@ The project’s custom JavaScript file was validated using the recommended [JSHi
 
 No errors or warnings were reported during validation, confirming that the JavaScript is clean, readable, and suitable for production use.
 
+---
+
+### Python
+
+All custom Python code for the **Jak and Daxter Wiki** project was validated using the recommended **PEP8 CI Python Linter** to ensure compliance with PEP8 standards and general Python best practices.
+
+Validation was carried out using the **API URL method**, as this provides a persistent validation link for each file and ensures that the exact deployed code is being checked.
+
+- [PEP8 CI Python Linter](https://pep8ci.herokuapp.com)
+
+---
+
+#### Validation Approach
+
+Each Python file was validated by:
+
+1. Navigating to the file in the GitHub repository.
+2. Selecting the **Raw** view to obtain the direct raw file URL.
+3. Appending that URL to the PEP8 CI Python Linter base URL.
+4. Running validation against the rendered raw file.
+
+This approach ensures consistent and repeatable validation results.
+
+---
+
+#### Django Settings Considerations
+
+The Django `settings.py` file includes several default configuration lines that exceed 80 characters and trigger the `E501 line too long` warning.
+
+These lines were resolved using the recommended `# noqa` comment, as shortening them further would negatively impact clarity or break Django’s expected configuration structure.
+
+```python
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # noqa
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",  # noqa
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",  # noqa
+    },
+]
+```
+
+This approach aligns with CI guidance and avoids unnecessary refactoring of Django defaults.
+
+---
+
+#### Excluded Files
+
+The following files and directories were intentionally excluded from validation, as they are auto-generated and not user-written:
+
+- `migrations/`
+- `__pycache__/`
+
+Only files that were created or directly modified as part of the project were validated.
+
+---
+
+#### Python Validation Results
+
+| Directory | File | URL | Screenshot | Notes |
+| --- | --- | --- | --- | --- |
+| characters | [admin.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/characters/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/characters/admin.py) | ![screenshot](documentation/validation/py-characters-admin.png) | No issues found |
+| characters | [models.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/characters/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/characters/models.py) | ![screenshot](documentation/validation/py-characters-models.png) | No issues found |
+| characters | [tests.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/characters/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/characters/tests.py) | ![screenshot](documentation/validation/py-characters-tests.png) | No issues found |
+| characters | [urls.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/characters/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/characters/urls.py) | ![screenshot](documentation/validation/py-characters-urls.png) | No issues found |
+| characters | [views.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/characters/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/characters/views.py) | ![screenshot](documentation/validation/py-characters-views.png) | No issues found |
+| collectables | [admin.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/collectables/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/collectables/admin.py) | ![screenshot](documentation/validation/py-collectables-admin.png) | No issues found |
+| collectables | [forms.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/collectables/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/collectables/forms.py) | ![screenshot](documentation/validation/py-collectables-forms.png) | No issues found |
+| collectables | [models.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/collectables/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/collectables/models.py) | ![screenshot](documentation/validation/py-collectables-models.png) | No issues found |
+| collectables | [tests.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/collectables/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/collectables/tests.py) | ![screenshot](documentation/validation/py-collectables-tests.png) | No issues found |
+| collectables | [urls.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/collectables/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/collectables/urls.py) | ![screenshot](documentation/validation/py-collectables-urls.png) | No issues found |
+| collectables | [views.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/collectables/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/collectables/views.py) | ![screenshot](documentation/validation/py-collectables-views.png) | No issues found |
+| home | [admin.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/home/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/home/admin.py) | ![screenshot](documentation/validation/py-home-admin.png) | No issues found |
+| home | [forms.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/home/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/home/forms.py) | ![screenshot](documentation/validation/py-home-forms.png) | No issues found |
+| home | [models.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/home/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/home/models.py) | ![screenshot](documentation/validation/py-home-models.png) | No issues found |
+| home | [tests.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/home/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/home/tests.py) | ![screenshot](documentation/validation/py-home-tests.png) | No issues found |
+| home | [urls.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/home/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/home/urls.py) | ![screenshot](documentation/validation/py-home-urls.png) | No issues found |
+| home | [views.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/home/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/home/views.py) | ![screenshot](documentation/validation/py-home-views.png) | No issues found |
+| main | [settings.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/main/settings.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/main/settings.py) | ![screenshot](documentation/validation/py-main-settings.png) | `# noqa` used for Django defaults |
+| main | [urls.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/main/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/main/urls.py) | ![screenshot](documentation/validation/py-main-urls.png) | No issues found |
+| main | [views.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/main/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/main/views.py) | ![screenshot](documentation/validation/py-main-views.png) | No issues found |
+|  | [manage.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/manage.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/manage.py) | ![screenshot](documentation/validation/py--manage.png) | No issues found |
+| morphgun | [admin.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/morphgun/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/morphgun/admin.py) | ![screenshot](documentation/validation/py-morphgun-admin.png) | No issues found |
+| morphgun | [forms.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/morphgun/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/morphgun/forms.py) | ![screenshot](documentation/validation/py-morphgun-forms.png) | No issues found |
+| morphgun | [models.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/morphgun/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/morphgun/models.py) | ![screenshot](documentation/validation/py-morphgun-models.png) | No issues found |
+| morphgun | [tests.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/morphgun/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/morphgun/tests.py) | ![screenshot](documentation/validation/py-morphgun-tests.png) | No issues found |
+| morphgun | [urls.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/morphgun/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/morphgun/urls.py) | ![screenshot](documentation/validation/py-morphgun-urls.png) | No issues found |
+| morphgun | [views.py](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/morphgun/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/LouisCE/jak-and-daxter-wiki/main/morphgun/views.py) | ![screenshot](documentation/validation/py-morphgun-views.png) | No issues found |
+
+---
+
+#### Summary
+
+- All validated Python files passed PEP8 validation.
+- No unresolved linting errors remain.
+- `# noqa` was used sparingly and only where recommended.
+- Auto-generated files were correctly excluded.
+- Validation confirms that the backend codebase is clean, readable, and production-ready.
+
 
 ---
 
