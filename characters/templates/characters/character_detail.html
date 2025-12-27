@@ -9,7 +9,9 @@
     <h1>{{ character.name }}</h1>
 
     {% if character.quote %}
-    <blockquote class="blockquote text-muted">“{{ character.quote }}”</blockquote>
+    <blockquote class="blockquote border-start border-warning ps-3 text-warning">
+        “{{ character.quote }}”
+    </blockquote>
     {% endif %}
 
     <div class="row my-4">
@@ -21,24 +23,59 @@
 
         <div class="col-md-8">
             <h4>Stats</h4>
-            <ul>
-                <li><strong>Sex:</strong> {{ character.sex }}</li>
-                <li><strong>Age:</strong> {{ character.age }}</li>
-                <li><strong>Skin:</strong> {{ character.skin }}</li>
-                <li><strong>Hair:</strong> {{ character.hair }}</li>
-                <li><strong>Eyes:</strong> {{ character.eyes }}</li>
-                <li><strong>Height:</strong> {{ character.height }}</li>
-                <li><strong>Weight:</strong> {{ character.weight }}</li>
-                <li><strong>Occupation:</strong> {{ character.occupation }}</li>
-            </ul>
+
+            <table class="table table-dark table-striped border-warning">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="text-warning">Sex</th>
+                        <td>{{ character.sex }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-warning">Age</th>
+                        <td>{{ character.age }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-warning">Skin</th>
+                        <td>{{ character.skin }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-warning">Hair</th>
+                        <td>{{ character.hair }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-warning">Eyes</th>
+                        <td>{{ character.eyes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-warning">Height</th>
+                        <td>{{ character.height }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-warning">Weight</th>
+                        <td>{{ character.weight }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-warning">Occupation</th>
+                        <td>{{ character.occupation }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <h4>Appearance</h4>
-    <p>{{ character.appearance }}</p>
+    <div class="card bg-dark border-warning mb-4">
+        <div class="card-body">
+            <h4 class="card-title text-warning">Appearance</h4>
+            <p class="card-text">{{ character.appearance }}</p>
+        </div>
+    </div>
 
-    <h4>Personality</h4>
-    <p>{{ character.personality }}</p>
+    <div class="card bg-dark border-warning mb-4">
+        <div class="card-body">
+            <h4 class="card-title text-warning">Personality</h4>
+            <p class="card-text">{{ character.personality }}</p>
+        </div>
+    </div>
 
     {% if user.is_staff %}
     <div class="mt-4">
