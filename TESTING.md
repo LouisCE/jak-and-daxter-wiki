@@ -59,11 +59,6 @@ This approach ensures accurate validation while respecting Django’s authentica
 | morphgun | update_weapon.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-update_weapon.png) | No errors found |
 | morphgun | weapon_detail.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-weapon_detail.png) | No errors found |
 | morphgun | weapon_list.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-weapon_list.png) | No errors found |
-| templates/errors | 400.html | Deployed page | ![screenshot](documentation/validation/html-templates-400.png) | No errors found |
-| templates/errors | 403.html | Deployed page | ![screenshot](documentation/validation/html-templates-403.png) | No errors found |
-| templates/errors | 404.html | Deployed page | ![screenshot](documentation/validation/html-templates-404.png) | No errors found |
-| templates/errors | 429.html | Deployed page | ![screenshot](documentation/validation/html-templates-429.png) | No errors found |
-| templates/errors | 500.html | Deployed page | ![screenshot](documentation/validation/html-templates-500.png) | No errors found |
 
 ---
 
@@ -528,3 +523,14 @@ Forgot to add URL patterns for list/detail/create/edit/delete.
 
 **Fix:**  
 Added full URL config and connected to templates.
+
+---
+
+### Known Issues
+
+| Issue | Screenshot |
+| --- | --- |
+| Custom Django error pages (400, 403, 404, 429, 500) cannot be validated directly using the W3C HTML Validator. This is because these pages intentionally return non-200 HTTP status codes, causing the validator to reject the request before validation can occur. This is a known limitation of the validator rather than an issue with the project’s HTML. | ![screenshot](documentation/issues/error-page-validation.png) |
+
+> [!IMPORTANT]  
+> There are no remaining bugs that I am currently aware of. However, despite thorough manual and automated testing, it is not possible to guarantee that all edge cases have been identified.
