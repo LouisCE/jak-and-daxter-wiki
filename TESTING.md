@@ -262,6 +262,49 @@ I tested the live deployed site to ensure layout, navigation, images, and intera
 
 Overall, the site maintains usability and visual consistency across mobile, tablet, and desktop screen sizes. Bootstrap’s grid system combined with custom CSS ensures responsive behaviour without layout breakage.
 
+---
+
+## Lighthouse Audit
+
+The **Jak and Daxter Wiki** was tested using Google Chrome’s **Lighthouse** tool on the **live deployed site**, rather than the local development environment. Testing the deployed version ensures that results accurately reflect real-world performance, accessibility, and best practices. Audits were run in **Chrome Incognito mode** to minimise the impact of browser extensions, cached assets, and user-specific data on the results.
+
+Each key page was tested on both **mobile** and **desktop** profiles. As expected, mobile scores are generally lower due to network throttling and device constraints, while desktop results score higher overall.
+
+Some warnings (such as those related to third-party resources and image loading) are outside of direct control at this stage of development.
+
+---
+
+### Lighthouse Results
+
+| Page | Mobile | Desktop |
+| --- | --- | --- |
+| Home | ![screenshot](documentation/lighthouse/mobile-home.png) | ![screenshot](documentation/lighthouse/desktop-home.png) |
+| Login | ![screenshot](documentation/lighthouse/mobile-login.png) | ![screenshot](documentation/lighthouse/desktop-login.png) |
+| Register | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-register.png) |
+| Weapon List | ![screenshot](documentation/lighthouse/mobile-weapons.png) | ![screenshot](documentation/lighthouse/desktop-weapons.png) |
+| Weapon Detail | ![screenshot](documentation/lighthouse/mobile-weapon-detail.png) | ![screenshot](documentation/lighthouse/desktop-weapon-detail.png) |
+| Character List | ![screenshot](documentation/lighthouse/mobile-character-list.png) | ![screenshot](documentation/lighthouse/desktop-character-list.png) |
+| Character Detail | ![screenshot](documentation/lighthouse/mobile-character-detail.png) | ![screenshot](documentation/lighthouse/desktop-character-detail.png) |
+| Collectables | ![screenshot](documentation/lighthouse/mobile-collectables.png) | ![screenshot](documentation/lighthouse/desktop-collectables.png) |
+| Rate Weapons | ![screenshot](documentation/lighthouse/mobile-rate-weapons.png) | ![screenshot](documentation/lighthouse/desktop-rate-weapons.png) |
+
+---
+
+### Audit Summary
+
+- **Performance**  
+  Scores are affected primarily by image-heavy content and external resources. Images are optimised where possible and served responsively.
+
+- **Accessibility**  
+  Semantic HTML, clear headings, alt text on images, and strong colour contrast contribute to consistently high accessibility scores.
+
+- **Best Practices**  
+  The site follows Django security standards, uses HTTPS in production, and avoids deprecated APIs.
+
+- **SEO**  
+  Page titles, meta structure, and crawlable content ensure good SEO compliance across the site.
+
+Overall, the Lighthouse Audit confirms that the site meets modern web standards and performs reliably across devices and screen sizes.
 
 ---
 
@@ -530,7 +573,8 @@ Added full URL config and connected to templates.
 
 | Issue | Screenshot |
 | --- | --- |
-| Custom Django error pages (400, 403, 404, 429, 500) cannot be validated directly using the W3C HTML Validator. This is because these pages intentionally return non-200 HTTP status codes, causing the validator to reject the request before validation can occur. This is a known limitation of the validator rather than an issue with the project’s HTML. | ![screenshot](documentation/issues/error-page-validation.png) |
+| Custom Django error pages (e.g. 400, 403, 404, 429, 500) cannot be validated directly using the W3C HTML Validator. This is because these pages intentionally return non-200 HTTP status codes, causing the validator to reject the request before validation can occur. This is a known limitation of the validator rather than an issue with the project’s HTML. | ![screenshot](documentation/issues/error-page-validation.png) |
+| Lighthouse SEO scores for custom error pages (e.g. 400, 403, 404, 429, 500) are lower than standard pages. This is expected behaviour, as Lighthouse cannot fully audit pages that intentionally return non-200 HTTP status codes. The reduced score reflects a limitation of the testing tool rather than an issue with the project’s SEO implementation. | ![screenshot](documentation/issues/lighthouse-404-seo.png) |
 
 > [!IMPORTANT]  
 > There are no remaining bugs that I am currently aware of. However, despite thorough manual and automated testing, it is not possible to guarantee that all edge cases have been identified.
