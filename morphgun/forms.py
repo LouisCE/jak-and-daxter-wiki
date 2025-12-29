@@ -1,6 +1,5 @@
 from django import forms
-from .models import Weapon, Colour
-from .models import WeaponRating
+from .models import Weapon, Colour, WeaponRating, MorphGunUpgrade
 
 
 class ColourForm(forms.ModelForm):
@@ -24,4 +23,20 @@ class WeaponRatingForm(forms.ModelForm):
                 choices=[(i, i) for i in range(1, 11)],
                 attrs={'class': 'form-select'}
             )
+        }
+
+
+class MorphGunUpgradeForm(forms.ModelForm):
+    class Meta:
+        model = MorphGunUpgrade
+        fields = [
+            'name',
+            'game',
+            'effect',
+            'requirement',
+            'price',
+            'weapons',
+        ]
+        widgets = {
+            'weapons': forms.CheckboxSelectMultiple(),
         }
