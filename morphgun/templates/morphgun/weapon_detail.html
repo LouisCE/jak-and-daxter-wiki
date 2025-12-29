@@ -3,28 +3,143 @@
 {% block title %}{{ weapon.name }} | Jak and Daxter Wiki{% endblock %}
 
 {% block content %}
-<h1>{{ weapon.name }}</h1>
+<div class="container mt-4">
 
-<p><strong>Colour:</strong> {{ weapon.colour.name }}</p>
-<p>{{ weapon.description }}</p>
+    <!-- Weapon Header -->
+    <div class="card bg-dark text-light shadow-sm mb-4">
+        <div class="card-body">
 
-{% if weapon.image %}
-    <img src="{{ weapon.image.url }}" alt="{{ weapon.name }}" width="300">
-{% else %}
-    <img src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
-         alt="Placeholder image" width="300">
-{% endif %}
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+                <div>
+                    <h1 class="mb-2">{{ weapon.name }}</h1>
+                    <p class="mb-1 text-warning">
+                        <strong>Colour:</strong> {{ weapon.colour.name }}
+                    </p>
+                    <p class="weapon-description mb-0 text-warning">
+                        {{ weapon.description }}
+                    </p>
+                </div>
 
-{% if user.is_staff %}
-<div class="mt-4 d-flex gap-2 justify-content-center">
-    <a href="{% url 'update_weapon' weapon.pk %}" class="btn btn-warning">
-        Edit
-    </a>
+                {% if user.is_staff %}
+                <div class="d-flex gap-2">
+                    <a href="{% url 'update_weapon' weapon.pk %}" class="btn btn-warning">
+                        Edit Weapon
+                    </a>
+                    <a href="{% url 'delete_weapon' weapon.pk %}" class="btn btn-danger">
+                        Delete Weapon
+                    </a>
+                </div>
+                {% endif %}
+            </div>
 
-    <a href="{% url 'delete_weapon' weapon.pk %}" class="btn btn-danger">
-        Delete
-    </a>
+            {% if weapon.image %}
+            <img
+                src="{{ weapon.image.url }}"
+                alt="{{ weapon.name }}"
+                class="img-fluid rounded weapon-image mt-4"
+            >
+            {% else %}
+            <img
+                src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
+                alt="Placeholder image"
+                class="img-fluid rounded weapon-image mt-4"
+            >
+            {% endif %}
+
+        </div>
+    </div>
+
+    {% if user.is_staff %}
+    <div class="mb-4 text-center">
+        <a href="{% url 'create_upgrade' %}" class="btn btn-success">
+            Add Morph Gun Upgrade
+        </a>
+    </div>
+    {% endif %}
+
+    <!-- Jak II Upgrades -->
+    {% if jak2_upgrades %}
+    <div class="card bg-dark text-light shadow-sm mb-4">
+        <div class="card-body">
+            <h2 class="mb-3 text-warning">Jak II Upgrades</h2>
+
+            <table class="table table-dark table-striped align-middle">
+                <thead>
+                    <tr class="text-warning">
+                        <th>Upgrade</th>
+                        <th>Effect</th>
+                        <th>Requirement</th>
+                        {% if user.is_staff %}
+                        <th class="text-center">Actions</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for upgrade in jak2_upgrades %}
+                    <tr>
+                        <td>{{ upgrade.name }}</td>
+                        <td>{{ upgrade.effect }}</td>
+                        <td>{{ upgrade.requirement }}</td>
+                        {% if user.is_staff %}
+                        <td class="text-center">
+                            <a href="{% url 'update_upgrade' upgrade.pk %}" class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+                            <a href="{% url 'delete_upgrade' upgrade.pk %}" class="btn btn-sm btn-danger ms-1">
+                                Delete
+                            </a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Jak 3 Upgrades -->
+    {% if jak3_upgrades %}
+    <div class="card bg-dark text-light shadow-sm mb-4">
+        <div class="card-body">
+            <h2 class="mb-3 text-warning">Jak 3 Upgrades</h2>
+
+            <table class="table table-dark table-striped align-middle">
+                <thead>
+                    <tr class="text-warning">
+                        <th>Upgrade</th>
+                        <th>Effect</th>
+                        <th>Requirement</th>
+                        <th>Price</th>
+                        {% if user.is_staff %}
+                        <th class="text-center">Actions</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for upgrade in jak3_upgrades %}
+                    <tr>
+                        <td>{{ upgrade.name }}</td>
+                        <td>{{ upgrade.effect }}</td>
+                        <td>{{ upgrade.requirement }}</td>
+                        <td>{{ upgrade.price }}</td>
+                        {% if user.is_staff %}
+                        <td class="text-center">
+                            <a href="{% url 'update_upgrade' upgrade.pk %}" class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+                            <a href="{% url 'delete_upgrade' upgrade.pk %}" class="btn btn-sm btn-danger ms-1">
+                                Delete
+                            </a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
 </div>
-{% endif %}
-
 {% endblock %}
