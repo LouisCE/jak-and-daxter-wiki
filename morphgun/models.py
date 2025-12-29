@@ -61,3 +61,37 @@ class WeaponRating(models.Model):
 
     def __str__(self):
         return f"{self.weapon.name} — {self.score}/10 by {self.user.username}"
+
+
+class MorphGunUpgrade(models.Model):
+    JAK_II = "jak2"
+    JAK_III = "jak3"
+
+    GAME_CHOICES = [
+        (JAK_II, "Jak II"),
+        (JAK_III, "Jak 3"),
+    ]
+
+    name = models.CharField(max_length=120)
+    game = models.CharField(max_length=4, choices=GAME_CHOICES)
+
+    effect = models.TextField()
+    requirement = models.CharField(max_length=255)
+
+    price = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        help_text="Jak 3 only (Precursor Orbs)",
+    )
+
+    weapons = models.ManyToManyField(
+        Weapon,
+        related_name="upgrades",
+        blank=True,
+    )
+
+    class Meta:
+        ordering = ["game", "name"]
+
+    def __str__(self):
+        return f"{self.name} ({self.get_game_display()})"
