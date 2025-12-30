@@ -120,6 +120,107 @@ def delete_weapon(request, pk):
     )
 
 
+# Morph Gun Upgrade CRUD
+@login_required
+def create_upgrade(request):
+    if not request.user.is_staff:
+        raise PermissionDenied
+
+    if request.method == 'POST':
+        form = MorphGunUpgradeForm(request.POST)
+        if form.is_valid():
+            upgrade = form.save()
+            messages.success(
+                request,
+                f"Upgrade '{upgrade.name}' created successfully!",
+            )
+
+            weapon = upgrade.weapons.first()
+            if weapon:
+                return redirect('weapon_detail', pk=weapon.pk)
+
+            return redirect('weapon_list')
+    else:
+        form = MorphGunUpgradeForm()
+
+    return render(
+        request,
+        'morphgun/upgrade_form.html',
+        {
+            'form': form,
+            'title': 'Create Upgrade',
+            'button_text': 'Create Upgrade',
+        },
+    )
+
+
+@login_required
+def update_upgrade(request, pk):
+    if not request.user.is_staff:
+        raise PermissionDenied
+
+    upgrade = get_object_or_404(MorphGunUpgrade, pk=pk)
+
+    if request.method == 'POST':
+        form = MorphGunUpgradeForm(
+            request.POST,
+            instance=upgrade,
+        )
+        if form.is_valid():
+            upgrade = form.save()
+            messages.success(
+                request,
+                f"Upgrade '{upgrade.name}' updated successfully!",
+            )
+
+            weapon = upgrade.weapons.first()
+            if weapon:
+                return redirect('weapon_detail', pk=weapon.pk)
+
+            return redirect('weapon_list')
+    else:
+        form = MorphGunUpgradeForm(instance=upgrade)
+
+    return render(
+        request,
+        'morphgun/upgrade_form.html',
+        {
+            'form': form,
+            'title': 'Edit Upgrade',
+            'button_text': 'Save Changes',
+        },
+    )
+
+
+@login_required
+def delete_upgrade(request, pk):
+    if not request.user.is_staff:
+        raise PermissionDenied
+
+    upgrade = get_object_or_404(MorphGunUpgrade, pk=pk)
+
+    if request.method == 'POST':
+        weapon = upgrade.weapons.first()
+        name = upgrade.name
+        upgrade.delete()
+
+        messages.success(
+            request,
+            f"Upgrade '{name}' deleted successfully!",
+        )
+
+        if weapon:
+            return redirect('weapon_detail', pk=weapon.pk)
+
+        return redirect('weapon_list')
+
+    return render(
+        request,
+        'morphgun/upgrade_confirm_delete.html',
+        {'upgrade': upgrade},
+    )
+
+
 # Colour CRUD
 def colour_create(request):
     if not request.user.is_staff:
