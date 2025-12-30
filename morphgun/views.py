@@ -335,6 +335,23 @@ def rate_weapons(request):
             "Your weapon ratings have been saved.",
         )
 
+        return redirect('weapon_rankings')
+
+
+    return render(
+        request,
+        'morphgun/rate_weapons.html',
+        {
+            'weapons': weapons,
+            'range': range(1, 11),
+        },
+    )
+
+
+@login_required
+def weapon_rankings(request):
+    user = request.user
+
     # User rankings
     user_ratings = (
         WeaponRating.objects
@@ -356,10 +373,8 @@ def rate_weapons(request):
 
     return render(
         request,
-        'morphgun/rate_weapons.html',
+        'morphgun/weapon_rankings.html',
         {
-            'weapons': weapons,
-            'range': range(1, 11),
             'user_ratings': user_ratings,
             'community_rankings': community_rankings,
         },
