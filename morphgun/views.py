@@ -28,10 +28,18 @@ def weapon_list(request):
 # Detail view
 def weapon_detail(request, pk):
     weapon = get_object_or_404(Weapon, pk=pk)
+
+    jak2_upgrades = weapon.upgrades.filter(game="jak2")
+    jak3_upgrades = weapon.upgrades.filter(game="jak3")
+
     return render(
         request,
         'morphgun/weapon_detail.html',
-        {'weapon': weapon},
+        {
+            'weapon': weapon,
+            'jak2_upgrades': jak2_upgrades,
+            'jak3_upgrades': jak3_upgrades,
+        },
     )
 
 
