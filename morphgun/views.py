@@ -1,16 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import user_passes_test, login_required
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
-from .models import Colour, Weapon, WeaponRating
-from .forms import WeaponForm, ColourForm
-
+from django.core.exceptions import PermissionDenied
+from .models import Colour, Weapon, WeaponRating, MorphGunUpgrade
 from django.db.models import Avg, Count, OuterRef, Subquery
-
-
-# Staff-only check
-def staff_check(user):
-    return user.is_staff
+from .forms import WeaponForm, ColourForm, MorphGunUpgradeForm
 
 
 # Weapon CRUD
@@ -42,8 +36,9 @@ def weapon_detail(request, pk):
 
 
 # Create view
-@user_passes_test(staff_check)
 def create_weapon(request):
+    if not request.user.is_staff:
+        raise PermissionDenied
     if request.method == 'POST':
         form = WeaponForm(request.POST)
         if form.is_valid():
@@ -64,8 +59,9 @@ def create_weapon(request):
 
 
 # Update view
-@user_passes_test(staff_check)
 def update_weapon(request, pk):
+    if not request.user.is_staff:
+        raise PermissionDenied
     weapon = get_object_or_404(Weapon, pk=pk)
 
     if request.method == 'POST':
@@ -95,8 +91,9 @@ def update_weapon(request, pk):
 
 
 # Delete view
-@user_passes_test(staff_check)
 def delete_weapon(request, pk):
+    if not request.user.is_staff:
+        raise PermissionDenied
     weapon = get_object_or_404(Weapon, pk=pk)
 
     if request.method == 'POST':
@@ -116,8 +113,9 @@ def delete_weapon(request, pk):
 
 
 # Colour CRUD
-@user_passes_test(staff_check)
 def colour_create(request):
+    if not request.user.is_staff:
+        raise PermissionDenied
     if request.method == 'POST':
         form = ColourForm(request.POST, request.FILES)
         if form.is_valid():
@@ -137,8 +135,9 @@ def colour_create(request):
     )
 
 
-@user_passes_test(staff_check)
 def colour_update(request, pk):
+    if not request.user.is_staff:
+        raise PermissionDenied
     colour = get_object_or_404(Colour, pk=pk)
 
     if request.method == 'POST':
@@ -167,8 +166,9 @@ def colour_update(request, pk):
     )
 
 
-@user_passes_test(staff_check)
 def colour_delete(request, pk):
+    if not request.user.is_staff:
+        raise PermissionDenied
     colour = get_object_or_404(Colour, pk=pk)
 
     if request.method == 'POST':
