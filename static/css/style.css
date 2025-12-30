@@ -259,6 +259,11 @@ footer .small-text {
     padding: 12px;
 }
 
+/* Weapon image sizing */
+.weapon-image {
+    max-width: 300px;
+}
+
 /* Collectables */
 
 /* Collectables table name styling */
