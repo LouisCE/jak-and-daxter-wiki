@@ -338,6 +338,152 @@ These features directly map to several defined user stories, particularly those 
 
 ---
 
+## Database Design
+
+### Data Model
+
+Entity Relationship Diagrams (ERDs) are used to visualise the database architecture of the **Jak and Daxter Wiki** project.
+
+The ERD for this project has been created **directly from the implemented Django models** across the `characters`, `morphgun`, and `collectables` apps to ensure the diagram accurately reflects how data is stored, related, and accessed at runtime.
+
+The data model supports:
+- Multiple content domains (Characters, Morph Gun, Collectables data).
+- Controlled CRUD access via authentication and staff permissions.
+- User-generated content (weapon ratings).
+- Clear one-to-many and many-to-one relationships without unnecessary complexity.
+
+![Entity Relationship Diagram](documentation/erd.png)
+
+---
+
+### Mermaid ERD
+
+I have used `Mermaid` to generate an interactive ERD of my project.
+
+```mermaid
+erDiagram
+
+    USER {
+        int id PK
+        string username
+        string email
+        boolean is_staff
+    }
+
+    CHARACTER {
+        int id PK
+        string name
+        string quote
+        string image
+        string sex
+        string age
+        string skin
+        string hair
+        string eyes
+        string height
+        string weight
+        string occupation
+        string appearance
+        string personality
+    }
+
+    COLLECTABLE {
+        int id PK
+        string name
+        string description
+        string image
+    }
+
+    COLOUR {
+        int id PK
+        string name
+        string description
+        string image
+    }
+
+    WEAPON {
+        int id PK
+        string name
+        string description
+        string image
+    }
+
+    UPGRADE {
+        int id PK
+        string name
+        string effect
+        string requirement
+        int price
+        string game
+    }
+
+    RATING {
+        int id PK
+        int score
+    }
+
+    COLOUR ||--o{ WEAPON : "groups"
+    WEAPON ||--o{ UPGRADE : "has"
+    USER ||--o{ RATING : "submits"
+    WEAPON ||--o{ RATING : "receives"
+```
+
+Source: [Mermaid](https://mermaid.live/edit#pako:eNq9VO9v2jAQ_Vei-wwoIBJovqUUddNYQSlo0hSpcpNLYpXYqX9sZZT_vU4glM5Um1Sp_mQ_v7t395zcFhKeIgSA4oqSXJAyZjFzzFrdTiNnu9_XizLl0NRZfHuFpBKU5Y6WKBgp0brAktD1K3rP-RoJc6i8k4pk2f5m1wpOvoRROFn-r-pZxUfNlY3SkuQ2KvHJws7yHiizwIJQYfe7QWkzkeaFsuDf52GeJLoiinJbklQVEkFYYpdYoZCckTVVm79Nnc9m08kyvJxNP2BrijIRtDpb1om5p6rzVfSJgj-m4WJ-84mCq8V1FF59xFPMMkzsD0Dgo6YCS2TqbepK0DMvnx9TH0uLwuXXm-t_VFZDMuHinZd7fu52-ba1NXBiyAXXlYzhjd8HWmtGzSvIkdRMkAPlUFTNkPq-pOqdVCc8gQnSX-aPAugYeZpCoITGDpQozGAxR2h6jEEVxq8Y6qCUiIc6887EVIT95Lxsw0wDeQFBRtbSnHSVEoWHmddSiFb8dsOSYwiyFMWEa6Yg8JqMEGzhCYKBP-4N_ZHn-a7XHw3dQQc2EHTdnusPvL43vhhceOORP-wPdx3401Th9sYjkwNTqrj4vp-6zfDdvQBGNqCD)
+
+---
+
+### ERD Explanation
+
+- **User**
+  - Represents authenticated site users.
+  - Used to control access to restricted functionality such as weapon rating.
+  - Staff users (`is_staff=True`) are permitted to create, update, and delete site content.
+
+- **Character**
+  - Stores detailed encyclopaedic information about characters from the Jak and Daxter universe.
+  - Includes descriptive fields such as appearance and personality.
+  - Displayed publicly as read-only content.
+
+- **Collectable**
+  - Represents collectible items from the game series.
+  - Managed by staff users and displayed independently within the site.
+
+- **Colour**
+  - Represents Morph Gun eco types (e.g. Red, Yellow, Blue, Dark).
+  - Acts as a parent entity for Morph Gun weapons.
+
+- **Weapon**
+  - Represents individual Morph Gun weapon modifications.
+  - Each weapon belongs to a single **Colour**, forming a one-to-many relationship.
+  - Weapons are publicly viewable, with staff-only CRUD functionality.
+
+- **Upgrade**
+  - Represents Morph Gun upgrades available in *Jak II* and *Jak 3*.
+  - Each upgrade is linked to a single weapon.
+  - Supports game-specific data such as requirements and optional pricing.
+
+- **Rating**
+  - Represents user-submitted weapon ratings (1-10).
+  - Forms a many-to-one relationship between **User** and **Weapon**.
+  - Used to calculate community averages and rankings.
+
+---
+
+### Relationship Design Rationale
+
+The database structure has been intentionally designed to remain **simple, logical, and scalable**:
+
+- One-to-many relationships are used where appropriate (Colours → Weapons, Weapons → Upgrades).
+- User-generated data (Ratings) is separated from core content to maintain data integrity.
+- No unnecessary many-to-many relationships were introduced, keeping queries efficient and models readable.
+- Staff-only content management is enforced at the view and template level rather than through database complexity.
+
+This structure fully supports the current feature set while allowing for future expansion, such as:
+- Linking characters or collectables to specific games or locations.
+- Expanding user interaction features beyond weapon ratings.
+
+---
+
 ## Agile Development Process
 
 ### GitHub Projects
