@@ -1,29 +1,70 @@
 {% extends "base.html" %}
-
 {% block title %}Register | Jak and Daxter Wiki{% endblock %}
 
 {% block content %}
-<h2>Register</h2>
+<section class="auth-bg min-vh-100 d-flex align-items-center">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
 
-<form method="POST">
-    {% csrf_token %}
+                <div class="card auth-card shadow-lg">
+                    <div class="card-body p-5">
 
-    {% for field in form %}
-        <p>
-            {{ field.label_tag }}
-            {{ field }}
-            {% if field.errors %}
-                {{ field.errors }}
-            {% endif %}
-        </p>
+                        <h2 class="text-center mb-5">
+                            Create an account
+                        </h2>
 
-        {% if field.help_text %}
-            <div class="helptext">
-                {{ field.help_text }}
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+
+                            <div class="auth-form">
+                                {% for field in form %}
+                                <div class="mb-4">
+
+                                    <!-- Label -->
+                                    <label class="form-label fw-semibold">
+                                        {{ field.label }}
+                                    </label>
+
+                                    <!-- Field -->
+                                    {{ field }}
+
+                                    <!-- Errors -->
+                                    {% if field.errors %}
+                                    {{ field.errors }}
+                                    {% endif %}
+
+                                    <!-- Help text -->
+                                    {% if field.help_text %}
+                                    <div class="mt-1 auth-help-text">
+                                        {{ field.help_text }}
+                                    </div>
+                                    {% endif %}
+
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    Register
+                                </button>
+                            </div>
+
+                            <p class="text-center mt-5 mb-0 auth-footer-text">
+                                Already have an account?
+                                <a href="{% url 'login' %}" class="auth-link fw-bold">
+                                    Log in here
+                                </a>
+                            </p>
+
+                        </form>
+
+                    </div>
+                </div>
+
             </div>
-        {% endif %}
-    {% endfor %}
-
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+        </div>
+    </div>
+</section>
 {% endblock %}

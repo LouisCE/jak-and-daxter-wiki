@@ -2,10 +2,69 @@
 {% block title %}Login | Jak and Daxter Wiki{% endblock %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+<section class="auth-bg min-vh-100 d-flex align-items-center">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+
+                <div class="card auth-card shadow-lg">
+                    <div class="card-body p-5">
+
+                        <h2 class="text-center mb-5">
+                            Log in
+                        </h2>
+
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+
+                            <div class="auth-form">
+                                {% for field in form %}
+                                <div class="mb-4">
+
+                                    <!-- Label -->
+                                    <label class="form-label fw-semibold">
+                                        {{ field.label }}
+                                    </label>
+
+                                    <!-- Field -->
+                                    {{ field }}
+
+                                    <!-- Errors -->
+                                    {% if field.errors %}
+                                    {{ field.errors }}
+                                    {% endif %}
+
+                                    <!-- Help text -->
+                                    {% if field.help_text %}
+                                    <div class="mt-1 auth-help-text">
+                                        {{ field.help_text }}
+                                    </div>
+                                    {% endif %}
+
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    Login
+                                </button>
+                            </div>
+
+                            <p class="text-center mt-5 mb-0 auth-footer-text">
+                                Don’t have an account?
+                                <a href="{% url 'register' %}" class="auth-link fw-bold">
+                                    Sign up here
+                                </a>
+                            </p>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
