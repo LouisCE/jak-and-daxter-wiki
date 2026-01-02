@@ -282,6 +282,106 @@ footer .small-text {
     letter-spacing: 0.5px;
 }
 
+/* Auth Pages (Login/Register) */
+
+/* Background image section */
+.auth-bg {
+    background-image: url("https://res.cloudinary.com/dkdvark17/image/upload/v1763854572/Jak_II_promo_mv1hs6.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Overlay */
+.auth-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+}
+
+/* Content sits above overlay */
+.auth-bg > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Auth card */
+.auth-card {
+    background-color: rgba(17, 17, 17, 0.88); /* semi-transparent */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px); /* for Safari */
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ff9f1c;
+}
+
+/* Form spacing */
+.auth-form p,
+.auth-form .mb-4 {
+    margin-bottom: 1.25rem;
+}
+
+/* Labels */
+.auth-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #ff9f1c;
+}
+
+/* Inputs */
+.auth-form input {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* Input focus */
+.auth-form input:focus {
+    outline: none;
+    border-color: #ff9f1c;
+    box-shadow: 0 0 0 0.15rem rgba(255, 159, 28, 0.35);
+}
+
+/* Django error list */
+.auth-form ul.errorlist {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.4rem;
+    color: #ff6b6b;
+    font-size: 0.9rem;
+}
+
+/* Auth page links */
+.auth-link {
+    color: #ffd166;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+/* Auth help text */
+.auth-help-text {
+    color: #ff9f1c;
+    font-size: 0.9rem;
+}
+
+/* Auth footer text */
+.auth-footer-text {
+    color: #ff9f1c;
+}
+
+.auth-footer-text .auth-link {
+    color: #ffd166;
+}
+
 /* Responsiveness adjustments */
 
 @media (max-width: 768px) {
