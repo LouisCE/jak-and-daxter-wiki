@@ -797,3 +797,71 @@ By forking the GitHub repository, you create a copy of the original project on y
 ### Local vs. Deployment
 
 There are no remaining major differences between the local version of the Jak and Daxter Wiki and the deployed version online. Both environments function the same, with identical features, structure, and behaviour.
+
+---
+
+## Credits
+
+### General Guidance
+
+The following learning resources were used as reference material and general guidance during development:
+
+- The **Code Institute LMS** and the **I Think Therefore I Blog** walkthrough project were used as a reference for setting up core Django functionality, project structure, and deployment workflows.  
+  https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FSD101_WTS+11/courseware/713441aba05441dfb3a7cf04f3268b3f/824fccecd0fe4e44871eeabcbf69d830/
+
+- The **PP4 Assessment Criteria** provided by Code Institute were used to shape the structure, scope, and documentation standards of the project.
+  https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FST_PAGPPF+2/courseware/8f9fd8690aad4776a05eaf462b430f46/995834f1924a4086af51870bf92f6516/
+
+### Content
+
+The following resources were used during the development of the **Jak and Daxter Wiki** project. Any external code, tools, frameworks, or guidance have been referenced here to ensure full transparency.
+
+| Source | Notes |
+| --- | --- |
+| [Markdown Builder](https://markdown.2bn.dev) | Used as a structural guide for README.md and TESTING.md documentation |
+| [Chris Beams](https://chris.beams.io/posts/git-commit) | Guidance on writing clear, meaningful Git commit messages |
+| [Code Institute](https://codeinstitute.net) | General project structure guidance and best practices |
+| [Bootstrap](https://getbootstrap.com) | Responsive layout, grid system, and UI components |
+| [MDBootstrap – Registration & Login Forms](https://mdbootstrap.com/docs/standard/extended/registration/#!) | Used as inspiration for the layout and structure of the `register.html` and `login.html` templates. Adapted to fit Django form rendering and project styling. |
+| [Django Documentation](https://docs.djangoproject.com) | Reference for Django models, views, templates, and settings |
+| [Cloudinary](https://cloudinary.com) | Hosting and management of image/media assets |
+| [Whitenoise](https://whitenoise.readthedocs.io) | Static file handling in production |
+| [Mermaid](https://mermaid.live) | Creation of an interactive ERD for database visualisation |
+| [Python Tutor](https://pythontutor.com) | Assistance with understanding Python logic during development |
+| [ChatGPT](https://chatgpt.com) | Help with debugging and explanations |
+
+### Media
+
+The following external sources were used for images and reference material related to the Jak and Daxter franchise:
+
+- **Official Jak and Daxter Wiki (Fandom):** Source of character images, collectibles, and general reference material.
+  https://jakanddaxter.fandom.com/
+
+- **IGN – Jak 3 Weapons:** Used as reference for weapon mod descriptions.
+  https://www.ign.com/wikis/jak-3/Weapons
+
+- **Morph Gun image references:** Sourced from the Jak and Daxter Wiki.
+  https://jakanddaxter.fandom.com/wiki/Morph_Gun
+
+- **Morph Gun upgrade references:** Used to fill weapon upgrade information.
+  https://jakanddaxter.fandom.com/wiki/Morph_Gun_upgrades
+
+### Code & Feature References
+
+The following resources were used to understand and implement grouped data display in Django templates using the `regroup` template tag, as applied in the `weapon_list.html` template.
+
+- Django documentation on the **Regroup** template tag, used for grouping data within templates.
+  https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#regroup
+
+- Example of grouping content by category (FAQs):
+  https://www.iraqikurdistanguide.com/faqs/
+
+- Regroup implementation reference from Mentor Tim’s repository:
+  https://github.com/TravelTimN/iraqikurdistanguide/blob/main/faqs/templates/faqs/faqs.html#L21
+
+### Acknowledgements
+
+I would like to acknowledge the following people and communities for their support throughout the development of this project:
+
+- I would like to thank my Code Institute mentor, **Tim Nelson** ([TravelTimN](https://www.github.com/TravelTimN)), for his guidance, patience, feedback, and support throughout the development of this project.
+- I would like to thank the **Code Institute Slack** and **Discord communities** for ongoing encouragement, advice, and moral support during challenging stages of the project.
