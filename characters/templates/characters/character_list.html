@@ -4,8 +4,22 @@
 {% block title %}Characters | Jak and Daxter Wiki{% endblock %}
 
 {% block content %}
-<div class="container my-5">
-    <h1>Characters</h1>
+<section class="py-5 bg-dark text-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold mb-3">Characters</h1>
+            <p class="lead mx-auto" style="max-width: 700px;">
+                Browse key heroes, villains, and supporting characters from the
+                <strong>Jak and Daxter</strong> trilogy, from the Precursor Legacy
+                to the final battle in Jak 3.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<div class="container py-4">
 
     {% if user.is_staff %}
     <a href="{% url 'character_create' %}" class="btn btn-success mb-3">Add Character</a>

@@ -4,9 +4,22 @@
 {% block title %}Collectables | Jak and Daxter Wiki{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-  <h1>Collectables</h1>
-  <p>All collectables from the Jak & Daxter series, displayed on one page.</p>
+<section class="py-5 bg-dark text-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold mb-3">Collectables</h1>
+            <p class="lead mx-auto" style="max-width: 700px;">
+                A complete list of collectables found across the
+                <strong>Jak and Daxter</strong> series, including Power Cells,
+                Precursor Orbs, and other iconic items.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<div class="container py-4">
 
   {% if user.is_staff %}
     <a href="{% url 'collectable_create' %}" class="btn btn-success mb-3">Add New Collectable</a>

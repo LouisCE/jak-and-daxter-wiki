@@ -1,16 +1,28 @@
 {% extends "base.html" %} {% load static %} {% block title %}Morph Gun | Jak and
-Daxter Wiki{% endblock %} {% block content %}
+Daxter Wiki{% endblock %}
 
-<div class="container my-4">
-    <h1>Morph Gun</h1>
-    <p>
-        The Morph Gun is Jak’s modular weapon system, channeling different eco types
-        into powerful weapon mods.
-    </p>
+{% block content %}
+<section class="py-5 bg-dark text-light">
+    <div class="container">
 
-    <!-- Morph Gun overview image -->
-    <img src="{% static 'images/morph-gun.jpg' %}" alt="Morph Gun" class="img-fluid my-3">
-</div>
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold mb-3">Morph Gun</h1>
+            <p class="lead mx-auto" style="max-width: 700px;">
+                The Morph Gun is Jak’s modular weapon system, evolving throughout
+                <strong>Jak II</strong> and <strong>Jak 3</strong> with new mods
+                powered by different eco types.
+            </p>
+        </div>
+
+        <div class="text-center mb-4">
+
+            <!-- Morph Gun overview image -->
+            <img src="{% static 'images/morph-gun.jpg' %}" alt="Morph Gun" class="img-fluid rounded shadow-lg"
+                loading="lazy">
+        </div>
+
+    </div>
+</section>
 
 {% if user.is_staff %}
 <div class="container mb-3">
@@ -30,71 +42,73 @@ Daxter Wiki{% endblock %} {% block content %}
 
 {% for group in weapons_by_colour %}
 <section class="container my-5 py-5">
-    <!-- Colour header -->
-    <div class="row align-items-center mb-4
-    {% if group.grouper.name == 'Red' %} border-red-custom
-    {% elif group.grouper.name == 'Yellow' %} border-yellow-custom
-    {% elif group.grouper.name == 'Blue' %} border-blue-custom
-    {% elif group.grouper.name == 'Dark' %} border-purple-custom
-    {% endif %}
-">
-        <div class="col-md-4">
-            {% if group.grouper.image %}
-            <img src="{{ group.grouper.image.url }}" alt="{{ group.grouper.name }}" class="img-fluid rounded">
-            {% endif %}
-        </div>
-        <div class="col-md-8">
-            <h2 class="
-                        {% if group.grouper.name == 'Red' %} text-danger
-                        {% elif group.grouper.name == 'Yellow' %} text-warning
-                        {% elif group.grouper.name == 'Blue' %} text-primary
-                        {% elif group.grouper.name == 'Dark' %} text-purple-custom
-                        {% endif %}
-                    ">{{ group.grouper.name }}</h2>
-            {% if group.grouper.description %}
-            <p class="text-light">{{ group.grouper.description }}</p>
-            {% endif %}
 
-            {% if user.is_staff %}
-            <div class="mt-2">
-                <a href="{% url 'colour_update' group.grouper.pk %}" class="btn btn-warning btn-sm">Edit Colour</a>
-                <a href="{% url 'colour_delete' group.grouper.pk %}" class="btn btn-danger btn-sm">Delete Colour</a>
+    <!-- Colour header -->
+    <div class="border rounded p-4 mb-4
+{% if group.grouper.name == 'Red' %} border-red-custom
+{% elif group.grouper.name == 'Yellow' %} border-yellow-custom
+{% elif group.grouper.name == 'Blue' %} border-blue-custom
+{% elif group.grouper.name == 'Dark' %} border-purple-custom
+{% endif %}
+">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                {% if group.grouper.image %}
+                <img src="{{ group.grouper.image.url }}" alt="{{ group.grouper.name }}" class="img-fluid rounded">
+                {% endif %}
             </div>
-            {% endif %}
+
+            <div class="col-md-8">
+                <h2 class="
+                {% if group.grouper.name == 'Red' %} text-danger
+                {% elif group.grouper.name == 'Yellow' %} text-warning
+                {% elif group.grouper.name == 'Blue' %} text-primary
+                {% elif group.grouper.name == 'Dark' %} text-purple-custom
+                {% endif %}
+            ">{{ group.grouper.name }}</h2>
+
+                {% if group.grouper.description %}
+                <p class="text-light">{{ group.grouper.description }}</p>
+                {% endif %}
+
+                {% if user.is_staff %}
+                <div class="mt-2">
+                    <a href="{% url 'colour_update' group.grouper.pk %}" class="btn btn-warning btn-sm">Edit Colour</a>
+                    <a href="{% url 'colour_delete' group.grouper.pk %}" class="btn btn-danger btn-sm">Delete Colour</a>
+                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 
     <!-- Weapons for this colour -->
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for weapon in group.list %}
-    <div class="col">
-        <a href="{% url 'weapon_detail' weapon.pk %}">
-            <div class="card bg-dark text-light h-100 card-hover
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for weapon in group.list %}
+        <div class="col">
+            <a href="{% url 'weapon_detail' weapon.pk %}">
+                <div class="card bg-dark text-light h-100 card-hover
                 {% if weapon.colour.name == 'Red' %} border-danger
                 {% elif weapon.colour.name == 'Yellow' %} border-warning
                 {% elif weapon.colour.name == 'Blue' %} border-primary
                 {% elif weapon.colour.name == 'Dark' %} border-purple-custom
                 {% endif %}
             ">
-                {% if weapon.image %}
-    <img src="{{ weapon.image.url }}"
-         class="card-img-top weapon-card-img"
-         alt="{{ weapon.name }}">
-{% else %}
-    <img src="{% static 'images/morph-gun.jpg' %}"
-         class="card-img-top weapon-card-img"
-         alt="Placeholder image">
-{% endif %}
+                    {% if weapon.image %}
+                    <img src="{{ weapon.image.url }}" class="card-img-top weapon-card-img" alt="{{ weapon.name }}">
+                    {% else %}
+                    <img src="{% static 'images/morph-gun.jpg' %}" class="card-img-top weapon-card-img"
+                        alt="Placeholder image">
+                    {% endif %}
 
 
-                <div class="card-body text-center">
-                    <h5 class="card-title mb-0">{{ weapon.name }}</h5>
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">{{ weapon.name }}</h5>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 
 </section>
 {% endfor %}

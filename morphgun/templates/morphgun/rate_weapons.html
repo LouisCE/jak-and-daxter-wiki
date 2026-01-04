@@ -2,12 +2,29 @@
 {% block title %}Rate Weapons | Jak and Daxter Wiki{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
+<section class="py-5 bg-dark text-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold mb-3">Rate Morph Gun Weapons</h1>
+            <p class="lead mx-auto">
+                Rate the twelve Morph Gun weapon mods from <strong>1</strong>
+                (least useful) to <strong>10</strong> (most useful).
+                Consider factors such as effectiveness against powerful enemies,
+                crowd control, versatility, and ammo efficiency.
+                It’s recommended to complete <strong>Jak II</strong> and
+                <strong>Jak 3</strong> before submitting rankings.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<div class="container py-4">
 
     <!-- Rating Form -->
     <div class="card bg-dark text-light shadow-sm mb-4">
         <div class="card-body">
-            <h1 class="mb-3">Rate Morph Gun Weapon Mods</h1>
 
             <form method="post">
                 {% csrf_token %}
