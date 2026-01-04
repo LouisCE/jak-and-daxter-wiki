@@ -213,6 +213,21 @@ Font import used in the project:
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 ```
 
+---
+
+## Wireframes
+
+Rather than producing wireframes at the very start of the project, early development prioritised back-end functionality to ensure that core features, data relationships, and user interactions functioned correctly as intended. This approach allowed the underlying logic, models, and workflows to be fully established before committing to detailed visual layouts.
+
+Once the project had matured and the primary functionality was in place, focus shifted toward front-end design. At this stage, wireframes were created for mobile, tablet, and desktop screen sizes to support UI refinement. These wireframes were used to polish layout consistency, improve navigation flow, and ensure content hierarchy translated effectively across different devices.
+
+Wireframes were designed using [Balsamiq](https://balsamiq.com/wireframes), with a focus on clarity, responsiveness, and usability for both guest users and registered users.
+
+![screenshot](documentation/wireframes/mobile-wireframes.png)
+![screenshot](documentation/wireframes/tablet-wireframes.png)
+![screenshot](documentation/wireframes/desktop-wireframes.png)
+
+During the later stages of development, the wireframes acted as a visual reference to guide front-end improvements. While some layouts evolved during implementation, the final interface closely reflects the structure and intent established in the wireframes.
 
 ---
 
