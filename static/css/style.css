@@ -5,7 +5,7 @@
 
 body {
     background-color: #1a1a1a; /* Dark background */
-    color: #ff9f1c;            /* Main orange text */
+    color: #ffffff;            /* Default white text */
     margin: 0;
     padding: 0;
     padding-top: 70px;
@@ -117,8 +117,6 @@ h1, h2, h3, h4, h5, h6,
 
 main {
     padding: 1rem 0;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 main p {
@@ -159,7 +157,7 @@ footer {
     color: #ff9f1c;
     text-align: center;
     padding: 2rem 1rem;
-    margin-top: 4rem;
+    margin-top: auto;
     border-top: 2px solid #ff9f1c;
 }
 
