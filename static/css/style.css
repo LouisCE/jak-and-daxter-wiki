@@ -382,6 +382,21 @@ footer .small-text {
     color: #ffd166;
 }
 
+/* Global site layout */
+.site-wrapper {
+    min-height: calc(100vh - 70px); /* account for fixed navbar */
+    display: flex;
+    flex-direction: column;
+}
+
+.site-wrapper main {
+    flex: 1 0 auto;
+}
+
+.site-wrapper footer {
+    flex-shrink: 0;
+}
+
 /* Responsiveness adjustments */
 
 @media (max-width: 768px) {
