@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from .models import Colour, Weapon, WeaponRating, MorphGunUpgrade
-from django.db.models import Avg, Count, OuterRef, Subquery
+from django.db.models import Avg, Count, OuterRef, Subquery, Q
 from .forms import WeaponForm, ColourForm, MorphGunUpgradeForm
 
 
@@ -360,7 +360,7 @@ def weapon_rankings(request):
         .order_by('-score')
     )
 
-    # Community rankings
+    # Community rankings with all ratings
     community_rankings = (
         Weapon.objects
         .annotate(
@@ -370,6 +370,36 @@ def weapon_rankings(request):
         .filter(rating_count__gt=0)
         .order_by('-avg_rating', '-rating_count')
     )
+
+    # Calculate rank changes for current user only
+    if user_ratings.exists():
+        # Previous ranking without user's ratings
+        previous_rankings = list(
+            Weapon.objects
+            .annotate(
+                avg_rating=Avg('ratings__score', filter=~Q(ratings__user=user)),
+                rating_count=Count('ratings', filter=~Q(ratings__user=user)),
+            )
+            .filter(rating_count__gt=0)
+            .order_by('-avg_rating', '-rating_count')
+        )
+
+        community_rankings_list = list(community_rankings)
+
+        for i, weapon in enumerate(community_rankings_list):
+            try:
+                prev_index = previous_rankings.index(weapon)
+                weapon.rank_change = prev_index - i  # positive = promoted
+                weapon.rank_change_abs = abs(prev_index - i)  # magnitude of movement
+            except ValueError:
+                weapon.rank_change = 0  # new weapon
+                weapon.rank_change_abs = 0
+
+        community_rankings = community_rankings_list
+    else:
+        for weapon in community_rankings:
+            weapon.rank_change = None
+            weapon.rank_change_abs = None
 
     return render(
         request,

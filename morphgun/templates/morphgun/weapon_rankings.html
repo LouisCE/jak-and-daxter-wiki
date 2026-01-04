@@ -53,6 +53,9 @@
     <div class="card bg-dark text-light shadow-sm">
         <div class="card-body">
             <h2 class="mb-3">Community Rankings</h2>
+            <p class="text-muted mb-2">
+                ▲ = promoted by your rating, ▼ = demoted by your rating
+            </p>
 
             {% if community_rankings %}
             <table class="table table-dark table-striped align-middle">
@@ -67,7 +70,16 @@
                 <tbody>
                     {% for weapon in community_rankings %}
                     <tr>
-                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            {{ forloop.counter }}
+                            {% if weapon.rank_change %}
+                                {% if weapon.rank_change > 0 %}
+                                    <span class="text-success fw-bold ms-2">&#9650;{{ weapon.rank_change_abs }}</span>
+                                {% elif weapon.rank_change < 0 %}
+                                    <span class="text-danger fw-bold ms-2">&#9660;{{ weapon.rank_change_abs }}</span>
+                                {% endif %}
+                            {% endif %}
+                        </td>
                         <td>{{ weapon.name }}</td>
                         <td>{{ weapon.avg_rating|floatformat:1 }}/10</td>
                         <td>{{ weapon.rating_count }}</td>
@@ -80,6 +92,5 @@
             {% endif %}
         </div>
     </div>
-
 </div>
 {% endblock %}
