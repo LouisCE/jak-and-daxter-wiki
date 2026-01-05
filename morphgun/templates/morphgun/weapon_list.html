@@ -17,8 +17,14 @@ Daxter Wiki{% endblock %}
         <div class="text-center mb-4">
 
             <!-- Morph Gun overview image -->
-            <img src="{% static 'images/morph-gun.jpg' %}" alt="Morph Gun" class="img-fluid rounded shadow-lg"
-                loading="lazy">
+            <img
+                src="{% static 'images/morph-gun.jpg' %}"
+                alt="Morph Gun"
+                class="img-fluid rounded shadow-lg"
+                width="800"
+                height="450"
+                decoding="async"
+                fetchpriority="high">
         </div>
 
     </div>
@@ -35,7 +41,6 @@ Daxter Wiki{% endblock %}
     {% endif %}
 </div>
 {% endif %}
-
 
 {% if weapons %}
 {% regroup weapons by colour as weapons_by_colour %}
@@ -54,7 +59,14 @@ Daxter Wiki{% endblock %}
         <div class="row align-items-center">
             <div class="col-md-4">
                 {% if group.grouper.image %}
-                <img src="{{ group.grouper.image.url }}" alt="{{ group.grouper.name }}" class="img-fluid rounded">
+                <img
+                    src="{{ group.grouper.image.url }}"
+                    alt="{{ group.grouper.name }}"
+                    class="img-fluid rounded"
+                    width="400"
+                    height="400"
+                    loading="lazy"
+                    decoding="async">
                 {% endif %}
             </div>
 
@@ -94,12 +106,24 @@ Daxter Wiki{% endblock %}
                 {% endif %}
             ">
                     {% if weapon.image %}
-                    <img src="{{ weapon.image.url }}" class="card-img-top weapon-card-img" alt="{{ weapon.name }}">
+                    <img
+                        src="{{ weapon.image.url }}"
+                        class="card-img-top weapon-card-img"
+                        alt="{{ weapon.name }}"
+                        width="300"
+                        height="300"
+                        loading="lazy"
+                        decoding="async">
                     {% else %}
-                    <img src="{% static 'images/morph-gun.jpg' %}" class="card-img-top weapon-card-img"
-                        alt="Placeholder image">
+                    <img
+                        src="{% static 'images/morph-gun.jpg' %}"
+                        class="card-img-top weapon-card-img"
+                        alt="Placeholder image"
+                        width="300"
+                        height="300"
+                        loading="lazy"
+                        decoding="async">
                     {% endif %}
-
 
                     <div class="card-body text-center">
                         <h5 class="card-title mb-0">{{ weapon.name }}</h5>
