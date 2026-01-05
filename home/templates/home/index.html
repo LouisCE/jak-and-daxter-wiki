@@ -10,7 +10,7 @@
         <!-- Page Hero -->
         <div class="text-center mb-5">
             <h1 class="display-4 fw-bold mb-3">Jak and Daxter Wiki</h1>
-            <p class="lead mx-auto" style="max-width: 700px;">
+            <p class="lead hero-text">
                 Explore Morph Gun mods, characters, collectables, and community rankings from the
                 <strong>Jak and Daxter</strong> trilogy.
             </p>
@@ -18,29 +18,35 @@
 
         <!-- Hero Image -->
         <div class="text-center mb-5">
-            <img src="{% static 'images/jak-and-daxter-wiki.webp' %}"
-                 class="img-fluid rounded shadow-lg"
-                 alt="Jak and Daxter Wiki banner"
-                 fetchpriority="high"
-                 width="1200"
-                 height="675">
+            <img src="{% static 'images/jak-and-daxter-wiki.webp' %}" class="img-fluid rounded shadow-lg"
+                alt="Jak and Daxter Wiki banner" fetchpriority="high" width="1200" height="675">
         </div>
 
         <!-- Overview -->
-        <div class="bg-dark rounded shadow-lg p-4 mx-auto" style="max-width: 900px;">
-            <p class="mb-3">
+        <div class="bg-dark border-start border-4 border-warning rounded-3 shadow-sm p-4 p-md-5 mx-auto hero-overview">
+            <h2 class="h4 fw-bold mb-3 text-warning">
+                Trilogy Overview
+            </h2>
+
+            <p class="mb-3 text-light">
                 This Wiki serves as an encyclopaedia for the three core
                 <strong>Jak and Daxter</strong> games:
             </p>
 
-            <ul class="mb-3 ps-3">
-                <li>Jak and Daxter: The Precursor Legacy (2001)</li>
-                <li>Jak II (2003)</li>
-                <li>Jak 3 (2004)</li>
+            <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item bg-dark text-light">
+                    Jak and Daxter: The Precursor Legacy (2001)
+                </li>
+                <li class="list-group-item bg-dark text-light">
+                    Jak II (2003)
+                </li>
+                <li class="list-group-item bg-dark text-light">
+                    Jak 3 (2004)
+                </li>
             </ul>
 
-            <p class="mb-0">
-                The series evolves from colourful platforming to gritty, story-driven action across the trilogy.
+            <p class="mb-0 text-light fst-italic">
+                The series evolves from colourful platforming to darker, story-driven action across the trilogy.
             </p>
         </div>
 
@@ -68,12 +74,8 @@
             </p>
         </div>
         <div class="col-md-6">
-            <img src="{% static 'images/jak-and-daxter-art.webp' %}"
-                 class="img-fluid rounded shadow-sm"
-                 alt="Jak and Daxter artwork"
-                 loading="lazy"
-                 width="600"
-                 height="400">
+            <img src="{% static 'images/jak-and-daxter-art.webp' %}" class="img-fluid rounded shadow-sm"
+                alt="Jak and Daxter artwork" loading="lazy" width="600" height="400">
         </div>
     </div>
 
@@ -97,12 +99,8 @@
             </p>
         </div>
         <div class="col-md-6">
-            <img src="{% static 'images/jak-ii-art.webp' %}"
-                 class="img-fluid rounded shadow-sm"
-                 alt="Jak II artwork"
-                 loading="lazy"
-                 width="600"
-                 height="400">
+            <img src="{% static 'images/jak-ii-art.webp' %}" class="img-fluid rounded shadow-sm" alt="Jak II artwork"
+                loading="lazy" width="600" height="400">
         </div>
     </div>
 
@@ -126,12 +124,8 @@
             </p>
         </div>
         <div class="col-md-6">
-            <img src="{% static 'images/jak-3-art.webp' %}"
-                 class="img-fluid rounded shadow-sm"
-                 alt="Jak 3 artwork"
-                 loading="lazy"
-                 width="600"
-                 height="400">
+            <img src="{% static 'images/jak-3-art.webp' %}" class="img-fluid rounded shadow-sm" alt="Jak 3 artwork"
+                loading="lazy" width="600" height="400">
         </div>
     </div>
 
