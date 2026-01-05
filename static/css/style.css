@@ -113,8 +113,25 @@ h1, h2, h3, h4, h5, h6,
     border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Main content */
+/* Navbar separators */
+.nav-separators .nav-item {
+    position: relative;
+    padding-right: 1.5rem; /* space for separator */
+}
 
+.nav-separators .nav-item:not(:last-child)::after {
+    content: "◆";
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff8c00;
+    font-size: 0.7rem;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Main content */
 main {
     padding: 1rem 0;
 }
