@@ -17,14 +17,8 @@ Daxter Wiki{% endblock %}
         <div class="text-center mb-4">
 
             <!-- Morph Gun overview image -->
-            <img
-                src="{% static 'images/morph-gun.jpg' %}"
-                alt="Morph Gun"
-                class="img-fluid rounded shadow-lg"
-                width="800"
-                height="450"
-                decoding="async"
-                fetchpriority="high">
+            <img src="{% static 'images/morph-gun.jpg' %}" alt="Morph Gun" class="img-fluid rounded shadow-lg"
+                width="800" height="450" decoding="async" fetchpriority="high">
         </div>
 
     </div>
@@ -56,16 +50,12 @@ Daxter Wiki{% endblock %}
     {% elif group.grouper.name == 'Dark' %} border-purple-custom
     {% endif %}
     ">
+        <!-- Colour header -->
+        <div class="row align-items-center mb-4">
             <div class="col-md-4">
                 {% if group.grouper.image %}
-                <img
-                    src="{{ group.grouper.image.url }}"
-                    alt="{{ group.grouper.name }}"
-                    class="img-fluid rounded"
-                    width="400"
-                    height="400"
-                    loading="lazy"
-                    decoding="async">
+                <img src="{{ group.grouper.image.url }}" alt="{{ group.grouper.name }}"
+                    class="img-fluid rounded" width="400" height="400" loading="lazy" decoding="async">
                 {% endif %}
             </div>
 
@@ -90,10 +80,12 @@ Daxter Wiki{% endblock %}
                 {% endif %}
             </div>
         </div>
-    </div>
 
         <!-- Weapons for this colour inside the border -->
         <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for weapon in group.list %}
+            <div class="col">
+                <a href="{% url 'weapon_detail' weapon.pk %}">
                     <div class="card bg-dark text-light h-100 card-hover
                     {% if weapon.colour.name == 'Red' %} border-red-custom
                     {% elif weapon.colour.name == 'Yellow' %} border-yellow-custom
@@ -101,6 +93,15 @@ Daxter Wiki{% endblock %}
                     {% elif weapon.colour.name == 'Dark' %} border-purple-custom
                     {% endif %}
                     ">
+                        {% if weapon.image %}
+                        <img src="{{ weapon.image.url }}" class="card-img-top weapon-card-img" alt="{{ weapon.name }}"
+                            width="300" height="300" loading="lazy" decoding="async">
+                        {% else %}
+                        <img src="{% static 'images/morph-gun.jpg' %}" class="card-img-top weapon-card-img"
+                            alt="Placeholder image" width="300" height="300" loading="lazy" decoding="async">
+                        {% endif %}
+
+                        <div class="card-body text-center">
                             <h3 class="card-title mb-0
                             {% if weapon.colour.name == 'Red' %} text-red-custom
                             {% elif weapon.colour.name == 'Yellow' %} text-yellow-custom
@@ -110,6 +111,13 @@ Daxter Wiki{% endblock %}
                             ">
                                 {{ weapon.name }}
                             </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
     </div>
 
 </section>
