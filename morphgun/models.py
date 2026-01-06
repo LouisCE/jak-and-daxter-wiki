@@ -13,9 +13,12 @@ class Colour(models.Model):
         default="v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
     )
 
+    order = models.PositiveIntegerField(default=0)
+
     class Meta:
         verbose_name = 'Colour'
         verbose_name_plural = 'Colours'
+        ordering = ['order']
 
     def __str__(self):
         return self.name
