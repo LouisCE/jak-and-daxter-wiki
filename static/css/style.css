@@ -248,32 +248,44 @@ footer .small-text {
 
 /* Full borders for eco colours */
 .border-red-custom {
-    border: 2px solid #dc3545 !important; /* Bootstrap red */
+    border: 2px solid #ff0000 !important; /* Red */
+}
+
+.text-red-custom {
+    color: #ff0000 !important;
 }
 
 .border-yellow-custom {
-    border: 2px solid #ffc107 !important; /* Bootstrap yellow */
+    border: 2px solid #ffff00 !important; /* Yellow */
+}
+
+.text-yellow-custom {
+    color: #ffff00 !important;
 }
 
 .border-blue-custom {
-    border: 2px solid #0d6efd !important; /* Bootstrap blue */
+    border: 2px solid #00ffff !important; /* Cyan instead of blue for accessibility */
+}
+
+.text-blue-custom {
+    color: #00ffff !important;
 }
 
 .bg-purple-custom {
-    background-color: #6f42c1 !important; /* Bootstrap purple */
+    background-color: #ff00ff !important; /* Magenta instead of purple for accessibility*/
     color: #fff !important;
 }
 
 .border-purple-custom {
-    border: 2px solid #6f42c1 !important;
+    border: 2px solid #ff00ff !important;
 }
 
 .border-purple {
-    border: 2px solid #6f42c1 !important;
+    border: 2px solid #ff00ff !important;
 }
 
 .text-purple-custom {
-    color: #6f42c1 !important;
+    color: #ff00ff !important;
 }
 
 .weapon-card-img {

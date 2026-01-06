@@ -61,12 +61,12 @@ Daxter Wiki{% endblock %}
 
             <div class="col-md-8">
                 <h2 class="
-                {% if group.grouper.name == 'Red' %} text-danger
-                {% elif group.grouper.name == 'Yellow' %} text-warning
-                {% elif group.grouper.name == 'Blue' %} text-primary
+                {% if group.grouper.name == 'Red' %} text-red-custom
+                {% elif group.grouper.name == 'Yellow' %} text-yellow-custom
+                {% elif group.grouper.name == 'Blue' %} text-blue-custom
                 {% elif group.grouper.name == 'Dark' %} text-purple-custom
                 {% endif %}
-            ">{{ group.grouper.name }}</h2>
+                ">{{ group.grouper.name }}</h2>
 
                 {% if group.grouper.description %}
                 <p class="text-light">{{ group.grouper.description }}</p>

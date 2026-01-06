@@ -11,7 +11,15 @@
 
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
                 <div>
-                    <h1 class="mb-2 text-warning">{{ weapon.name }}</h1>
+                    <h1 class="mb-2
+{% if weapon.colour.name == 'Red' %} text-red-custom
+{% elif weapon.colour.name == 'Yellow' %} text-yellow-custom
+{% elif weapon.colour.name == 'Blue' %} text-blue-custom
+{% elif weapon.colour.name == 'Dark' %} text-purple-custom
+{% endif %}
+">
+                        {{ weapon.name }}
+                    </h1>
                     <p class="mb-1">
                         <strong>Colour:</strong> {{ weapon.colour.name }}
                     </p>
@@ -33,17 +41,10 @@
             </div>
 
             {% if weapon.image %}
-            <img
-                src="{{ weapon.image.url }}"
-                alt="{{ weapon.name }}"
-                class="img-fluid rounded weapon-image mt-4"
-            >
+            <img src="{{ weapon.image.url }}" alt="{{ weapon.name }}" class="img-fluid rounded weapon-image mt-4">
             {% else %}
-            <img
-                src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
-                alt="Placeholder image"
-                class="img-fluid rounded weapon-image mt-4"
-            >
+            <img src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
+                alt="Placeholder image" class="img-fluid rounded weapon-image mt-4">
             {% endif %}
 
         </div>
@@ -61,7 +62,15 @@
     {% if jak2_upgrades %}
     <div class="card bg-dark text-light shadow-sm mb-4">
         <div class="card-body">
-            <h2 class="mb-3 text-warning">Jak II Upgrades</h2>
+            <h2 class="mb-3
+{% if weapon.colour.name == 'Red' %} text-red-custom
+{% elif weapon.colour.name == 'Yellow' %} text-yellow-custom
+{% elif weapon.colour.name == 'Blue' %} text-blue-custom
+{% elif weapon.colour.name == 'Dark' %} text-purple-custom
+{% endif %}
+">
+                Jak II Upgrades
+            </h2>
 
             <table class="table table-dark table-striped align-middle">
                 <thead>
@@ -102,7 +111,15 @@
     {% if jak3_upgrades %}
     <div class="card bg-dark text-light shadow-sm mb-4">
         <div class="card-body">
-            <h2 class="mb-3 text-warning">Jak 3 Upgrades</h2>
+            <h2 class="mb-3
+{% if weapon.colour.name == 'Red' %} text-red-custom
+{% elif weapon.colour.name == 'Yellow' %} text-yellow-custom
+{% elif weapon.colour.name == 'Blue' %} text-blue-custom
+{% elif weapon.colour.name == 'Dark' %} text-purple-custom
+{% endif %}
+">
+                Jak 3 Upgrades
+            </h2>
 
             <table class="table table-dark table-striped align-middle">
                 <thead>
