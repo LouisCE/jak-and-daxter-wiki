@@ -5,7 +5,13 @@ from .models import Weapon, Colour, WeaponRating, MorphGunUpgrade
 class ColourForm(forms.ModelForm):
     class Meta:
         model = Colour
-        fields = ["name", "description", "image"]
+        fields = ["name", "description", "image", "order"]
+        labels = {
+            "order": "Display order",
+        }
+        help_texts = {
+            "order": "Lower numbers appear first (e.g. 0 = top)",
+        }
 
 
 class WeaponForm(forms.ModelForm):

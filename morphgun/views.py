@@ -11,7 +11,11 @@ from .forms import WeaponForm, ColourForm, MorphGunUpgradeForm
 
 # List view
 def weapon_list(request):
-    weapons = Weapon.objects.select_related('colour')
+    weapons = (
+        Weapon.objects
+        .select_related('colour')
+        .order_by('colour__order', 'order')
+    )
     colours = Colour.objects.all()
 
     return render(
