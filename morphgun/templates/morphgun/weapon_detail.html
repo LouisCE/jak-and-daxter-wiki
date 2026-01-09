@@ -30,7 +30,7 @@
 
                 {% if user.is_staff %}
                 <div class="d-flex gap-2">
-                    <a href="{% url 'update_weapon' weapon.pk %}" class="btn btn-warning">
+                    <a href="{% url 'update_weapon' weapon.pk %}" class="btn btn-warning text-dark">
                         Edit Weapon
                     </a>
                     <a href="{% url 'delete_weapon' weapon.pk %}" class="btn btn-danger">
@@ -91,7 +91,7 @@
                         <td>{{ upgrade.requirement }}</td>
                         {% if user.is_staff %}
                         <td class="text-center">
-                            <a href="{% url 'update_upgrade' upgrade.pk %}" class="btn btn-sm btn-warning">
+                            <a href="{% url 'update_upgrade' upgrade.pk %}" class="btn btn-sm btn-warning text-dark">
                                 Edit
                             </a>
                             <a href="{% url 'delete_upgrade' upgrade.pk %}" class="btn btn-sm btn-danger ms-1">
@@ -142,7 +142,7 @@
                         <td>{{ upgrade.price }}</td>
                         {% if user.is_staff %}
                         <td class="text-center">
-                            <a href="{% url 'update_upgrade' upgrade.pk %}" class="btn btn-sm btn-warning">
+                            <a href="{% url 'update_upgrade' upgrade.pk %}" class="btn btn-sm btn-warning text-dark">
                                 Edit
                             </a>
                             <a href="{% url 'delete_upgrade' upgrade.pk %}" class="btn btn-sm btn-danger ms-1">
