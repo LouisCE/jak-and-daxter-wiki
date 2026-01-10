@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import user_passes_test
 from .models import Collectable
 from .forms import CollectableForm
 from django.core.exceptions import PermissionDenied
+from django.contrib import messages
 
 
 def staff_check(user):
@@ -21,7 +22,8 @@ def collectable_create(request):
     if request.method == 'POST':
         form = CollectableForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            item = form.save()
+            messages.success(request, f'Collectable "{item.name}" created successfully.')
             return redirect('collectable_list')
     else:
         form = CollectableForm()
@@ -35,6 +37,7 @@ def collectable_update(request, pk):
         form = CollectableForm(request.POST, request.FILES, instance=item)
         if form.is_valid():
             form.save()
+            messages.success(request, f'Collectable "{item.name}" updated successfully.')
             return redirect('collectable_list')
     else:
         form = CollectableForm(instance=item)
@@ -46,5 +49,6 @@ def collectable_delete(request, pk):
     item = get_object_or_404(Collectable, pk=pk)
     if request.method == 'POST':
         item.delete()
+        messages.success(request, f'Collectable "{item.name}" deleted successfully.')
         return redirect('collectable_list')
     return render(request, 'collectables/collectable_confirm_delete.html', {'item': item})
