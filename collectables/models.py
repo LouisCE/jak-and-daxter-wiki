@@ -4,9 +4,9 @@ from cloudinary.models import CloudinaryField
 
 class Collectable(models.Model):
 
-    name = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
-    image = CloudinaryField("image", default="placeholder", blank=True)
+    name = models.CharField(max_length=20, blank=False)
+    description = models.TextField(blank=False)
+    image = CloudinaryField("image", default="placeholder", blank=False)
 
     # Custom ordering
     order = models.PositiveIntegerField(default=0)
