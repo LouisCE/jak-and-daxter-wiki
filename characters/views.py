@@ -9,6 +9,7 @@ from django.views.generic import (
 )
 from .models import Character
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
 
 
 class CharacterList(ListView):
@@ -31,6 +32,11 @@ class CharacterCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     def test_func(self):
         return self.request.user.is_staff
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, f'Character "{self.object.name}" created successfully.')
+        return response
+
 
 class CharacterUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Character
@@ -41,6 +47,10 @@ class CharacterUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         return self.request.user.is_staff
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, f'Character "{self.object.name}" updated successfully.')
+        return response
 
 class CharacterDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Character
@@ -49,3 +59,8 @@ class CharacterDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.is_staff
+
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        messages.success(request, f'Character "{obj.name}" deleted successfully.')
+        return super().delete(request, *args, **kwargs)
