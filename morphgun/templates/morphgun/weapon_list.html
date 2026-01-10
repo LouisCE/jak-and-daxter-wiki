@@ -1,5 +1,9 @@
-{% extends "base.html" %} {% load static %} {% block title %}Morph Gun | Jak and
-Daxter Wiki{% endblock %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Morph Gun | Jak and Daxter Wiki
+{% endblock %}
 
 {% block content %}
 <section class="py-5 bg-dark text-light">
@@ -14,17 +18,15 @@ Daxter Wiki{% endblock %}
             </p>
         </div>
 
-        <div class="text-center mb-4">
-
-            <!-- Morph Gun overview image -->
-            <div class="row justify-content-center mb-4">
-                <div class="col-12 col-sm-9 col-md-7 col-lg-5 col-xl-4 text-center">
-                    <img src="{% static 'images/morph-gun.jpg' %}" class="img-fluid rounded shadow-lg mx-auto d-block"
-                        alt="Morph Gun" decoding="async" fetchpriority="high">
-                </div>
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-sm-9 col-md-7 col-lg-5 col-xl-4 text-center">
+                <!-- Morph Gun overview image -->
+                <img src="{% static 'images/morph-gun.jpg' %}" class="img-fluid rounded shadow-lg mx-auto d-block"
+                    alt="Morph Gun" decoding="async" fetchpriority="high">
             </div>
-
         </div>
+
+    </div>
 </section>
 
 {% if user.is_staff %}
@@ -33,26 +35,21 @@ Daxter Wiki{% endblock %}
         Add New Weapon
     </a>
 
-    {% if user.is_staff %}
     <a href="{% url 'colour_create' %}" class="btn btn-info ms-2">Add Eco Colour</a>
-    {% endif %}
 </div>
 {% endif %}
 
-{% if weapons %}
-{% regroup weapons by colour as weapons_by_colour %}
-
+{% if weapons_by_colour %}
 {% for group in weapons_by_colour %}
 <section class="container my-5 py-5">
 
-    <!-- Colour section wrapper -->
     <div class="border rounded p-4
     {% if group.grouper.name == 'Red' %} border-red-custom
     {% elif group.grouper.name == 'Yellow' %} border-yellow-custom
     {% elif group.grouper.name == 'Blue' %} border-blue-custom
     {% elif group.grouper.name == 'Dark' %} border-purple-custom
-    {% endif %}
-    ">
+    {% endif %}">
+
         <!-- Colour header -->
         <div class="row align-items-center mb-4">
             <div class="col-md-4">
@@ -68,8 +65,9 @@ Daxter Wiki{% endblock %}
                 {% elif group.grouper.name == 'Yellow' %} text-yellow-custom
                 {% elif group.grouper.name == 'Blue' %} text-blue-custom
                 {% elif group.grouper.name == 'Dark' %} text-purple-custom
-                {% endif %}
-                ">{{ group.grouper.name }}</h2>
+                {% endif %}">
+                    {{ group.grouper.name }}
+                </h2>
 
                 {% if group.grouper.description %}
                 <p class="text-light">{{ group.grouper.description }}</p>
@@ -84,18 +82,18 @@ Daxter Wiki{% endblock %}
             </div>
         </div>
 
-        <!-- Weapons for this colour inside the border -->
+        <!-- Weapons for this colour -->
+        {% if group.list %}
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for weapon in group.list %}
             <div class="col">
-                <a href="{% url 'weapon_detail' weapon.pk %}">
+                <a href="{% url 'weapon_detail' weapon.pk %}" class="text-decoration-none text-reset">
                     <div class="card bg-dark text-light h-100 card-hover
                     {% if weapon.colour.name == 'Red' %} border-red-custom
                     {% elif weapon.colour.name == 'Yellow' %} border-yellow-custom
                     {% elif weapon.colour.name == 'Blue' %} border-blue-custom
                     {% elif weapon.colour.name == 'Dark' %} border-purple-custom
-                    {% endif %}
-                    ">
+                    {% endif %}">
                         {% if weapon.image %}
                         <img src="{{ weapon.image.url }}" class="card-img-top weapon-card-img" alt="{{ weapon.name }}"
                             width="300" height="300" loading="lazy" decoding="async">
@@ -110,8 +108,7 @@ Daxter Wiki{% endblock %}
                             {% elif weapon.colour.name == 'Yellow' %} text-yellow-custom
                             {% elif weapon.colour.name == 'Blue' %} text-blue-custom
                             {% elif weapon.colour.name == 'Dark' %} text-purple-custom
-                            {% endif %}
-                            ">
+                            {% endif %}">
                                 {{ weapon.name }}
                             </h3>
                         </div>
@@ -120,14 +117,21 @@ Daxter Wiki{% endblock %}
             </div>
             {% endfor %}
         </div>
+        {% else %}
+        <div class="alert alert-secondary mt-3">
+            <strong>No weapons yet for this eco colour.</strong>
+            <br>
+            Admins can add weapon mods using the "Add New Weapon" button above.
+        </div>
+        {% endif %}
 
     </div>
 
 </section>
 {% endfor %}
 {% else %}
-<div class="container">
-    <p>No weapons yet.</p>
+<div class="container my-5">
+    <p>No eco colours yet.</p>
 </div>
 {% endif %}
 {% endblock %}

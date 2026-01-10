@@ -11,19 +11,23 @@ from .forms import WeaponForm, ColourForm, MorphGunUpgradeForm
 
 # List view
 def weapon_list(request):
-    weapons = (
-        Weapon.objects
-        .select_related('colour')
-        .order_by('colour__order', 'order')
-    )
-    colours = Colour.objects.all()
+    # Create a mapping of colours to their weapons
+    colours = Colour.objects.prefetch_related('weapons').all()
+
+    # Create a list of groups similar to regroup output
+    weapons_by_colour = []
+    for colour in colours:
+        weapons_by_colour.append({
+            'grouper': colour,
+            'list': colour.weapons.all(),
+        })
 
     return render(
         request,
         'morphgun/weapon_list.html',
         {
-            'weapons': weapons,
-            'colours': colours,
+            'weapons_by_colour': weapons_by_colour,
+            'user': request.user,  # keep access to user in template
         }
     )
 
