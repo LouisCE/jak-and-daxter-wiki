@@ -233,6 +233,67 @@ Only files that were created or directly modified as part of the project were va
 
 ---
 
+## Accessibility
+
+The **WAVE Web Accessibility Evaluation Tool** was used to assess the accessibility of the **Jak and Daxter Wiki** project. WAVE was run using the following URL:
+
+- [WAVE Web Accessibility Evaluation Tools](https://wave.webaim.org/report#/https://jak-and-daxter-wiki-420eda56706b.herokuapp.com)
+
+### Summary
+
+- **No Errors**
+- **No Contrast Errors**
+
+During early testing, WAVE identified a **contrast error** on the Weapon List page. This was caused by the original deep purple eco colour having insufficient contrast against the dark background.
+
+To resolve this, custom CSS was implemented to adjust eco colours and **purple** was changed to **magenta** for greater contrast.
+
+Although WAVE did not flag the other eco colours as contrast errors, I thought the **blue** styling was quite low contrast as well, so I changed it to **cyan**.
+
+**Red** and **yellow** already had good accessibility but I decided to brighten those shades as well to improve contrast ratios for extra pop against the dark background and to unify the eco-charged aesthetic.
+
+These changes significantly improved accessibility while maintaining the visual identity of the project.
+
+### Alerts
+
+WAVE reports a small number of **alerts**, including:
+
+- **Redundant links**
+  WAVE reports some redundant link alerts where adjacent navigation links point to the same destination.
+  
+  This alert occurs in the main navigation where multiple adjacent links resolve to the same destination.
+  
+  Examples include navigation links where adjacent items resolve to the same destination, such as the **Home** link and the **Weapon Overview** dropdown item both pointing to pages that are already linked elsewhere in the main navigation.
+
+  These alerts do not prevent navigation or interaction, but may result in minor repetition for keyboard and screen reader users. The structure was intentionally retained to maintain clear navigation and consistent user experience across devices.
+
+  As these alerts do not introduce accessibility barriers or functional issues, they were considered acceptable within the scope of the project.
+
+- **Skipped heading levels**
+  These occur intentionally to maintain consistent heading structures across pages that share common layouts and templates.
+
+These alerts are considered **minor** and **non-critical**, and they do not impact the usability or functionality of the website.
+
+---
+
+### WAVE Results by Page
+
+| Page | Screenshot | Notes |
+|-----|------------|-------|
+| Home | ![screenshot](documentation/accessibility/wave-index.png) | No errors or contrast errors |
+| Character List | ![screenshot](documentation/accessibility/wave-character-list.png) | No errors or contrast errors |
+| Character Detail | ![screenshot](documentation/accessibility/wave-character-detail.png) | No errors or contrast errors |
+| Weapon List | ![screenshot](documentation/accessibility/wave-weapon-list.png) | No errors or contrast errors; initial contrast issue resolved with CSS |
+| Weapon Detail | ![screenshot](documentation/accessibility/wave-weapon-detail.png) | No errors or contrast errors; initial contrast issue resolved with CSS |
+| Collectable List | ![screenshot](documentation/accessibility/wave-collectable-list.png) | No errors or contrast errors |
+| Login | ![screenshot](documentation/accessibility/wave-login.png) | No errors or contrast errors |
+| Register | ![screenshot](documentation/accessibility/wave-register.png) | No errors or contrast errors |
+| 404 | ![screenshot](documentation/accessibility/wave-404.png) | No errors or contrast errors |
+
+Overall, the **Jak and Daxter Wiki** meets accessibility expectations, with all critical issues addressed and only minor, non-blocking alerts remaining.
+
+---
+
 ## Responsiveness
 
 This section documents responsiveness testing carried out on the **deployed** version of the Jak and Daxter Wiki project. Testing was completed using built-in device presets within browser Developer Tools to ensure accurate rendering across common screen sizes.
