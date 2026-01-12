@@ -372,8 +372,6 @@ The **Jak and Daxter Wiki** was tested using Google Chrome’s **Lighthouse** to
 
 Each key page was tested on both **mobile** and **desktop** profiles. As expected, mobile scores are generally lower due to network throttling and device constraints, while desktop results score higher overall.
 
-Some warnings (such as those related to third-party resources and image loading) are outside of direct control at this stage of development.
-
 ---
 
 ### Lighthouse Results
@@ -381,14 +379,15 @@ Some warnings (such as those related to third-party resources and image loading)
 | Page | Mobile | Desktop |
 | --- | --- | --- |
 | Home | ![screenshot](documentation/lighthouse/mobile-home.png) | ![screenshot](documentation/lighthouse/desktop-home.png) |
-| Login | ![screenshot](documentation/lighthouse/mobile-login.png) | ![screenshot](documentation/lighthouse/desktop-login.png) |
-| Register | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-register.png) |
-| Weapon List | ![screenshot](documentation/lighthouse/mobile-weapons.png) | ![screenshot](documentation/lighthouse/desktop-weapons.png) |
-| Weapon Detail | ![screenshot](documentation/lighthouse/mobile-weapon-detail.png) | ![screenshot](documentation/lighthouse/desktop-weapon-detail.png) |
 | Character List | ![screenshot](documentation/lighthouse/mobile-character-list.png) | ![screenshot](documentation/lighthouse/desktop-character-list.png) |
 | Character Detail | ![screenshot](documentation/lighthouse/mobile-character-detail.png) | ![screenshot](documentation/lighthouse/desktop-character-detail.png) |
-| Collectables | ![screenshot](documentation/lighthouse/mobile-collectables.png) | ![screenshot](documentation/lighthouse/desktop-collectables.png) |
+| Weapon List | ![screenshot](documentation/lighthouse/mobile-weapon-list.png) | ![screenshot](documentation/lighthouse/desktop-weapon-list.png) |
+| Weapon Detail | ![screenshot](documentation/lighthouse/mobile-weapon-detail.png) | ![screenshot](documentation/lighthouse/desktop-weapon-detail.png) |
 | Rate Weapons | ![screenshot](documentation/lighthouse/mobile-rate-weapons.png) | ![screenshot](documentation/lighthouse/desktop-rate-weapons.png) |
+| Weapon Rankings | ![screenshot](documentation/lighthouse/mobile-weapon-rankings.png) | ![screenshot](documentation/lighthouse/desktop-weapon-rankings.png) |
+| Collectable List | ![screenshot](documentation/lighthouse/mobile-collectable-list.png) | ![screenshot](documentation/lighthouse/desktop-collectable-list.png) |
+| Login | ![screenshot](documentation/lighthouse/mobile-login.png) | ![screenshot](documentation/lighthouse/desktop-login.png) |
+| Register | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-register.png) |
 
 ---
 
@@ -406,7 +405,7 @@ Some warnings (such as those related to third-party resources and image loading)
 - **SEO**  
   Page titles, meta structure, and crawlable content ensure good SEO compliance across the site.
 
-Overall, the Lighthouse Audit confirms that the site meets modern web standards and performs reliably across devices and screen sizes.
+Overall, the Lighthouse Audit confirms that the site meets modern web standards and performs reliably across devices and screen sizes with all categories scoring equal to or above 90.
 
 ---
 
