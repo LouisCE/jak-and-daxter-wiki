@@ -326,6 +326,46 @@ Overall, the site maintains usability and visual consistency across mobile, tabl
 
 ---
 
+## Browser Compatibility
+
+The **Jak and Daxter Wiki** was tested on multiple modern web browsers to ensure consistent appearance, functionality, and user experience across different platforms. All testing was carried out on the **live deployed site** rather than the local development environment.
+
+The following browsers were selected as they are commonly used and readily available on the development system:
+
+- Google Chrome
+- Microsoft Edge
+- Mozilla Firefox
+
+![screenshot](documentation/browsers/chrome-edge-firefox.png)
+
+Screenshots were captured during testing to demonstrate that each page loads and functions correctly in each browser.
+
+---
+
+### Tested Pages
+
+| Page | Chrome | Edge | Firefox | Notes |
+| --- | --- | --- | --- | --- |
+| Home | ![screenshot](documentation/browsers/chrome-home.png) | ![screenshot](documentation/browsers/edge-home.png) | ![screenshot](documentation/browsers/firefox-home.png) | Renders correctly and functions as expected |
+| Character List | ![screenshot](documentation/browsers/chrome-character-list.png) | ![screenshot](documentation/browsers/edge-character-list.png) | ![screenshot](documentation/browsers/firefox-character-list.png) | Layout and navigation behave as expected |
+| Character Detail | ![screenshot](documentation/browsers/chrome-character-detail.png) | ![screenshot](documentation/browsers/edge-character-detail.png) | ![screenshot](documentation/browsers/firefox-character-detail.png) | Content and styling consistent across browsers |
+| Weapon List | ![screenshot](documentation/browsers/chrome-weapon-list.png) | ![screenshot](documentation/browsers/edge-weapon-list.png) | ![screenshot](documentation/browsers/firefox-weapon-list.png) | Cards and layout display consistently |
+| Weapon Detail | ![screenshot](documentation/browsers/chrome-weapon-detail.png) | ![screenshot](documentation/browsers/edge-weapon-detail.png) | ![screenshot](documentation/browsers/firefox-weapon-detail.png) | Images and text render correctly |
+| Rate Weapons | ![screenshot](documentation/browsers/chrome-rate-weapons.png) | ![screenshot](documentation/browsers/edge-rate-weapons.png) | ![screenshot](documentation/browsers/firefox-rate-weapons.png) | Rating table renders correctly |
+| Weapon Rankings | ![screenshot](documentation/browsers/chrome-weapon-rankings.png) | ![screenshot](documentation/browsers/edge-weapon-rankings.png) | ![screenshot](documentation/browsers/firefox-weapon-rankings.png) | User and community ranking tables render correctly |
+| Collectable List | ![screenshot](documentation/browsers/chrome-collectable-list.png) | ![screenshot](documentation/browsers/edge-collectable-list.png) | ![screenshot](documentation/browsers/firefox-collectable-list.png) | Images and text render correctly |
+| Login | ![screenshot](documentation/browsers/chrome-login.png) | ![screenshot](documentation/browsers/edge-login.png) | ![screenshot](documentation/browsers/firefox-login.png) | Authentication form works correctly |
+| Register | ![screenshot](documentation/browsers/chrome-register.png) | ![screenshot](documentation/browsers/edge-register.png) | ![screenshot](documentation/browsers/firefox-register.png) | Form validation and help text display correctly |
+| 404 Error Page | ![screenshot](documentation/browsers/chrome-404.png) | ![screenshot](documentation/browsers/edge-404.png) | ![screenshot](documentation/browsers/firefox-404.png) | Custom error page displays correctly |
+
+---
+
+### Summary
+
+No browser-specific issues were identified during testing. The application behaves consistently across all tested browsers, with no visual layout problems or functional discrepancies observed.
+
+---
+
 ## Lighthouse Audit
 
 The **Jak and Daxter Wiki** was tested using Google Chrome’s **Lighthouse** tool on the **live deployed site**, rather than the local development environment. Testing the deployed version ensures that results accurately reflect real-world performance, accessibility, and best practices. Audits were run in **Chrome Incognito mode** to minimise the impact of browser extensions, cached assets, and user-specific data on the results.
