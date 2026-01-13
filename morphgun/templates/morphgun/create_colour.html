@@ -9,8 +9,8 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-    <button type="submit" class="btn btn-success">Create Colour</button>
+    <button type="submit" class="btn btn-success">Create</button>
 </form>
 
-<a href="{% url 'weapon_list' %}" class="btn btn-secondary mt-3">Back</a>
+<a href="{% url 'weapon_list' %}" class="btn btn-secondary mt-3">Cancel</a>
 {% endblock %}
