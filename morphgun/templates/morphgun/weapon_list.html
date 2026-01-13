@@ -120,9 +120,11 @@ Morph Gun | Jak and Daxter Wiki
         {% else %}
         <div class="alert alert-secondary mt-3">
             <strong>No weapons yet for this eco colour.</strong>
-            <br>
-            Admins can add weapon mods using the "Add New Weapon" button above.
-        </div>
+            {% if user.is_staff %}
+                <br>
+                Admins can add weapon mods using the "Add New Weapon" button above.
+            {% endif %}
+            </div>
         {% endif %}
 
     </div>
