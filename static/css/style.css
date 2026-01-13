@@ -301,6 +301,25 @@ footer .small-text {
     max-width: 300px;
 }
 
+/* Beach Ball Loader */
+.beachball-spinner {
+  width: 1.25rem; /* size of the spinner */
+  height: 1.25rem;
+  border-radius: 50%;
+  background: conic-gradient(
+    red 0% 25%,
+    yellow 25% 50%,
+    cyan 50% 75%,
+    magenta 75% 100%
+  );
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* Collectables */
 
 /* Collectables table name styling */
