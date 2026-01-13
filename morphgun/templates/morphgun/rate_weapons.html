@@ -26,7 +26,7 @@
     <div class="card bg-dark text-light shadow-sm mb-4">
         <div class="card-body">
 
-            <form method="post">
+            <form method="post" id="rating-form">
                 {% csrf_token %}
 
                 <table class="table table-dark table-striped align-middle">
@@ -41,17 +41,10 @@
                         <tr>
                             <td>{{ weapon.name }}</td>
                             <td>
-                                <select
-                                    name="weapon_{{ weapon.id }}"
-                                    class="form-select"
-                                    required
-                                >
+                                <select name="weapon_{{ weapon.id }}" class="form-select" required>
                                     <option value="">—</option>
                                     {% for i in range %}
-                                    <option
-                                        value="{{ i }}"
-                                        {% if weapon.user_score == i %}selected{% endif %}
-                                    >
+                                    <option value="{{ i }}" {% if weapon.user_score == i %}selected{% endif %}>
                                         {{ i }}
                                     </option>
                                     {% endfor %}
@@ -62,9 +55,17 @@
                     </tbody>
                 </table>
 
-                <button type="submit" class="btn btn-primary">
-                    Save Ratings
-                </button>
+                <div class="d-flex align-items-center gap-3">
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                        Save Ratings
+                    </button>
+
+                    <!-- Loader -->
+                    <div id="loading" class="d-none d-flex align-items-center gap-2" aria-live="polite">
+                        <div class="beachball-spinner"></div>
+                        Updating Averages...
+                    </div>
+                </div>
             </form>
         </div>
     </div>
