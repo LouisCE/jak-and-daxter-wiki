@@ -208,7 +208,7 @@ footer .small-text {
 /* Dark card consistency */
 .card.bg-dark {
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #ff9f1c;
+    color: #ffffff;
 }
 
 /* Image handling inside cards */
@@ -272,7 +272,7 @@ footer .small-text {
 }
 
 .bg-purple-custom {
-    background-color: #ff00ff !important; /* Magenta instead of purple for accessibility*/
+    background-color: #ff00ff !important; /* Magenta instead of purple for accessibility */
     color: #fff !important;
 }
 
