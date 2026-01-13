@@ -30,14 +30,14 @@
 <div class="col">
     <a href="{% url 'character_detail' character.pk %}">
         <div class="card bg-dark h-100 card-hover">
-            {% if character.image %}
-                <img src="{{ character.image.url }}"
-                     class="card-img-top"
-                     alt="{{ character.name }}">
+            {% if "placeholder" in character.image.url %}
+                <img src="{% static 'images/nobody.jpg' %}"
+                class="card-img-top"
+                alt="placeholder">
             {% else %}
-                <img src="{% static 'images/placeholder.jpg' %}"
-                     class="card-img-top"
-                     alt="placeholder">
+                <img src="{{ character.image.url }}"
+                    class="card-img-top"
+                    alt="{{ character.name }}">
             {% endif %}
 
             <div class="card-body text-center">

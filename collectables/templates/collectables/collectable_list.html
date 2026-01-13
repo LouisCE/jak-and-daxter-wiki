@@ -45,10 +45,12 @@
         {% for item in items %}
         <tr>
           <td style="width: 120px;">
-            {% if item.image %}
-              <img src="{{ item.image.url }}" class="img-fluid rounded" alt="{{ item.name }}">
+            {% if "placeholder" in item.image.url %}
+                <img src="{% static 'images/collectable.jpg' %}"
+                class="img-fluid rounded"
+                alt="placeholder">
             {% else %}
-              <img src="{% static 'images/placeholder.jpg' %}" class="img-fluid rounded" alt="placeholder">
+              <img src="{{ item.image.url }}" class="img-fluid rounded" alt="{{ item.name }}">
             {% endif %}
           </td>
 
