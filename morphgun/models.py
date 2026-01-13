@@ -6,12 +6,9 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Colour(models.Model):
     """Colours under Morph Gun"""
-    name = models.CharField(max_length=25, blank=False)
+    name = models.CharField(max_length=25, blank=False, unique=True)
     description = models.TextField(blank=False)
-    image = CloudinaryField(
-        "image",
-        default="v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
-    )
+    image = CloudinaryField("image", default="placeholder")
 
     order = models.PositiveIntegerField(default=0)
 
@@ -32,10 +29,7 @@ class Weapon(models.Model):
         blank=False
     )
     description = models.TextField(blank=False)
-    image = CloudinaryField(
-        "image",
-        default="v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
-    )
+    image = CloudinaryField("image", default="placeholder")
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
@@ -76,7 +70,7 @@ class MorphGunUpgrade(models.Model):
     ]
 
     name = models.CharField(max_length=120)
-    game = models.CharField(max_length=4, choices=GAME_CHOICES)
+    game = models.CharField(max_length=25, choices=GAME_CHOICES)
 
     effect = models.TextField()
     requirement = models.CharField(max_length=255)
