@@ -11,7 +11,7 @@
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Yes, delete</button>
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
         <a href="{% url 'collectable_list' %}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
