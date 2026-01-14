@@ -21,11 +21,13 @@ Morph Gun | Jak and Daxter Wiki
         <div class="row justify-content-center mb-4">
             <div class="col-12 col-sm-9 col-md-7 col-lg-5 col-xl-4 text-center">
                 <!-- Morph Gun overview image -->
-                <img src="{% static 'images/morph-gun.jpg' %}" class="img-fluid rounded shadow-lg mx-auto d-block"
-                    alt="Morph Gun" decoding="async" fetchpriority="high">
+                <img src="{% static 'images/morph-gun.jpg' %}"
+                     class="img-fluid rounded shadow-lg mx-auto d-block"
+                     alt="Morph Gun"
+                     decoding="async"
+                     fetchpriority="high">
             </div>
         </div>
-
     </div>
 </section>
 
@@ -34,8 +36,9 @@ Morph Gun | Jak and Daxter Wiki
     <a href="{% url 'create_weapon' %}" class="btn btn-success">
         Add New Weapon
     </a>
-
-    <a href="{% url 'colour_create' %}" class="btn btn-info ms-2">Add Eco Colour</a>
+    <a href="{% url 'colour_create' %}" class="btn btn-info ms-2">
+        Add Eco Colour
+    </a>
 </div>
 {% endif %}
 
@@ -43,40 +46,45 @@ Morph Gun | Jak and Daxter Wiki
 {% for group in weapons_by_colour %}
 <section class="container my-5 py-5">
 
-    <div class="border rounded p-4
-    {% if group.grouper.name == 'Red' %} border-red-custom
-    {% elif group.grouper.name == 'Yellow' %} border-yellow-custom
-    {% elif group.grouper.name == 'Blue' %} border-blue-custom
-    {% elif group.grouper.name == 'Dark' %} border-purple-custom
-    {% endif %}">
+    <div class="border rounded p-4"
+         style="border: 3px solid {{ group.grouper.hex_code|default:'#ffffff' }} !important;"
+         aria-label="Eco colour: {{ group.grouper.name }}">
 
         <!-- Colour header -->
         <div class="row align-items-center mb-4">
             <div class="col-md-4">
                 {% if group.grouper.image %}
-                <img src="{{ group.grouper.image.url }}" alt="{{ group.grouper.name }}" class="img-fluid rounded"
-                    width="400" height="400" loading="lazy" decoding="async">
+                <img src="{{ group.grouper.image.url }}"
+                     alt="{{ group.grouper.name }}"
+                     class="img-fluid rounded"
+                     width="400"
+                     height="400"
+                     loading="lazy"
+                     decoding="async">
                 {% endif %}
             </div>
 
             <div class="col-md-8">
-                <h2 class="
-                {% if group.grouper.name == 'Red' %} text-red-custom
-                {% elif group.grouper.name == 'Yellow' %} text-yellow-custom
-                {% elif group.grouper.name == 'Blue' %} text-blue-custom
-                {% elif group.grouper.name == 'Dark' %} text-purple-custom
-                {% endif %}">
+                <h2 style="color: {{ group.grouper.hex_code|default:'#ffffff' }};">
                     {{ group.grouper.name }}
                 </h2>
 
                 {% if group.grouper.description %}
-                <p class="text-light">{{ group.grouper.description }}</p>
+                <p class="text-light">
+                    {{ group.grouper.description }}
+                </p>
                 {% endif %}
 
                 {% if user.is_staff %}
                 <div class="mt-2">
-                    <a href="{% url 'colour_update' group.grouper.pk %}" class="btn btn-warning btn-sm">Edit Colour</a>
-                    <a href="{% url 'colour_delete' group.grouper.pk %}" class="btn btn-danger btn-sm">Delete Colour</a>
+                    <a href="{% url 'colour_update' group.grouper.pk %}"
+                       class="btn btn-warning btn-sm">
+                        Edit Colour
+                    </a>
+                    <a href="{% url 'colour_delete' group.grouper.pk %}"
+                       class="btn btn-danger btn-sm">
+                        Delete Colour
+                    </a>
                 </div>
                 {% endif %}
             </div>
@@ -87,32 +95,39 @@ Morph Gun | Jak and Daxter Wiki
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for weapon in group.list %}
             <div class="col">
-                <a href="{% url 'weapon_detail' weapon.pk %}" class="text-decoration-none text-reset">
-                    <div class="card bg-dark text-light h-100 card-hover
-                    {% if weapon.colour.name == 'Red' %} border-red-custom
-                    {% elif weapon.colour.name == 'Yellow' %} border-yellow-custom
-                    {% elif weapon.colour.name == 'Blue' %} border-blue-custom
-                    {% elif weapon.colour.name == 'Dark' %} border-purple-custom
-                    {% endif %}">
+                <a href="{% url 'weapon_detail' weapon.pk %}"
+                   class="text-decoration-none text-reset">
+
+                    <div class="card bg-dark text-light h-100 card-hover"
+                         style="border: 3px solid {{ weapon.colour.hex_code|default:'#ffffff' }} !important;"
+                         aria-label="Weapon: {{ weapon.name }}">
+
                         {% if weapon.image %}
-                        <img src="{{ weapon.image.url }}" class="card-img-top weapon-card-img" alt="{{ weapon.name }}"
-                            width="300" height="300" loading="lazy" decoding="async">
+                        <img src="{{ weapon.image.url }}"
+                             class="card-img-top weapon-card-img"
+                             alt="{{ weapon.name }}"
+                             width="300"
+                             height="300"
+                             loading="lazy"
+                             decoding="async">
                         {% else %}
-                        <img src="{% static 'images/morph-gun.jpg' %}" class="card-img-top weapon-card-img"
-                            alt="Placeholder image" width="300" height="300" loading="lazy" decoding="async">
+                        <img src="{% static 'images/morph-gun.jpg' %}"
+                             class="card-img-top weapon-card-img"
+                             alt="Placeholder image"
+                             width="300"
+                             height="300"
+                             loading="lazy"
+                             decoding="async">
                         {% endif %}
 
                         <div class="card-body text-center">
-                            <h3 class="card-title mb-0
-                            {% if weapon.colour.name == 'Red' %} text-red-custom
-                            {% elif weapon.colour.name == 'Yellow' %} text-yellow-custom
-                            {% elif weapon.colour.name == 'Blue' %} text-blue-custom
-                            {% elif weapon.colour.name == 'Dark' %} text-purple-custom
-                            {% endif %}">
+                            <h3 class="card-title mb-0"
+                                style="color: {{ weapon.colour.hex_code|default:'#ffffff' }};">
                                 {{ weapon.name }}
                             </h3>
                         </div>
                     </div>
+
                 </a>
             </div>
             {% endfor %}
@@ -121,10 +136,10 @@ Morph Gun | Jak and Daxter Wiki
         <div class="alert alert-secondary mt-3">
             <strong>No weapons yet for this eco colour.</strong>
             {% if user.is_staff %}
-                <br>
-                Admins can add weapon mods using the "Add New Weapon" button above.
+            <br>
+            Admins can add weapon mods using the "Add New Weapon" button above.
             {% endif %}
-            </div>
+        </div>
         {% endif %}
 
     </div>
