@@ -4,12 +4,16 @@ from .models import Colour, Weapon, MorphGunUpgrade
 
 @admin.register(Colour)
 class ColourAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+    list_display = ("name", "order")
+    list_editable = ("order",)
+    ordering = ("order",)
 
 
 @admin.register(Weapon)
 class WeaponAdmin(admin.ModelAdmin):
     list_display = ("name", "colour", "order")
+    list_editable = ("order",)
+    ordering = ("order",)
     list_filter = ("colour",)
     search_fields = ("name",)
 
