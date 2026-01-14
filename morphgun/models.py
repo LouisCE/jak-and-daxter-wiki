@@ -10,6 +10,12 @@ class Colour(models.Model):
     description = models.TextField(blank=False)
     image = CloudinaryField("image", default="placeholder")
 
+    hex_code = models.CharField(
+        max_length=7,
+        default="#ffffff",
+        help_text="Hex colour code, e.g. #ff0000"
+    )
+
     order = models.PositiveIntegerField(default=0)
 
     class Meta:

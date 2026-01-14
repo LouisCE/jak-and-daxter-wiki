@@ -5,7 +5,15 @@ from .models import Weapon, Colour, WeaponRating, MorphGunUpgrade
 class ColourForm(forms.ModelForm):
     class Meta:
         model = Colour
-        fields = ["name", "description", "image", "order"]
+        fields = ["name", "hex_code", "description", "image", "order"]
+        widgets = {
+            "hex_code": forms.TextInput(
+                attrs={
+                    "type": "color",
+                    "class": "form-control"
+                }
+            ),
+        }
         labels = {
             "order": "Display order",
         }
