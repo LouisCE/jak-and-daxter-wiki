@@ -55,6 +55,7 @@ This approach ensures accurate validation while respecting Django’s authentica
 | morphgun | delete_colour.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-delete_colour.png) | No errors found |
 | morphgun | delete_weapon.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-delete_weapon.png) | No errors found |
 | morphgun | rate_weapons.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-rate_weapons.png) | No errors found |
+| morphgun | weapon_rankings.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-weapon-rankings.png) | No errors found |
 | morphgun | update_colour.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-update_colour.png) | No errors found |
 | morphgun | update_weapon.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-update_weapon.png) | No errors found |
 | morphgun | weapon_detail.html | Deployed page | ![screenshot](documentation/validation/html-morphgun-weapon_detail.png) | No errors found |
