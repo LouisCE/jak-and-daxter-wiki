@@ -254,8 +254,10 @@ During the later stages of development, the wireframes acted as a visual referen
 | As a guest user | I want to see images across all website apps. | so I can associate information visually. |
 | As a registered user | I want to sign up, log in, and log out | so that my account is secure and personalised. |
 | As a registered user | I want to rate the twelve morph gun mods out of ten. | so I can share my opinion on which weapons are most effective and contribute to the community ratings. |
+| As a registered user | I want the community rankings to show a change indicator. | so that I can see how my votes affected the average. |
 | As a registered user | I want my account and weapon ratings to be secure | so that no one else can impersonate me and alter the ratings that I have given. |
 | As an admin user | I want CRUD functionality across all website apps. | so I can manage content efficiently. |
+| As an admin user | I want to be able to select a colour when creating new eco types and weapon mods | so that I can ensure that the styling is consistent with the content. |
 
 User stories were refined during development to accurately reflect the final scope and implemented functionality of the project.
 
