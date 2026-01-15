@@ -9,7 +9,14 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-    <button type="submit" class="btn btn-primary">Update</button>
-    <a href="{% url 'weapon_list' %}" class="btn btn-secondary mt-3">Cancel</a>
+    <div class="d-flex gap-2 mt-3">
+        <button type="submit" class="btn btn-primary">
+            Update
+        </button>
+
+        <a href="{% url 'weapon_list' %}" class="btn btn-secondary">
+            Cancel
+        </a>
+    </div>
 </form>
 {% endblock %}
