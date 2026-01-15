@@ -17,9 +17,7 @@
     <div class="row my-4">
         <div class="col-md-4">
             {% if "placeholder" in character.image.url %}
-                <img src="{% static 'images/nobody.jpg' %}"
-                class="img-fluid rounded"
-                alt="placeholder">
+            <img src="{% static 'images/nobody.jpg' %}" class="img-fluid rounded" alt="placeholder">
             {% else %}
             <img src="{{ character.image.url }}" class="img-fluid rounded" alt="{{ character.name }}">
             {% endif %}
@@ -70,14 +68,18 @@
     <div class="card bg-dark border-warning mb-4">
         <div class="card-body">
             <h3 class="card-title">Appearance</h3>
-            <p class="card-text">{{ character.appearance }}</p>
+            <div class="card-text">
+                {{ character.appearance|linebreaks }}
+            </div>
         </div>
     </div>
 
     <div class="card bg-dark border-warning mb-4">
         <div class="card-body">
             <h3 class="card-title">Personality</h3>
-            <p class="card-text">{{ character.personality }}</p>
+            <div class="card-text">
+                {{ character.personality|linebreaks }}
+            </div>
         </div>
     </div>
 
