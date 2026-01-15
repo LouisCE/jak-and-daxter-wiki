@@ -179,17 +179,28 @@ You can see these implemented throughout the CSS file.
 I generated the following custom colour palette specifically to reflect a **Jak II inspired atmosphere**, with dark dystopian sci-fi tones while using eco colours as visual highlights.
 
 - `#1a1a1a` - Primary dark background
+- `#ffffff` - Default white
 - `#ff9f1c` - Main Jak-orange text (titles, headers)
 - `#ffd166` - Hover highlights
-- `dc3545` - Red eco theme
-- `ffc107` - Yellow eco theme
-- `0d6efd` - Blue eco theme
-- `#6f42c1` - Purple eco theme
+- `ff0000` - "Red" eco theme
+- `ffff00` - "Yellow" eco theme
+- `00ffff` - "Blue" eco theme (represented by cyan for greater contrast)
+- `#ff00ff` - "Dark" eco theme (respresented by magenta for greater contrast)
 - `#0d0d0d` - Secondary dark (navbar + footer)
 
-I used [coolors.co](https://coolors.co/1a1a1a-ff9f1c-ffd166-dc3545-ffc107-0d6efd-6f42c1-0d0d0d) to generate my color palette.
+Blue (#0000ff) and purple (#800080) were originally used for the "Blue" and "Dark" styling on the weapon list and weapon detail pages but after WAVE testing and visual assessment, I decided to switch them to cyan and magenta for better accessibility.
+
+I also switched to brighter shades of red and yellow for the same reason and ultimately decided to implement a colour picker into the CRUD functionality to give admin users the freedom to create and update colours as they see fit.
+
+I used [Coolors](https://coolors.co/1a1a1a-ff9f1c-ffd166-ff0000-ffff00-00ffff-ff00ff-ffffff) to generate my color palette.
 
 ![screenshot](documentation/coolors.png)
+
+I also used [EightShapes Contrast Grid](https://contrast-grid.eightshapes.com/?version=1.1.0&background-colors=&foreground-colors=%23000000%2C%0D%0A%23FF9F1C%2C%0D%0A%23FFD166%2C%0D%0A%23FF0000%2C%0D%0A%23FFFF00%2C%0D%0A%2300FFFF%2C%0D%0A%23FF00FF%2C%0D%0A%23FFFFFF%2C&es-color-form__tile-size=compact&es-color-form__show-contrast=aaa&es-color-form__show-contrast=aa&es-color-form__show-contrast=aa18&es-color-form__show-contrast=dnp) to generate my contrast grid.
+
+As shown in the top row, all colours used are rated AAA or AA against the dark background by WCAG (Web Content Accessibility Guidelines).
+
+![screenshot](documentation/contrast-grid.png)
 
 ---
 
