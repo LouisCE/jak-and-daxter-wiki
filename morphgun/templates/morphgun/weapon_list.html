@@ -53,14 +53,23 @@ Morph Gun | Jak and Daxter Wiki
         <!-- Colour header -->
         <div class="row align-items-center mb-4">
             <div class="col-md-4">
-                {% if group.grouper.image %}
-                <img src="{{ group.grouper.image.url }}"
-                     alt="{{ group.grouper.name }}"
-                     class="img-fluid rounded"
-                     width="400"
-                     height="400"
-                     loading="lazy"
-                     decoding="async">
+                {% comment %} Show grouper image or placeholder {% endcomment %}
+                {% if group.grouper.image and group.grouper.image.name %}
+                    <img src="{{ group.grouper.image.url }}"
+                         alt="{{ group.grouper.name }}"
+                         class="img-fluid rounded"
+                         width="400"
+                         height="400"
+                         loading="lazy"
+                         decoding="async">
+                {% else %}
+                    <img src="{% static 'images/morph-gun.jpg' %}"
+                         alt="Placeholder image"
+                         class="img-fluid rounded"
+                         width="400"
+                         height="400"
+                         loading="lazy"
+                         decoding="async">
                 {% endif %}
             </div>
 
@@ -102,22 +111,23 @@ Morph Gun | Jak and Daxter Wiki
                          style="border: 3px solid {{ weapon.colour.hex_code|default:'#ffffff' }} !important;"
                          aria-label="Weapon: {{ weapon.name }}">
 
-                        {% if weapon.image %}
-                        <img src="{{ weapon.image.url }}"
-                             class="card-img-top weapon-card-img"
-                             alt="{{ weapon.name }}"
-                             width="300"
-                             height="300"
-                             loading="lazy"
-                             decoding="async">
+                        {% comment %} Show weapon image or placeholder {% endcomment %}
+                        {% if weapon.image and weapon.image.name %}
+                            <img src="{{ weapon.image.url }}"
+                                 class="card-img-top weapon-card-img"
+                                 alt="{{ weapon.name }}"
+                                 width="300"
+                                 height="300"
+                                 loading="lazy"
+                                 decoding="async">
                         {% else %}
-                        <img src="{% static 'images/morph-gun.jpg' %}"
-                             class="card-img-top weapon-card-img"
-                             alt="Placeholder image"
-                             width="300"
-                             height="300"
-                             loading="lazy"
-                             decoding="async">
+                            <img src="{% static 'images/morph-gun.jpg' %}"
+                                 class="card-img-top weapon-card-img"
+                                 alt="Placeholder image"
+                                 width="300"
+                                 height="300"
+                                 loading="lazy"
+                                 decoding="async">
                         {% endif %}
 
                         <div class="card-body text-center">

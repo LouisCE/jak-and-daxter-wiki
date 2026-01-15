@@ -41,14 +41,15 @@
                 {% endif %}
             </div>
 
-            {% if weapon.image %}
-            <img src="{{ weapon.image.url }}"
-                 alt="{{ weapon.name }}"
-                 class="img-fluid rounded weapon-image mt-4">
+            {% comment %} Show weapon image or placeholder {% endcomment %}
+            {% if weapon.image and weapon.image.name %}
+                <img src="{{ weapon.image.url }}"
+                     alt="{{ weapon.name }}"
+                     class="img-fluid rounded weapon-image mt-4">
             {% else %}
-            <img src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
-                 alt="Placeholder image"
-                 class="img-fluid rounded weapon-image mt-4">
+                <img src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
+                     alt="Placeholder image"
+                     class="img-fluid rounded weapon-image mt-4">
             {% endif %}
 
         </div>
