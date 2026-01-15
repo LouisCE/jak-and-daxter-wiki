@@ -22,11 +22,8 @@ Morph Gun | Jak and Daxter Wiki
         <div class="row justify-content-center mb-4">
             <div class="col-12 col-sm-9 col-md-7 col-lg-5 col-xl-4 text-center">
                 <!-- Morph Gun overview image -->
-                <img src="{% static 'images/morph-gun.jpg' %}"
-                     class="img-fluid rounded shadow-lg mx-auto d-block"
-                     alt="Morph Gun"
-                     decoding="async"
-                     fetchpriority="high">
+                <img src="{% static 'images/morph-gun.jpg' %}" class="img-fluid rounded shadow-lg mx-auto d-block"
+                    alt="Morph Gun" decoding="async" fetchpriority="high">
             </div>
         </div>
     </div>
@@ -47,30 +44,19 @@ Morph Gun | Jak and Daxter Wiki
 {% for group in weapons_by_colour %}
 <section class="container my-5 py-5">
 
-    <div class="border rounded p-4"
-         style="border: 3px solid {{ group.grouper.hex_code|default:'#ffffff' }} !important;"
-         aria-label="Eco colour: {{ group.grouper.name }}">
+    <div class="border rounded p-4" style="border: 3px solid {{ group.grouper.hex_code|default:'#ffffff' }} !important;"
+        aria-label="Eco colour: {{ group.grouper.name }}">
 
         <!-- Colour header -->
         <div class="row align-items-center mb-4">
             <div class="col-md-4">
                 {% comment %} Show grouper image or placeholder {% endcomment %}
-                {% if group.grouper.image and group.grouper.image.name %}
-                    <img src="{{ group.grouper.image.url }}"
-                         alt="{{ group.grouper.name }}"
-                         class="img-fluid rounded"
-                         width="400"
-                         height="400"
-                         loading="lazy"
-                         decoding="async">
+                {% if "placeholder" in group.grouper.image.url %}
+                <img src="{% static 'images/morph-gun.jpg' %}" alt="Placeholder image" class="img-fluid rounded"
+                    width="400" height="400" loading="lazy" decoding="async">
                 {% else %}
-                    <img src="{% static 'images/morph-gun.jpg' %}"
-                         alt="Placeholder image"
-                         class="img-fluid rounded"
-                         width="400"
-                         height="400"
-                         loading="lazy"
-                         decoding="async">
+                <img src="{{ group.grouper.image.url }}" alt="{{ group.grouper.name }}" class="img-fluid rounded"
+                    width="400" height="400" loading="lazy" decoding="async">
                 {% endif %}
             </div>
 
@@ -87,12 +73,10 @@ Morph Gun | Jak and Daxter Wiki
 
                 {% if user.is_staff %}
                 <div class="mt-2">
-                    <a href="{% url 'colour_update' group.grouper.pk %}"
-                       class="btn btn-warning btn-sm">
+                    <a href="{% url 'colour_update' group.grouper.pk %}" class="btn btn-warning btn-sm">
                         Edit Colour
                     </a>
-                    <a href="{% url 'colour_delete' group.grouper.pk %}"
-                       class="btn btn-danger btn-sm">
+                    <a href="{% url 'colour_delete' group.grouper.pk %}" class="btn btn-danger btn-sm">
                         Delete Colour
                     </a>
                 </div>
@@ -105,35 +89,23 @@ Morph Gun | Jak and Daxter Wiki
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for weapon in group.list %}
             <div class="col">
-                <a href="{% url 'weapon_detail' weapon.pk %}"
-                   class="text-decoration-none text-reset">
+                <a href="{% url 'weapon_detail' weapon.pk %}" class="text-decoration-none text-reset">
 
                     <div class="card bg-dark text-light h-100 card-hover"
-                         style="border: 3px solid {{ weapon.colour.hex_code|default:'#ffffff' }} !important;"
-                         aria-label="Weapon: {{ weapon.name }}">
+                        style="border: 3px solid {{ weapon.colour.hex_code|default:'#ffffff' }} !important;"
+                        aria-label="Weapon: {{ weapon.name }}">
 
                         {% comment %} Show weapon image or placeholder {% endcomment %}
-                        {% if weapon.image and weapon.image.name %}
-                            <img src="{{ weapon.image.url }}"
-                                 class="card-img-top weapon-card-img"
-                                 alt="{{ weapon.name }}"
-                                 width="300"
-                                 height="300"
-                                 loading="lazy"
-                                 decoding="async">
+                        {% if "placeholder" in weapon.image.url %}
+                        <img src="{% static 'images/morph-gun.jpg' %}" class="card-img-top weapon-card-img"
+                            alt="Placeholder image" width="300" height="300" loading="lazy" decoding="async">
                         {% else %}
-                            <img src="{% static 'images/morph-gun.jpg' %}"
-                                 class="card-img-top weapon-card-img"
-                                 alt="Placeholder image"
-                                 width="300"
-                                 height="300"
-                                 loading="lazy"
-                                 decoding="async">
+                        <img src="{{ weapon.image.url }}" class="card-img-top weapon-card-img" alt="{{ weapon.name }}"
+                            width="300" height="300" loading="lazy" decoding="async">
                         {% endif %}
 
                         <div class="card-body text-center">
-                            <h3 class="card-title mb-0"
-                                style="color: {{ weapon.colour.hex_code|default:'#ffffff' }};">
+                            <h3 class="card-title mb-0" style="color: {{ weapon.colour.hex_code|default:'#ffffff' }};">
                                 {{ weapon.name }}
                             </h3>
                         </div>

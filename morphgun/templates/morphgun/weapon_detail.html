@@ -1,5 +1,6 @@
 {# weapon_detail.html #}
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 {{ weapon.name }} | Jak and Daxter Wiki
@@ -14,8 +15,7 @@
 
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
                 <div>
-                    <h1 class="mb-2"
-                        style="color: {{ weapon.colour.hex_code|default:'#ffffff' }};">
+                    <h1 class="mb-2" style="color: {{ weapon.colour.hex_code|default:'#ffffff' }};">
                         {{ weapon.name }}
                     </h1>
 
@@ -30,12 +30,10 @@
 
                 {% if user.is_staff %}
                 <div class="d-flex gap-2">
-                    <a href="{% url 'update_weapon' weapon.pk %}"
-                       class="btn btn-warning text-dark">
+                    <a href="{% url 'update_weapon' weapon.pk %}" class="btn btn-warning text-dark">
                         Edit Weapon
                     </a>
-                    <a href="{% url 'delete_weapon' weapon.pk %}"
-                       class="btn btn-danger">
+                    <a href="{% url 'delete_weapon' weapon.pk %}" class="btn btn-danger">
                         Delete Weapon
                     </a>
                 </div>
@@ -43,14 +41,11 @@
             </div>
 
             {% comment %} Show weapon image or placeholder {% endcomment %}
-            {% if weapon.image and weapon.image.name %}
-                <img src="{{ weapon.image.url }}"
-                     alt="{{ weapon.name }}"
-                     class="img-fluid rounded weapon-image mt-4">
+            {% if "placeholder" in weapon.image.url %}
+            <img src="{% static 'images/morph-gun.jpg' %}"
+                alt="Placeholder image" class="img-fluid rounded weapon-image mt-4">
             {% else %}
-                <img src="https://res.cloudinary.com/dkdvark17/image/upload/v1763855318/1e67e5cbe56466efefdbe523de1f023b0a0dc544_hq_grmzpj.jpg"
-                     alt="Placeholder image"
-                     class="img-fluid rounded weapon-image mt-4">
+            <img src="{{ weapon.image.url }}" alt="{{ weapon.name }}" class="img-fluid rounded weapon-image mt-4">
             {% endif %}
 
         </div>
@@ -58,8 +53,7 @@
 
     {% if user.is_staff %}
     <div class="mb-4 text-center">
-        <a href="{% url 'create_upgrade' %}"
-           class="btn btn-success">
+        <a href="{% url 'create_upgrade' %}" class="btn btn-success">
             Add Morph Gun Upgrade
         </a>
     </div>
@@ -70,8 +64,7 @@
     <div class="card bg-dark text-light shadow-sm mb-4">
         <div class="card-body">
 
-            <h2 class="mb-3"
-                style="color: {{ weapon.colour.hex_code|default:'#ffffff' }};">
+            <h2 class="mb-3" style="color: {{ weapon.colour.hex_code|default:'#ffffff' }};">
                 Jak II Upgrades
             </h2>
 
@@ -94,12 +87,10 @@
                         <td>{{ upgrade.requirement }}</td>
                         {% if user.is_staff %}
                         <td class="text-center">
-                            <a href="{% url 'update_upgrade' upgrade.pk %}"
-                               class="btn btn-sm btn-warning text-dark">
+                            <a href="{% url 'update_upgrade' upgrade.pk %}" class="btn btn-sm btn-warning text-dark">
                                 Edit
                             </a>
-                            <a href="{% url 'delete_upgrade' upgrade.pk %}"
-                               class="btn btn-sm btn-danger ms-1">
+                            <a href="{% url 'delete_upgrade' upgrade.pk %}" class="btn btn-sm btn-danger ms-1">
                                 Delete
                             </a>
                         </td>
@@ -118,8 +109,7 @@
     <div class="card bg-dark text-light shadow-sm mb-4">
         <div class="card-body">
 
-            <h2 class="mb-3"
-                style="color: {{ weapon.colour.hex_code|default:'#ffffff' }};">
+            <h2 class="mb-3" style="color: {{ weapon.colour.hex_code|default:'#ffffff' }};">
                 Jak 3 Upgrades
             </h2>
 
@@ -144,12 +134,10 @@
                         <td>{{ upgrade.price }}</td>
                         {% if user.is_staff %}
                         <td class="text-center">
-                            <a href="{% url 'update_upgrade' upgrade.pk %}"
-                               class="btn btn-sm btn-warning text-dark">
+                            <a href="{% url 'update_upgrade' upgrade.pk %}" class="btn btn-sm btn-warning text-dark">
                                 Edit
                             </a>
-                            <a href="{% url 'delete_upgrade' upgrade.pk %}"
-                               class="btn btn-sm btn-danger ms-1">
+                            <a href="{% url 'delete_upgrade' upgrade.pk %}" class="btn btn-sm btn-danger ms-1">
                                 Delete
                             </a>
                         </td>
