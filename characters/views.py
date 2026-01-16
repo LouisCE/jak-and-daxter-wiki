@@ -52,6 +52,7 @@ class CharacterUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         messages.success(self.request, f'Character "{self.object.name}" updated successfully.')
         return response
 
+
 class CharacterDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Character
     template_name = "characters/character_confirm_delete.html"
@@ -60,7 +61,10 @@ class CharacterDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         return self.request.user.is_staff
 
-    def delete(self, request, *args, **kwargs):
+    def form_valid(self, form):
         obj = self.get_object()
-        messages.success(request, f'Character "{obj.name}" deleted successfully.')
-        return super().delete(request, *args, **kwargs)
+        messages.success(
+            self.request,
+            f'Character "{obj.name}" deleted successfully.'
+        )
+        return super().form_valid(form)
