@@ -9,7 +9,6 @@ def login_message(sender, request, user, **kwargs):
     try:
         messages.success(request, "You have logged in successfully.")
     except MessageFailure:
-        # In some test contexts the messages framework isn't attached to request
         pass
 
 
