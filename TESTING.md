@@ -232,6 +232,48 @@ Only files that were created or directly modified as part of the project were va
 - Auto-generated files were correctly excluded.
 - Validation confirms that the backend codebase is clean, readable, and production-ready.
 
+### Automated Testing (Django Test Suite)
+
+Automated testing was implemented using Django’s built-in test framework to validate application functionality, permissions, and data integrity across all custom apps.
+
+All tests were executed using an isolated in-memory SQLite test database to ensure that no production or deployed PostgreSQL data could be affected during testing.
+
+The following Django apps include comprehensive automated test coverage:
+
+- `home` - Core navigation, authentication, and registration flows.
+- `characters` - model behaviour, ordering, permissions, and CRUD views.
+- `collectables` - model behaviour, ordering, permissions, and CRUD views.
+- `morphgun` - complex business logic including ratings, rankings, permissions, and relational models.
+
+#### Test Execution Evidence
+
+| App | Command Used | Result | Screenshot |
+| --- | --- | --- | --- |
+| home | `python manage.py test home` | All tests passed | ![screenshot](documentation/testing/test-home.png) |
+| characters | `python manage.py test characters` | All tests passed | ![screenshot](documentation/testing/test-characters.png) |
+| collectables | `python manage.py test collectables` | All tests passed | ![screenshot](documentation/testing/test-collectables.png) |
+| morphgun | `python manage.py test morphgun` | All tests passed | ![screenshot](documentation/testing/test-morphgun.png) |
+| full project | `python manage.py test` | 50 tests passed | ![screenshot](documentation/testing/test-full-suite.png) ![screenshot](documentation/testing/test-full-suite-v2.png) |
+
+#### Test Isolation and Safety
+
+During all test runs, Django automatically created and destroyed a temporary test database:
+
+- The test database used SQLite in-memory storage.
+- All migrations were applied only to the test database.
+- The test database was destroyed after execution.
+- No production or deployed PostgreSQL data was accessed or modified.
+
+This confirms that automated testing was performed safely and in accordance with best practices.
+
+#### Summary
+
+- All automated tests passed successfully.
+- No regressions or failing test cases remain.
+- Permission logic was validated for staff vs non-staff users.
+- Complex relational logic (weapon ratings and rankings) was fully tested.
+- Automated testing provides confidence that the application is stable and production-ready.
+
 ---
 
 ## Accessibility
