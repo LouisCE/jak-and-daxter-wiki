@@ -1,3 +1,5 @@
+/* jshint esversion: 11 */
+
 const form = document.getElementById('rating-form');
 const button = document.getElementById('submit-btn');
 const loading = document.getElementById('loading');
