@@ -1,15 +1,19 @@
+from django.contrib import messages
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+)
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import (
-    ListView,
-    DetailView,
     CreateView,
-    UpdateView,
     DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
 )
+
 from .models import Character
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib import messages
 
 
 class CharacterList(ListView):
@@ -23,7 +27,11 @@ class CharacterDetail(DetailView):
     template_name = "characters/character_detail.html"
 
 
-class CharacterCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class CharacterCreate(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    CreateView,
+):
     model = Character
     fields = "__all__"
     template_name = "characters/character_form.html"
@@ -34,11 +42,21 @@ class CharacterCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f'Character "{self.object.name}" created successfully.')
+        messages.success(
+            self.request,
+            (
+                f'Character "{self.object.name}" '
+                "created successfully."
+            ),
+        )
         return response
 
 
-class CharacterUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class CharacterUpdate(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    UpdateView,
+):
     model = Character
     fields = "__all__"
     template_name = "characters/character_form.html"
@@ -49,11 +67,21 @@ class CharacterUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, f'Character "{self.object.name}" updated successfully.')
+        messages.success(
+            self.request,
+            (
+                f'Character "{self.object.name}" '
+                "updated successfully."
+            ),
+        )
         return response
 
 
-class CharacterDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class CharacterDelete(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    DeleteView,
+):
     model = Character
     template_name = "characters/character_confirm_delete.html"
     success_url = reverse_lazy("character_list")
@@ -65,6 +93,9 @@ class CharacterDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         obj = self.get_object()
         messages.success(
             self.request,
-            f'Character "{obj.name}" deleted successfully.'
+            (
+                f'Character "{obj.name}" '
+                "deleted successfully."
+            ),
         )
         return super().form_valid(form)

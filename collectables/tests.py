@@ -1,7 +1,7 @@
-from django.test import TestCase
-from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.signals import user_logged_in, user_logged_out
+from django.test import TestCase
+from django.urls import reverse
 
 from collectables.models import Collectable
 
@@ -24,6 +24,7 @@ class CollectableTests(TestCase):
         # Disconnect message-adding auth signal receivers (if present)
         try:
             from home import signals as home_signals
+
             cls._home_signals = home_signals
             user_logged_in.disconnect(home_signals.login_message)
             user_logged_out.disconnect(home_signals.logout_message)
@@ -34,8 +35,14 @@ class CollectableTests(TestCase):
     def tearDownClass(cls):
         # Reconnect the receivers after tests complete
         if getattr(cls, "_home_signals", None):
-            user_logged_in.connect(cls._home_signals.login_message, weak=False)
-            user_logged_out.connect(cls._home_signals.logout_message, weak=False)
+            user_logged_in.connect(
+                cls._home_signals.login_message,
+                weak=False,
+            )
+            user_logged_out.connect(
+                cls._home_signals.logout_message,
+                weak=False,
+            )
 
         super().tearDownClass()
 
@@ -101,12 +108,22 @@ class CollectableTests(TestCase):
 
     def test_non_staff_cannot_access_update_view(self):
         self.client.login(username="user", password="pass")
-        response = self.client.get(reverse("collectable_update", kwargs={"pk": self.item1.pk}))
+        response = self.client.get(
+            reverse(
+                "collectable_update",
+                kwargs={"pk": self.item1.pk},
+            )
+        )
         self.assertEqual(response.status_code, 403)
 
     def test_non_staff_cannot_access_delete_view(self):
         self.client.login(username="user", password="pass")
-        response = self.client.get(reverse("collectable_delete", kwargs={"pk": self.item1.pk}))
+        response = self.client.get(
+            reverse(
+                "collectable_delete",
+                kwargs={"pk": self.item1.pk},
+            )
+        )
         self.assertEqual(response.status_code, 403)
 
     # -------------------------
@@ -129,12 +146,17 @@ class CollectableTests(TestCase):
             },
         )
         self.assertEqual(response.status_code, 302)
-        self.assertTrue(Collectable.objects.filter(name="Eco Crystal").exists())
+        self.assertTrue(
+            Collectable.objects.filter(name="Eco Crystal").exists()
+        )
 
     def test_staff_can_update_collectable(self):
         self.client.login(username="staff", password="pass")
         response = self.client.post(
-            reverse("collectable_update", kwargs={"pk": self.item1.pk}),
+            reverse(
+                "collectable_update",
+                kwargs={"pk": self.item1.pk},
+            ),
             {
                 "name": "Updated Orb",
                 "description": "Updated description.",
@@ -149,6 +171,13 @@ class CollectableTests(TestCase):
 
     def test_staff_can_delete_collectable(self):
         self.client.login(username="staff", password="pass")
-        response = self.client.post(reverse("collectable_delete", kwargs={"pk": self.item2.pk}))
+        response = self.client.post(
+            reverse(
+                "collectable_delete",
+                kwargs={"pk": self.item2.pk},
+            )
+        )
         self.assertEqual(response.status_code, 302)
-        self.assertFalse(Collectable.objects.filter(pk=self.item2.pk).exists())
+        self.assertFalse(
+            Collectable.objects.filter(pk=self.item2.pk).exists()
+        )

@@ -1,11 +1,11 @@
 # morphgun/tests.py
-from django.test import TestCase
-from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.db import IntegrityError
+from django.test import TestCase
+from django.urls import reverse
 
-from morphgun.models import Colour, Weapon, WeaponRating, MorphGunUpgrade
+from morphgun.models import Colour, MorphGunUpgrade, Weapon, WeaponRating
 
 
 class MorphGunTests(TestCase):
@@ -24,6 +24,7 @@ class MorphGunTests(TestCase):
         # Disconnect message-adding auth signal receivers (if present)
         try:
             from home import signals as home_signals
+
             cls._home_signals = home_signals
             user_logged_in.disconnect(home_signals.login_message)
             user_logged_out.disconnect(home_signals.logout_message)
@@ -34,8 +35,14 @@ class MorphGunTests(TestCase):
     def tearDownClass(cls):
         # Reconnect the receivers after tests complete
         if getattr(cls, "_home_signals", None):
-            user_logged_in.connect(cls._home_signals.login_message, weak=False)
-            user_logged_out.connect(cls._home_signals.logout_message, weak=False)
+            user_logged_in.connect(
+                cls._home_signals.login_message,
+                weak=False,
+            )
+            user_logged_out.connect(
+                cls._home_signals.logout_message,
+                weak=False,
+            )
         super().tearDownClass()
 
     def setUp(self):
@@ -112,12 +119,23 @@ class MorphGunTests(TestCase):
         self.assertIn("user", str(rating))
 
     def test_upgrade_str(self):
-        self.assertEqual(str(self.upgrade_jak2), "Jak II Upgrade (Jak II)")
+        self.assertEqual(
+            str(self.upgrade_jak2),
+            "Jak II Upgrade (Jak II)",
+        )
 
     def test_weapon_rating_unique_together(self):
-        WeaponRating.objects.create(user=self.user, weapon=self.weapon1, score=7)
+        WeaponRating.objects.create(
+            user=self.user,
+            weapon=self.weapon1,
+            score=7,
+        )
         with self.assertRaises(IntegrityError):
-            WeaponRating.objects.create(user=self.user, weapon=self.weapon1, score=9)
+            WeaponRating.objects.create(
+                user=self.user,
+                weapon=self.weapon1,
+                score=9,
+            )
 
     # -------------------------
     # View tests (public pages)
@@ -133,14 +151,23 @@ class MorphGunTests(TestCase):
         self.assertEqual(groups[0]["grouper"], self.colour)
 
     def test_weapon_detail_loads_and_splits_upgrades(self):
-        url = reverse("weapon_detail", kwargs={"pk": self.weapon1.pk})
+        url = reverse(
+            "weapon_detail",
+            kwargs={"pk": self.weapon1.pk},
+        )
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
         self.assertIn("jak2_upgrades", response.context)
         self.assertIn("jak3_upgrades", response.context)
-        self.assertIn(self.upgrade_jak2, response.context["jak2_upgrades"])
-        self.assertIn(self.upgrade_jak3, response.context["jak3_upgrades"])
+        self.assertIn(
+            self.upgrade_jak2,
+            response.context["jak2_upgrades"],
+        )
+        self.assertIn(
+            self.upgrade_jak3,
+            response.context["jak3_upgrades"],
+        )
 
     # -------------------------
     # Weapon CRUD permissions
@@ -167,12 +194,21 @@ class MorphGunTests(TestCase):
 
         created = Weapon.objects.get(name="Vulcan Fury")
         self.assertEqual(created.colour, self.colour)
-        self.assertEqual(response.url, reverse("weapon_detail", kwargs={"pk": created.pk}))
+        self.assertEqual(
+            response.url,
+            reverse(
+                "weapon_detail",
+                kwargs={"pk": created.pk},
+            ),
+        )
 
     def test_staff_can_update_weapon(self):
         self.client.force_login(self.staff)
         response = self.client.post(
-            reverse("update_weapon", kwargs={"pk": self.weapon1.pk}),
+            reverse(
+                "update_weapon",
+                kwargs={"pk": self.weapon1.pk},
+            ),
             {
                 "name": "Blaster (Updated)",
                 "colour": self.colour.pk,
@@ -182,17 +218,30 @@ class MorphGunTests(TestCase):
             },
         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("weapon_detail", kwargs={"pk": self.weapon1.pk}))
+        self.assertEqual(
+            response.url,
+            reverse(
+                "weapon_detail",
+                kwargs={"pk": self.weapon1.pk},
+            ),
+        )
 
         self.weapon1.refresh_from_db()
         self.assertEqual(self.weapon1.name, "Blaster (Updated)")
 
     def test_staff_can_delete_weapon(self):
         self.client.force_login(self.staff)
-        response = self.client.post(reverse("delete_weapon", kwargs={"pk": self.weapon2.pk}))
+        response = self.client.post(
+            reverse(
+                "delete_weapon",
+                kwargs={"pk": self.weapon2.pk},
+            )
+        )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse("weapon_list"))
-        self.assertFalse(Weapon.objects.filter(pk=self.weapon2.pk).exists())
+        self.assertFalse(
+            Weapon.objects.filter(pk=self.weapon2.pk).exists()
+        )
 
     # -------------------------
     # Colour CRUD permissions
@@ -216,12 +265,17 @@ class MorphGunTests(TestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse("weapon_list"))
-        self.assertTrue(Colour.objects.filter(name="Blue Eco").exists())
+        self.assertTrue(
+            Colour.objects.filter(name="Blue Eco").exists()
+        )
 
     def test_staff_can_update_colour(self):
         self.client.force_login(self.staff)
         response = self.client.post(
-            reverse("colour_update", kwargs={"pk": self.colour.pk}),
+            reverse(
+                "colour_update",
+                kwargs={"pk": self.colour.pk},
+            ),
             {
                 "name": "Red Eco (Updated)",
                 "description": "Updated description.",
@@ -245,23 +299,43 @@ class MorphGunTests(TestCase):
             image="placeholder",
         )
         self.client.force_login(self.staff)
-        response = self.client.post(reverse("colour_delete", kwargs={"pk": extra_colour.pk}))
+        response = self.client.post(
+            reverse(
+                "colour_delete",
+                kwargs={"pk": extra_colour.pk},
+            )
+        )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse("weapon_list"))
-        self.assertFalse(Colour.objects.filter(pk=extra_colour.pk).exists())
+        self.assertFalse(
+            Colour.objects.filter(pk=extra_colour.pk).exists()
+        )
 
     # -------------------------
     # Upgrade CRUD permissions
     # -------------------------
     def test_non_staff_cannot_access_upgrade_views(self):
         self.client.force_login(self.user)
-        self.assertEqual(self.client.get(reverse("create_upgrade")).status_code, 403)
         self.assertEqual(
-            self.client.get(reverse("update_upgrade", kwargs={"pk": self.upgrade_jak2.pk})).status_code,
+            self.client.get(reverse("create_upgrade")).status_code,
             403,
         )
         self.assertEqual(
-            self.client.get(reverse("delete_upgrade", kwargs={"pk": self.upgrade_jak2.pk})).status_code,
+            self.client.get(
+                reverse(
+                    "update_upgrade",
+                    kwargs={"pk": self.upgrade_jak2.pk},
+                )
+            ).status_code,
+            403,
+        )
+        self.assertEqual(
+            self.client.get(
+                reverse(
+                    "delete_upgrade",
+                    kwargs={"pk": self.upgrade_jak2.pk},
+                )
+            ).status_code,
             403,
         )
 
@@ -279,15 +353,26 @@ class MorphGunTests(TestCase):
             },
         )
         self.assertEqual(response.status_code, 302)
-        self.assertTrue(MorphGunUpgrade.objects.filter(name="New Upgrade").exists())
+        self.assertTrue(
+            MorphGunUpgrade.objects.filter(name="New Upgrade").exists()
+        )
 
         created = MorphGunUpgrade.objects.get(name="New Upgrade")
-        self.assertEqual(response.url, reverse("weapon_detail", kwargs={"pk": created.weapons.first().pk}))
+        self.assertEqual(
+            response.url,
+            reverse(
+                "weapon_detail",
+                kwargs={"pk": created.weapons.first().pk},
+            ),
+        )
 
     def test_staff_can_update_upgrade_redirects_to_weapon_detail(self):
         self.client.force_login(self.staff)
         response = self.client.post(
-            reverse("update_upgrade", kwargs={"pk": self.upgrade_jak2.pk}),
+            reverse(
+                "update_upgrade",
+                kwargs={"pk": self.upgrade_jak2.pk},
+            ),
             {
                 "name": "Jak II Upgrade (Updated)",
                 "game": MorphGunUpgrade.JAK_II,
@@ -298,18 +383,38 @@ class MorphGunTests(TestCase):
             },
         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("weapon_detail", kwargs={"pk": self.weapon1.pk}))
+        self.assertEqual(
+            response.url,
+            reverse(
+                "weapon_detail",
+                kwargs={"pk": self.weapon1.pk},
+            ),
+        )
 
         self.upgrade_jak2.refresh_from_db()
-        self.assertEqual(self.upgrade_jak2.name, "Jak II Upgrade (Updated)")
+        self.assertEqual(
+            self.upgrade_jak2.name,
+            "Jak II Upgrade (Updated)",
+        )
 
     def test_staff_can_delete_upgrade_redirects_to_weapon_detail(self):
         self.client.force_login(self.staff)
         pk = self.upgrade_jak3.pk
-        response = self.client.post(reverse("delete_upgrade", kwargs={"pk": pk}))
+        response = self.client.post(
+            reverse(
+                "delete_upgrade",
+                kwargs={"pk": pk},
+            )
+        )
         self.assertEqual(response.status_code, 302)
         # upgrade_jak3 was attached to weapon1, so should redirect there
-        self.assertEqual(response.url, reverse("weapon_detail", kwargs={"pk": self.weapon1.pk}))
+        self.assertEqual(
+            response.url,
+            reverse(
+                "weapon_detail",
+                kwargs={"pk": self.weapon1.pk},
+            ),
+        )
         self.assertFalse(MorphGunUpgrade.objects.filter(pk=pk).exists())
 
     # -------------------------
@@ -319,7 +424,9 @@ class MorphGunTests(TestCase):
         response = self.client.get(reverse("rate_weapons"))
         self.assertIn(response.status_code, (301, 302))
 
-    def test_rate_weapons_incomplete_submission_saves_partial_then_redirects(self):
+    def test_rate_weapons_incomplete_submission_saves_partial_then_redirects(
+        self,
+    ):
         """
         IMPORTANT: Your current view saves ratings as it loops.
         If you submit a score for weapon1 but omit weapon2, it will
@@ -338,9 +445,16 @@ class MorphGunTests(TestCase):
         self.assertEqual(response.url, reverse("rate_weapons"))
 
         # weapon1 rating was created before the redirect
-        self.assertEqual(WeaponRating.objects.filter(user=self.user).count(), 1)
+        self.assertEqual(
+            WeaponRating.objects.filter(user=self.user).count(),
+            1,
+        )
         self.assertTrue(
-            WeaponRating.objects.filter(user=self.user, weapon=self.weapon1, score=7).exists()
+            WeaponRating.objects.filter(
+                user=self.user,
+                weapon=self.weapon1,
+                score=7,
+            ).exists()
         )
 
     def test_rate_weapons_complete_submission_creates_ratings(self):
@@ -355,14 +469,28 @@ class MorphGunTests(TestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse("weapon_rankings"))
-        self.assertEqual(WeaponRating.objects.filter(user=self.user).count(), 2)
+        self.assertEqual(
+            WeaponRating.objects.filter(user=self.user).count(),
+            2,
+        )
 
     def test_weapon_rankings_no_user_ratings_shows_no_change(self):
         self.client.force_login(self.user)
 
-        other = User.objects.create_user(username="other", password="pass")
-        WeaponRating.objects.create(user=other, weapon=self.weapon1, score=5)
-        WeaponRating.objects.create(user=other, weapon=self.weapon2, score=6)
+        other = User.objects.create_user(
+            username="other",
+            password="pass",
+        )
+        WeaponRating.objects.create(
+            user=other,
+            weapon=self.weapon1,
+            score=5,
+        )
+        WeaponRating.objects.create(
+            user=other,
+            weapon=self.weapon2,
+            score=6,
+        )
 
         response = self.client.get(reverse("weapon_rankings"))
         self.assertEqual(response.status_code, 200)
@@ -375,12 +503,31 @@ class MorphGunTests(TestCase):
     def test_weapon_rankings_with_user_ratings_calculates_change(self):
         self.client.force_login(self.user)
 
-        other = User.objects.create_user(username="other2", password="pass")
-        WeaponRating.objects.create(user=other, weapon=self.weapon1, score=5)
-        WeaponRating.objects.create(user=other, weapon=self.weapon2, score=6)
+        other = User.objects.create_user(
+            username="other2",
+            password="pass",
+        )
+        WeaponRating.objects.create(
+            user=other,
+            weapon=self.weapon1,
+            score=5,
+        )
+        WeaponRating.objects.create(
+            user=other,
+            weapon=self.weapon2,
+            score=6,
+        )
 
-        WeaponRating.objects.create(user=self.user, weapon=self.weapon1, score=10)
-        WeaponRating.objects.create(user=self.user, weapon=self.weapon2, score=1)
+        WeaponRating.objects.create(
+            user=self.user,
+            weapon=self.weapon1,
+            score=10,
+        )
+        WeaponRating.objects.create(
+            user=self.user,
+            weapon=self.weapon2,
+            score=1,
+        )
 
         response = self.client.get(reverse("weapon_rankings"))
         self.assertEqual(response.status_code, 200)

@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from .models import Colour, Weapon, WeaponRating, MorphGunUpgrade
-from django.db.models import Avg, Count, OuterRef, Subquery, Q
-from .forms import WeaponForm, ColourForm, MorphGunUpgradeForm
+from django.db.models import Avg, Count, OuterRef, Q, Subquery
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .forms import ColourForm, MorphGunUpgradeForm, WeaponForm
+from .models import Colour, MorphGunUpgrade, Weapon, WeaponRating
 
 
 # Weapon CRUD
@@ -12,23 +13,26 @@ from .forms import WeaponForm, ColourForm, MorphGunUpgradeForm
 # List view
 def weapon_list(request):
     # Create a mapping of colours to their weapons
-    colours = Colour.objects.prefetch_related('weapons').all()
+    colours = Colour.objects.prefetch_related("weapons").all()
 
     # Create a list of groups similar to regroup output
     weapons_by_colour = []
     for colour in colours:
-        weapons_by_colour.append({
-            'grouper': colour,
-            'list': colour.weapons.all(),
-        })
+        weapons_by_colour.append(
+            {
+                "grouper": colour,
+                "list": colour.weapons.all(),
+            }
+        )
 
     return render(
         request,
-        'morphgun/weapon_list.html',
+        "morphgun/weapon_list.html",
         {
-            'weapons_by_colour': weapons_by_colour,
-            'user': request.user,  # keep access to user in template
-        }
+            "weapons_by_colour": weapons_by_colour,
+            # keep access to user in template
+            "user": request.user,
+        },
     )
 
 
@@ -41,11 +45,11 @@ def weapon_detail(request, pk):
 
     return render(
         request,
-        'morphgun/weapon_detail.html',
+        "morphgun/weapon_detail.html",
         {
-            'weapon': weapon,
-            'jak2_upgrades': jak2_upgrades,
-            'jak3_upgrades': jak3_upgrades,
+            "weapon": weapon,
+            "jak2_upgrades": jak2_upgrades,
+            "jak3_upgrades": jak3_upgrades,
         },
     )
 
@@ -54,22 +58,26 @@ def weapon_detail(request, pk):
 def create_weapon(request):
     if not request.user.is_staff:
         raise PermissionDenied
-    if request.method == 'POST':
+
+    if request.method == "POST":
         form = WeaponForm(request.POST)
         if form.is_valid():
             weapon = form.save()
             messages.success(
                 request,
-                f"Weapon '{weapon.name}' created successfully!",
+                (
+                    f"Weapon '{weapon.name}' "
+                    "created successfully!"
+                ),
             )
-            return redirect('weapon_detail', pk=weapon.pk)
+            return redirect("weapon_detail", pk=weapon.pk)
     else:
         form = WeaponForm()
 
     return render(
         request,
-        'morphgun/create_weapon.html',
-        {'form': form},
+        "morphgun/create_weapon.html",
+        {"form": form},
     )
 
 
@@ -77,9 +85,10 @@ def create_weapon(request):
 def update_weapon(request, pk):
     if not request.user.is_staff:
         raise PermissionDenied
+
     weapon = get_object_or_404(Weapon, pk=pk)
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = WeaponForm(
             request.POST,
             request.FILES,
@@ -89,18 +98,21 @@ def update_weapon(request, pk):
             weapon = form.save()
             messages.success(
                 request,
-                f"Weapon '{weapon.name}' updated successfully!",
+                (
+                    f"Weapon '{weapon.name}' "
+                    "updated successfully!"
+                ),
             )
-            return redirect('weapon_detail', pk=weapon.pk)
+            return redirect("weapon_detail", pk=weapon.pk)
     else:
         form = WeaponForm(instance=weapon)
 
     return render(
         request,
-        'morphgun/update_weapon.html',
+        "morphgun/update_weapon.html",
         {
-            'form': form,
-            'weapon': weapon,
+            "form": form,
+            "weapon": weapon,
         },
     )
 
@@ -109,21 +121,25 @@ def update_weapon(request, pk):
 def delete_weapon(request, pk):
     if not request.user.is_staff:
         raise PermissionDenied
+
     weapon = get_object_or_404(Weapon, pk=pk)
 
-    if request.method == 'POST':
+    if request.method == "POST":
         name = weapon.name
         weapon.delete()
         messages.success(
             request,
-            f"Weapon '{name}' deleted successfully!",
+            (
+                f"Weapon '{name}' "
+                "deleted successfully!"
+            ),
         )
-        return redirect('weapon_list')
+        return redirect("weapon_list")
 
     return render(
         request,
-        'morphgun/delete_weapon.html',
-        {'weapon': weapon},
+        "morphgun/delete_weapon.html",
+        {"weapon": weapon},
     )
 
 
@@ -133,30 +149,33 @@ def create_upgrade(request):
     if not request.user.is_staff:
         raise PermissionDenied
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = MorphGunUpgradeForm(request.POST)
         if form.is_valid():
             upgrade = form.save()
             messages.success(
                 request,
-                f"Upgrade '{upgrade.name}' created successfully!",
+                (
+                    f"Upgrade '{upgrade.name}' "
+                    "created successfully!"
+                ),
             )
 
             weapon = upgrade.weapons.first()
             if weapon:
-                return redirect('weapon_detail', pk=weapon.pk)
+                return redirect("weapon_detail", pk=weapon.pk)
 
-            return redirect('weapon_list')
+            return redirect("weapon_list")
     else:
         form = MorphGunUpgradeForm()
 
     return render(
         request,
-        'morphgun/upgrade_form.html',
+        "morphgun/upgrade_form.html",
         {
-            'form': form,
-            'title': 'Create Upgrade',
-            'button_text': 'Create Upgrade',
+            "form": form,
+            "title": "Create Upgrade",
+            "button_text": "Create Upgrade",
         },
     )
 
@@ -168,7 +187,7 @@ def update_upgrade(request, pk):
 
     upgrade = get_object_or_404(MorphGunUpgrade, pk=pk)
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = MorphGunUpgradeForm(
             request.POST,
             instance=upgrade,
@@ -177,24 +196,27 @@ def update_upgrade(request, pk):
             upgrade = form.save()
             messages.success(
                 request,
-                f"Upgrade '{upgrade.name}' updated successfully!",
+                (
+                    f"Upgrade '{upgrade.name}' "
+                    "updated successfully!"
+                ),
             )
 
             weapon = upgrade.weapons.first()
             if weapon:
-                return redirect('weapon_detail', pk=weapon.pk)
+                return redirect("weapon_detail", pk=weapon.pk)
 
-            return redirect('weapon_list')
+            return redirect("weapon_list")
     else:
         form = MorphGunUpgradeForm(instance=upgrade)
 
     return render(
         request,
-        'morphgun/upgrade_form.html',
+        "morphgun/upgrade_form.html",
         {
-            'form': form,
-            'title': 'Edit Upgrade',
-            'button_text': 'Save Changes',
+            "form": form,
+            "title": "Edit Upgrade",
+            "button_text": "Save Changes",
         },
     )
 
@@ -206,25 +228,28 @@ def delete_upgrade(request, pk):
 
     upgrade = get_object_or_404(MorphGunUpgrade, pk=pk)
 
-    if request.method == 'POST':
+    if request.method == "POST":
         weapon = upgrade.weapons.first()
         name = upgrade.name
         upgrade.delete()
 
         messages.success(
             request,
-            f"Upgrade '{name}' deleted successfully!",
+            (
+                f"Upgrade '{name}' "
+                "deleted successfully!"
+            ),
         )
 
         if weapon:
-            return redirect('weapon_detail', pk=weapon.pk)
+            return redirect("weapon_detail", pk=weapon.pk)
 
-        return redirect('weapon_list')
+        return redirect("weapon_list")
 
     return render(
         request,
-        'morphgun/upgrade_confirm_delete.html',
-        {'upgrade': upgrade},
+        "morphgun/upgrade_confirm_delete.html",
+        {"upgrade": upgrade},
     )
 
 
@@ -232,31 +257,36 @@ def delete_upgrade(request, pk):
 def colour_create(request):
     if not request.user.is_staff:
         raise PermissionDenied
-    if request.method == 'POST':
+
+    if request.method == "POST":
         form = ColourForm(request.POST, request.FILES)
         if form.is_valid():
             colour = form.save()
             messages.success(
                 request,
-                f"Colour '{colour.name}' created successfully!",
+                (
+                    f"Colour '{colour.name}' "
+                    "created successfully!"
+                ),
             )
-            return redirect('weapon_list')
+            return redirect("weapon_list")
     else:
         form = ColourForm()
 
     return render(
         request,
-        'morphgun/create_colour.html',
-        {'form': form},
+        "morphgun/create_colour.html",
+        {"form": form},
     )
 
 
 def colour_update(request, pk):
     if not request.user.is_staff:
         raise PermissionDenied
+
     colour = get_object_or_404(Colour, pk=pk)
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ColourForm(
             request.POST,
             request.FILES,
@@ -266,18 +296,21 @@ def colour_update(request, pk):
             form.save()
             messages.success(
                 request,
-                f"Colour '{colour.name}' updated successfully!",
+                (
+                    f"Colour '{colour.name}' "
+                    "updated successfully!"
+                ),
             )
-            return redirect('weapon_list')
+            return redirect("weapon_list")
     else:
         form = ColourForm(instance=colour)
 
     return render(
         request,
-        'morphgun/update_colour.html',
+        "morphgun/update_colour.html",
         {
-            'form': form,
-            'colour': colour,
+            "form": form,
+            "colour": colour,
         },
     )
 
@@ -285,21 +318,22 @@ def colour_update(request, pk):
 def colour_delete(request, pk):
     if not request.user.is_staff:
         raise PermissionDenied
+
     colour = get_object_or_404(Colour, pk=pk)
 
-    if request.method == 'POST':
+    if request.method == "POST":
         name = colour.name
         colour.delete()
         messages.success(
             request,
             f"Colour '{name}' deleted.",
         )
-        return redirect('weapon_list')
+        return redirect("weapon_list")
 
     return render(
         request,
-        'morphgun/delete_colour.html',
-        {'colour': colour},
+        "morphgun/delete_colour.html",
+        {"colour": colour},
     )
 
 
@@ -310,18 +344,17 @@ def rate_weapons(request):
     # Get user's existing rating per weapon
     user_rating_subquery = WeaponRating.objects.filter(
         user=user,
-        weapon=OuterRef('pk'),
-    ).values('score')[:1]
+        weapon=OuterRef("pk"),
+    ).values("score")[:1]
 
     weapons = (
-        Weapon.objects
-        .annotate(
+        Weapon.objects.annotate(
             user_score=Subquery(user_rating_subquery),
         )
-        .order_by('order')
+        .order_by("order")
     )
 
-    if request.method == 'POST':
+    if request.method == "POST":
         for weapon in weapons:
             score = request.POST.get(f"weapon_{weapon.id}")
 
@@ -330,12 +363,12 @@ def rate_weapons(request):
                     request,
                     "You must rate all weapons before submitting.",
                 )
-                return redirect('rate_weapons')
+                return redirect("rate_weapons")
 
             WeaponRating.objects.update_or_create(
                 user=user,
                 weapon=weapon,
-                defaults={'score': score},
+                defaults={"score": score},
             )
 
         messages.success(
@@ -343,15 +376,14 @@ def rate_weapons(request):
             "Your weapon ratings have been saved.",
         )
 
-        return redirect('weapon_rankings')
-
+        return redirect("weapon_rankings")
 
     return render(
         request,
-        'morphgun/rate_weapons.html',
+        "morphgun/rate_weapons.html",
         {
-            'weapons': weapons,
-            'range': range(1, 11),
+            "weapons": weapons,
+            "range": range(1, 11),
         },
     )
 
@@ -363,22 +395,20 @@ def weapon_rankings(request):
 
     # Retrieve the current user's weapon ratings, highest first
     user_ratings = (
-        WeaponRating.objects
-        .filter(user=user)
-        .select_related('weapon')
-        .order_by('-score')
+        WeaponRating.objects.filter(user=user)
+        .select_related("weapon")
+        .order_by("-score")
     )
 
     # Build community rankings using all submitted ratings
     # Includes average score and total number of votes per weapon
     community_rankings = (
-        Weapon.objects
-        .annotate(
-            avg_rating=Avg('ratings__score'),
-            rating_count=Count('ratings'),
+        Weapon.objects.annotate(
+            avg_rating=Avg("ratings__score"),
+            rating_count=Count("ratings"),
         )
         .filter(rating_count__gt=0)
-        .order_by('-avg_rating', '-rating_count')
+        .order_by("-avg_rating", "-rating_count")
     )
 
     # Only calculate rank changes if the user has submitted ratings
@@ -386,13 +416,18 @@ def weapon_rankings(request):
         # Calculate rankings excluding the current user's ratings
         # This represents the "previous" community state
         previous_rankings = list(
-            Weapon.objects
-            .annotate(
-                avg_rating=Avg('ratings__score', filter=~Q(ratings__user=user)),
-                rating_count=Count('ratings', filter=~Q(ratings__user=user)),
+            Weapon.objects.annotate(
+                avg_rating=Avg(
+                    "ratings__score",
+                    filter=~Q(ratings__user=user),
+                ),
+                rating_count=Count(
+                    "ratings",
+                    filter=~Q(ratings__user=user),
+                ),
             )
             .filter(rating_count__gt=0)
-            .order_by('-avg_rating', '-rating_count')
+            .order_by("-avg_rating", "-rating_count")
         )
 
         # Convert queryset to list so we can compare index positions
@@ -404,7 +439,8 @@ def weapon_rankings(request):
                 prev_index = previous_rankings.index(weapon)
                 # Positive value means the weapon moved up the rankings
                 weapon.rank_change = prev_index - i  # positive = promoted
-                weapon.rank_change_abs = abs(prev_index - i)  # magnitude of movement
+                # magnitude of movement
+                weapon.rank_change_abs = abs(prev_index - i)
             except ValueError:
                 # Weapon did not exist in previous rankings
                 weapon.rank_change = 0  # new weapon
@@ -419,9 +455,9 @@ def weapon_rankings(request):
 
     return render(
         request,
-        'morphgun/weapon_rankings.html',
+        "morphgun/weapon_rankings.html",
         {
-            'user_ratings': user_ratings,
-            'community_rankings': community_rankings,
+            "user_ratings": user_ratings,
+            "community_rankings": community_rankings,
         },
     )

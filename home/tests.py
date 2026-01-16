@@ -1,6 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth import get_user_model
 
 from home.forms import CustomUserCreationForm
 
@@ -14,7 +14,8 @@ class HomeTests(TestCase):
 
     Focus:
     - index loads correctly
-    - register loads + creates a user on valid POST (using the *real* form fields)
+    - register loads + creates a user on valid POST (using the *real* form
+      fields)
     - invalid register does not create a user
     - logout redirects correctly
 
@@ -54,9 +55,16 @@ class HomeTests(TestCase):
             if field.required:
                 # If it has choices, pick the first valid choice value
                 if getattr(field, "choices", None):
-                    # choices may include a blank option - pick first non-blank if possible
-                    choices = [c for c in field.choices if c[0] not in ("", None)]
-                    payload[name] = choices[0][0] if choices else field.choices[0][0]
+                    # choices may include a blank option - pick first non-blank
+                    # if possible
+                    choices = [
+                        c for c in field.choices if c[0] not in ("", None)
+                    ]
+                    payload[name] = (
+                        choices[0][0]
+                        if choices
+                        else field.choices[0][0]
+                    )
                 else:
                     payload[name] = "test"
 
@@ -83,9 +91,12 @@ class HomeTests(TestCase):
             form = response.context.get("form")
             errors = form.errors.as_text() if form else "No form in context"
             self.fail(
-                f"Register did not redirect. Status={response.status_code}.\n"
-                f"Payload keys={sorted(payload.keys())}\n"
-                f"Form errors:\n{errors}"
+                (
+                    "Register did not redirect. "
+                    f"Status={response.status_code}.\n"
+                    f"Payload keys={sorted(payload.keys())}\n"
+                    f"Form errors:\n{errors}"
+                )
             )
 
         self.assertTrue(User.objects.filter(username="newuser").exists())
