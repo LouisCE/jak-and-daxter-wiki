@@ -358,9 +358,10 @@ def rate_weapons(request):
 
 @login_required
 def weapon_rankings(request):
+    # Get the currently logged-in user
     user = request.user
 
-    # User rankings
+    # Retrieve the current user's weapon ratings, highest first
     user_ratings = (
         WeaponRating.objects
         .filter(user=user)
@@ -368,7 +369,8 @@ def weapon_rankings(request):
         .order_by('-score')
     )
 
-    # Community rankings with all ratings
+    # Build community rankings using all submitted ratings
+    # Includes average score and total number of votes per weapon
     community_rankings = (
         Weapon.objects
         .annotate(
@@ -379,9 +381,10 @@ def weapon_rankings(request):
         .order_by('-avg_rating', '-rating_count')
     )
 
-    # Calculate rank changes for current user only
+    # Only calculate rank changes if the user has submitted ratings
     if user_ratings.exists():
-        # Previous ranking without user's ratings
+        # Calculate rankings excluding the current user's ratings
+        # This represents the "previous" community state
         previous_rankings = list(
             Weapon.objects
             .annotate(
@@ -392,19 +395,24 @@ def weapon_rankings(request):
             .order_by('-avg_rating', '-rating_count')
         )
 
+        # Convert queryset to list so we can compare index positions
         community_rankings_list = list(community_rankings)
 
         for i, weapon in enumerate(community_rankings_list):
             try:
+                # Compare current rank index to previous rank index
                 prev_index = previous_rankings.index(weapon)
+                # Positive value means the weapon moved up the rankings
                 weapon.rank_change = prev_index - i  # positive = promoted
                 weapon.rank_change_abs = abs(prev_index - i)  # magnitude of movement
             except ValueError:
+                # Weapon did not exist in previous rankings
                 weapon.rank_change = 0  # new weapon
                 weapon.rank_change_abs = 0
 
         community_rankings = community_rankings_list
     else:
+        # If the user has not rated anything, no rank changes are shown
         for weapon in community_rankings:
             weapon.rank_change = None
             weapon.rank_change_abs = None
