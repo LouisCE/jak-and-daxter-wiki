@@ -117,7 +117,9 @@ This allows the JSHint validator to recognise modern JavaScript features such as
 
 JavaScript within the **Jak and Daxter Wiki** project is intentionally kept minimal and is used only to enhance user experience rather than core functionality.
 
-The project includes a small JavaScript file to improve usability on the **Rate Weapons** page by disabling the submit button and displaying a loading indicator when the rating form is submitted. This prevents duplicate submissions and provides clear feedback to the user.
+The project includes a small JavaScript file to improve usability on the **Rate Weapons** page by disabling the submit button and displaying an eco-themed loader when the rating form is submitted. This prevents duplicate submissions and provides clear feedback to the user.
+
+![screenshot](documentation/features/eco-loader.png)
 
 The project’s custom JavaScript file was validated using the recommended [JSHint Validator](https://jshint.com).
 
