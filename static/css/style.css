@@ -177,6 +177,13 @@ main h2 {
     object-fit: cover;
 }
 
+/* Eco colour image sizing */
+.eco-img {
+    max-height: 200px;
+    width: auto;
+    object-fit: cover;
+}
+
 /* Footer */
 
 footer {

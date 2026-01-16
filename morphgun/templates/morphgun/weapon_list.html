@@ -58,15 +58,13 @@ Morph Gun | Jak and Daxter Wiki
 
         <!-- Colour header -->
         <div class="row align-items-center mb-4">
-            <div class="col-md-4">
+            <div class="col-md-4 text-center">
                 {% comment %} Show grouper image or placeholder {% endcomment %}
                 {% if "placeholder" in group.grouper.image.url %}
                 <img
                     src="{% static 'images/morph-gun.jpg' %}"
                     alt="Placeholder image"
-                    class="img-fluid rounded"
-                    width="400"
-                    height="400"
+                    class="img-fluid rounded eco-img"
                     loading="lazy"
                     decoding="async"
                 >
@@ -74,9 +72,7 @@ Morph Gun | Jak and Daxter Wiki
                 <img
                     src="{{ group.grouper.image.url }}"
                     alt="{{ group.grouper.name }}"
-                    class="img-fluid rounded"
-                    width="400"
-                    height="400"
+                    class="img-fluid rounded eco-img"
                     loading="lazy"
                     decoding="async"
                 >
