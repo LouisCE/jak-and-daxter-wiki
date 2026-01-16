@@ -92,7 +92,7 @@ The project uses a single custom stylesheet located at `static/css/style.css`. V
 
 | Directory | File | Validator URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| static/css | [style.css](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/static/css/style.css) | https://jigsaw.w3.org/css-validator/validator?uri=https://jak-and-daxter-wiki-420eda56706b.herokuapp.com | ![CSS validation screenshot](documentation/validation/css-static-style.png) | No critical errors found in custom CSS. Bootstrap-related warnings ignored as expected. |
+| static/css | [style.css](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/static/css/style.css) | [W3C CSS Validation Result](https://jigsaw.w3.org/css-validator/validator?uri=https://jak-and-daxter-wiki-420eda56706b.herokuapp.com) | ![CSS validation screenshot](documentation/validation/css-static-style.png) | No critical errors found in custom CSS. Bootstrap-related warnings ignored as expected. |
 
 ---
 
@@ -123,7 +123,7 @@ The project’s custom JavaScript file was validated using the recommended [JSHi
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| static/js | rating.js | https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/static/js/rating.js | ![screenshot](documentation/validation/js-rating.png) | No errors reported |
+| static/js | rating.js | [rating.js source file](https://github.com/LouisCE/jak-and-daxter-wiki/blob/main/static/js/rating.js) | ![screenshot](documentation/validation/js-rating.png) | No errors reported |
 
 No errors or warnings were reported during validation, confirming that the JavaScript is clean, readable, and suitable for production use.
 
@@ -135,7 +135,7 @@ All custom Python code for the **Jak and Daxter Wiki** project was validated usi
 
 Validation was carried out using the **API URL method**, as this provides a persistent validation link for each file and ensures that the exact deployed code is being checked.
 
-- [PEP8 CI Python Linter](https://pep8ci.herokuapp.com)
+- [PEP8 CI Python Linter (Heroku)](https://pep8ci.herokuapp.com)
 
 ---
 
@@ -280,7 +280,7 @@ This confirms that automated testing was performed safely and in accordance with
 
 The **WAVE Web Accessibility Evaluation Tool** was used to assess the accessibility of the **Jak and Daxter Wiki** project. WAVE was run using the following URL:
 
-- [WAVE Web Accessibility Evaluation Tools](https://wave.webaim.org/report#/https://jak-and-daxter-wiki-420eda56706b.herokuapp.com)
+- [WAVE accessibility report for deployed site](https://wave.webaim.org/report#/https://jak-and-daxter-wiki-420eda56706b.herokuapp.com)
 
 ### Summary
 

@@ -28,7 +28,7 @@ At the time of writing, there are six games in the Jak and Daxter franchise. How
 
 ![screenshot](documentation/mockup.png)
 
-[jak-and-daxter-wiki amiresponsive](https://ui.dev/amiresponsive?url=https://jak-and-daxter-wiki-420eda56706b.herokuapp.com)
+[AmiResponsive preview](https://ui.dev/amiresponsive?url=https://jak-and-daxter-wiki-420eda56706b.herokuapp.com)
 
 ---
 
@@ -47,7 +47,7 @@ At the time of writing, there are six games in the Jak and Daxter franchise. How
 **Primary User Needs**
 
 - **Guests**  
-  - Browse character pages, eco colours, weapon wods and collectables.  
+  - Browse character pages, eco colours, weapon mods and collectables.  
   - Understand game features through images and structured descriptions.
   - Navigate the site easily without needing to register.
 
@@ -182,9 +182,9 @@ I generated the following custom colour palette specifically to reflect a **Jak 
 - `#ffffff` - Default white
 - `#ff9f1c` - Main Jak-orange text (titles, headers)
 - `#ffd166` - Hover highlights
-- `ff0000` - "Red" eco theme
-- `ffff00` - "Yellow" eco theme
-- `00ffff` - "Blue" eco theme (represented by cyan for greater contrast)
+- `#ff0000` - "Red" eco theme
+- `#ffff00` - "Yellow" eco theme
+- `#00ffff` - "Blue" eco theme (represented by cyan for greater contrast)
 - `#ff00ff` - "Dark" eco theme (respresented by magenta for greater contrast)
 - `#0d0d0d` - Secondary dark (navbar + footer)
 
@@ -687,7 +687,7 @@ This project uses a **Code Institute PostgreSQL Database** as the relational dat
 
 To obtain my PostgreSQL Database from Code Institute, I followed these steps:
 
-- Submitted my email address to the CI PostgreSQL Database link: <https://dbs.ci-dbs.net>
+- Submitted my email address to the [CI PostgreSQL Database provisioning page](https://dbs.ci-dbs.net)
 - I received an email containing my unique PostgreSQL database credentials.
 - The database URL provided follows this format:
   - `postgres://<db_username>:<db_password>@<db_host_url>/<db_name>`
@@ -797,7 +797,7 @@ If you'd like to back up data from specific models, you can create fixture files
 You can clone this repository by following these steps:
 
 1. Go to the **Jak and Daxter Wiki** GitHub repository:  
-   https://www.github.com/LouisCE/jak-and-daxter-wiki
+   [Jak and Daxter Wiki repository](https://www.github.com/LouisCE/jak-and-daxter-wiki)
 2. Click the green **Code** button at the top of the page.
 3. Choose whether you want to clone using **HTTPS**, **SSH**, or **GitHub CLI**, then click the **copy** icon to copy the URL.
 4. Open **Git Bash**, **Terminal**, or your preferred command-line tool.
@@ -816,14 +816,14 @@ Alternatively, if you're using **Ona (formerly Gitpod)**, you can launch a cloud
 
 > [!NOTE]  
 > To use Ona/Gitpod with one click, you must have the browser extension installed.  
-> Instructions can be found here: https://www.gitpod.io/docs/configure/user-settings/browser-extension
+> Instructions can be found here: [Gitpod browser extension setup](https://www.gitpod.io/docs/configure/user-settings/browser-extension)
 
 #### Forking
 
 By forking the GitHub repository, you create a copy of the original project on your own GitHub account. This allows you to view and edit the project freely without affecting the original repository. You can fork this repository by following these steps:
 
 1. Log in to GitHub and navigate to the **Jak and Daxter Wiki** repository:  
-   https://www.github.com/LouisCE/jak-and-daxter-wiki
+   [Jak and Daxter Wiki repository](https://www.github.com/LouisCE/jak-and-daxter-wiki)
 2. At the top-right of the repository page, just below the “Settings” tab, click the **Fork** button.
 3. After clicking Fork, GitHub will create a copy of the repository under your own account. You can now work on your fork independently!
 
@@ -840,10 +840,10 @@ There are no remaining major differences between the local version of the Jak an
 The following learning resources were used as reference material and general guidance during development:
 
 - The **Code Institute LMS** and the **I Think Therefore I Blog** walkthrough project were used as a reference for setting up core Django functionality, project structure, and deployment workflows.  
-  https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FSD101_WTS+11/courseware/713441aba05441dfb3a7cf04f3268b3f/824fccecd0fe4e44871eeabcbf69d830/
+  [Code Institute LMS – I Think Therefore I Blog walkthrough](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FSD101_WTS+11/courseware/713441aba05441dfb3a7cf04f3268b3f/824fccecd0fe4e44871eeabcbf69d830/)
 
 - The **PP4 Assessment Criteria** provided by Code Institute were used to shape the structure, scope, and documentation standards of the project.
-  https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FST_PAGPPF+2/courseware/8f9fd8690aad4776a05eaf462b430f46/995834f1924a4086af51870bf92f6516/
+  [PP4 Assessment Criteria (Code Institute)](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FST_PAGPPF+2/courseware/8f9fd8690aad4776a05eaf462b430f46/995834f1924a4086af51870bf92f6516/)
 
 ### Content
 
@@ -868,29 +868,29 @@ The following resources were used during the development of the **Jak and Daxter
 The following external sources were used for images and reference material related to the Jak and Daxter franchise:
 
 - **Official Jak and Daxter Wiki (Fandom):** Source of character images, collectibles, and general reference material.
-  https://jakanddaxter.fandom.com/
+  [Jak and Daxter Wiki (Fandom)](https://jakanddaxter.fandom.com/)
 
 - **IGN – Jak 3 Weapons:** Used as reference for weapon mod descriptions.
-  https://www.ign.com/wikis/jak-3/Weapons
+  [IGN – Jak 3 Weapons](https://www.ign.com/wikis/jak-3/Weapons)
 
 - **Morph Gun image references:** Sourced from the Jak and Daxter Wiki.
-  https://jakanddaxter.fandom.com/wiki/Morph_Gun
+  [Morph Gun (Fandom)](https://jakanddaxter.fandom.com/wiki/Morph_Gun)
 
 - **Morph Gun upgrade references:** Used to fill weapon upgrade information.
-  https://jakanddaxter.fandom.com/wiki/Morph_Gun_upgrades
+  [Morph Gun upgrades (Fandom)](https://jakanddaxter.fandom.com/wiki/Morph_Gun_upgrades)
 
 ### Code & Feature References
 
 The following resources were used to understand and implement grouped data display in Django templates using the `regroup` template tag, as applied in the `weapon_list.html` template.
 
 - Django documentation on the **Regroup** template tag, used for grouping data within templates.
-  https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#regroup
+  [Django docs – `regroup` template tag](https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#regroup)
 
 - Example of grouping content by category (FAQs):
-  https://www.iraqikurdistanguide.com/faqs/
+  [Grouping content example (FAQs)](https://www.iraqikurdistanguide.com/faqs/)
 
 - Regroup implementation reference from Mentor Tim’s repository:
-  https://github.com/TravelTimN/iraqikurdistanguide/blob/main/faqs/templates/faqs/faqs.html#L21
+  [Mentor Tim regroup reference (GitHub)](https://github.com/TravelTimN/iraqikurdistanguide/blob/main/faqs/templates/faqs/faqs.html#L21)
 
 ### Acknowledgements
 
