@@ -22,32 +22,43 @@
 <div class="container py-4">
 
     {% if user.is_staff %}
-    <a href="{% url 'character_create' %}" class="btn btn-success mb-3">Add Character</a>
+    <a
+        href="{% url 'character_create' %}"
+        class="btn btn-success mb-3"
+    >
+        Add Character
+    </a>
     {% endif %}
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
         {% for character in characters %}
-<div class="col">
-    <a href="{% url 'character_detail' character.pk %}">
-        <div class="card bg-dark h-100 card-hover">
-            {% if "placeholder" in character.image.url %}
-                <img src="{% static 'images/nobody.jpg' %}"
-                class="card-img-top"
-                alt="placeholder">
-            {% else %}
-                <img src="{{ character.image.url }}"
-                    class="card-img-top"
-                    alt="{{ character.name }}">
-            {% endif %}
+        <div class="col">
+            <a href="{% url 'character_detail' character.pk %}">
+                <div class="card bg-dark h-100 card-hover">
+                    {% if "placeholder" in character.image.url %}
+                    <img
+                        src="{% static 'images/nobody.jpg' %}"
+                        class="card-img-top"
+                        alt="placeholder"
+                    >
+                    {% else %}
+                    <img
+                        src="{{ character.image.url }}"
+                        class="card-img-top"
+                        alt="{{ character.name }}"
+                    >
+                    {% endif %}
 
-            <div class="card-body text-center">
-                <h3 class="card-title mb-0">{{ character.name }}</h3>
-            </div>
+                    <div class="card-body text-center">
+                        <h2 class="card-title mb-0">
+                            {{ character.name }}
+                        </h2>
+                    </div>
+                </div>
+            </a>
         </div>
-    </a>
-</div>
-{% endfor %}
-
+        {% endfor %}
     </div>
+
 </div>
 {% endblock %}
